@@ -1,0 +1,17 @@
+# CAD lock and backup files
+*.FCStd1
+*.dwl
+*.dwl2
+*.dwg.bak
+*.bak
+*.stl.bak
+
+# Office / spreadsheet lock and autosave files
+~$*
+.~lock.*#
+*.xlk
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store
