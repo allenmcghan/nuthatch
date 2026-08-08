@@ -142,10 +142,52 @@ the shock, and they shed on grass.
 The nosewheel keeps its 4.10-6 regardless: it meets every rut first, and
 nose-over is the failure that ends a flying day.
 
+## 7a. Second revision: large-narrow bicycle wheels — adopted as the primary main
+
+The refined proposal — **a large-diameter, narrow, high-performance bicycle
+wheel** (20×2.4 BMX/DH class, or 24×2.6) — is the opposite corner of the tire
+trade from the 8-in scooter wheel, and the shock adoption changed the physics
+in its favour.
+
+**Bump crossing (drag ÷ wheel load over a 2 in clump):** 8-in scooter 1.73,
+13×5.00-6 1.04, **20×2.4 bike 0.75**, 24×2.6 0.66. Diameter is what grass
+taxes, and the bike wheel has the most of it.
+
+**Why narrow works now:** the 8-in rejection stood on two legs — diameter and
+the tire-as-damper. Big-narrow fixes the first, and the adopted MTB coil-overs
+took over the damping job entirely. A stiff dual-ply DH casing at 22–28 psi
+riding on a damped 4.6 in of trailing-arm travel is a *better* energy chain
+than a fat tire on an undamped spring leg.
+
+**Weight is honestly a wash** (7–9 lb/pair vs 6.5–8 for light 13s — weigh
+before believing), but the bike wheel buys three real things: the bump
+crossing above, **~40% less frontal area in flight**, and — the quiet win —
+**the bicycle disc hub is native**, so §11's machined rotor-to-hub adapter is
+deleted (−0.5 lb and a machine-shop task gone). Brakes, shocks, and now wheels
+all come from the same bicycle-industry parts bin.
+
+**The structural catch, and the gate:** a spoked wheel is superb radially and
+weakest laterally, and a crosswind touchdown is a lateral event. Adoption
+requirements: 36–48 spokes (13/14 g), modern disc rim, through-axle hub
+(12–20 mm), dual-ply DH casing at a 22–28 psi placard, and a **shop-floor
+lateral proof test — ~400 lb side load at the rim (0.5 × vertical limit) held
+without buckling — before either aircraft flies on them.** Precedent exists:
+Legal-Eagle-class and Bloop minimum ultralights have flown spoked bicycle
+wheels at these weights for decades.
+
+**Flotation is the accepted trade:** ~24 psi ground pressure against the fat
+tire's ~9. Fine on the firm mowed home strip; the 13×5 (or EAB 16×6.5) remains
+the soft/wet-field wheel. Design the trailing-arm axle with **interchangeable
+inserts (bike through-axle or 5/8 in aircraft axle)** so the choice stays
+per-field, as §7 already established.
+
 ## 8. What this does not settle
 
 - Trailing-arm geometry and pivot bearing detail (gate-4 drawing); shock
-  structural rating verification at ~1,600 lb.
+  structural rating verification at ~1,600 lb; axle inserts for both wheel
+  standards.
+- The bike-wheel lateral proof test (~400 lb at the rim) and real pair weights
+  on a scale.
 - Drop test. AC 103-7-era practice is a static-plus-drop demonstration — plan a
   free drop of the complete gear at 456 lb from h = v²/2g ≈ 12 in onto the
   mains before first flight. Cheap, and it converts N=3 from assumption to
