@@ -94,9 +94,58 @@ aft to rotate), track widened to 56 in, nose gear at sta 32 with a smaller
 wheel, V-strut main legs, tail skid added. `model/nuthatch.stl` and the GA
 drawing regenerated; the interactive artifact republished as rev B.
 
-## 7. What this does not settle
+## 7. Revision: trailing arms with MTB coil-over shocks; tire size split
 
-- The actual leg curve and spring rate (gate-4 drawing; verify 4.6 in travel).
+The "absorb everything with the shocks, run small tires" proposal splits into
+two halves with opposite verdicts.
+
+**The shock half is adopted — it is better than what §2 specced.** The sprung
+4130 legs are springs: they store landing energy and give it back, and that
+return is the bounce. The only damping in the original architecture was the
+soft tire. **Trailing-arm mains with mountain-bike downhill coil-over shocks**
+add real, *adjustable* rebound damping:
+
+| Lever ratio | Shock stroke (4.6 in at wheel) | Shock force at 788 lb limit |
+|---|---|---|
+| 1.5:1 | 3.1 in | 1,182 lb |
+| 2:1 | 2.3 in | 1,576 lb |
+
+DH coil shocks run 2.5–3.0 in stroke, ~1 lb, $60–150, with swappable springs —
+which means **each aircraft in the fleet gets a spring rate matched to its
+weight**, and the rebound clickers tune out bounce at the strip. This extends
+§11's bicycle-components philosophy from the brakes to the suspension. *Verify
+before committing: shock structural rating near 1,600 lb, and clevis the eyes —
+DH shocks are not designed for side load.*
+
+**The 8-in tire half is rejected for the mains — diameter is what grass
+taxes, and suspension cannot buy it back.** Load capacity is irrelevant (scooter
+tires carry more per wheel than this aircraft needs). The problem is geometry:
+a wheel crossing a rut or grass clump is *stopped*, not deflected — vertical
+suspension fixes sink energy, not rolling obstacles:
+
+| Over a 2 in bump | Drag ÷ wheel load |
+|---|---|
+| 13×5.00-6 | 1.04 |
+| 8×2 scooter | **1.73** |
+
+And rolling friction moves the takeoff roll the wrong way on the one field that
+matters: ~96 ft on 13-in wheels in normal grass vs **~210 ft on 8-in** — most
+of the short-field margin spent on wheel choice. The honest weight prize
+(pneumatic 8×2 pair ≈ −3.5 lb, net ≈ −2.5 lb with the shock hardware, taking
+the 103 margin from 0.5 to ~3 lb, plus ~2% less parasite drag) is real, which
+is why the decision is a **per-field placard, not a redesign**: the axles take
+either wheel. 13-in is the grass default; 8-in pneumatic is legal and lighter
+if the strip is kept mowed and the pilot accepts the longer roll. **Solid
+scooter tires are forbidden outright** — zero compliance, energy spikes into
+the shock, and they shed on grass.
+
+The nosewheel keeps its 4.10-6 regardless: it meets every rut first, and
+nose-over is the failure that ends a flying day.
+
+## 8. What this does not settle
+
+- Trailing-arm geometry and pivot bearing detail (gate-4 drawing); shock
+  structural rating verification at ~1,600 lb.
 - Drop test. AC 103-7-era practice is a static-plus-drop demonstration — plan a
   free drop of the complete gear at 456 lb from h = v²/2g ≈ 12 in onto the
   mains before first flight. Cheap, and it converts N=3 from assumption to
