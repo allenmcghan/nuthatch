@@ -45,6 +45,12 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - **Whether the tail can give adequate roll authority unblown.** Gates any future
   pusher configuration, since the rudder is the roll control. The quarter-scale
   model cannot answer it — it is a full-scale, power-on question.
+- **Propeller rpm, which decides blade count.** Two blades is comfortable to about
+  1,750 rpm and cannot carry 1,600. Pick the rpm against an actual available belt
+  redrive ratio, then the blade count follows. Do not pick blade count first.
+- **The tip-speed noise exponent in §16.** The 8 dB claim reproduces only under a
+  pressure ∝ V⁵ law; a power-based reading gives about 3.7 dB. Worth a measurement
+  or a cited model before a redrive ratio is bought to chase it.
 
 ## Not technical, but decide early
 

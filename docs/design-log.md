@@ -319,6 +319,36 @@ of tail load rather than 68.
 at a given diameter. Three costs 1–3%, four costs 3–5%. More blades only win when
 diameter is constrained.
 
+**Correction: that is true at 1900 rpm and false at 1600.** Worked in
+[trades/propeller-blade-count.md](trades/propeller-blade-count.md). Blade count is
+not a free-standing choice — it is downstream of diameter and tip speed. Holding
+28 hp through a 60 in disc, dropping 1900 → 1600 rpm requires **1.67× the power
+coefficient**, and a two-blade prop cannot carry it: blade loading goes from
+Cp/σ 0.77 to 1.29, and the chord needed rises from 4.0 to 6.7 in, an aspect ratio
+of 4.5. **The two-blade recommendation and the tip-speed recommendation below
+cannot both be satisfied.**
+
+Two blades is comfortable to about **1750 rpm** and marginal by 1700, which is
+worth **3–4 dB** — roughly half the claimed benefit — with no change to blade
+count, hub, or the carved wood plan. That is the recommendation. The full 8 dB
+needs three blades, costs about 1.2% cruise efficiency, and quietly deletes the
+carved-prop endgame, because three blades means a bolted hub with individually
+rooted blades: a part you buy, not a part you carve.
+
+Four and five blades never pay here. At any rpm the engine can turn they are
+*under*-loaded — carrying blade area the engine cannot use — at 2–3% in profile
+drag, because on a prop this small the narrower blades lose more to Reynolds
+number than they regain in tip losses.
+
+Three blades does win on vibration: a two-blade prop produces a 2P pitch and yaw
+excitation that three does not, which is a real fatigue input to a belt redrive
+and a welded mount.
+
+**And do not shrink the disc to justify more blades.** 48 in buys 6 in of
+thrustline and costs 32 ft of takeoff roll — 172 ft against 140 — which spends
+most of the margin to the 200 ft target on a trim problem already priced at 30 lb
+of tail load. Disc area is the most valuable thing on this aircraft.
+
 **No winglets on the prop.** Tip acceleration is about 3,000g. A tenth-pound
 winglet three inches off the blade axis generates 77 ft-lb of bending at the most
 heavily loaded point on the blade. Swept or anhedral tips keep the mass in the disc
@@ -327,6 +357,15 @@ plane and are worth 3–6% plus a few dB, but they are molded parts, not carved.
 **Cut tip speed instead.** Noise goes roughly as the fifth power of tip speed, so
 dropping from 1,900 to 1,600 rpm is about 8 dB and costs nothing but a taller
 reduction and more pitch. Nothing else on the list comes close.
+
+Two caveats on that, from the blade-count trade. It does **not** cost "nothing but
+a taller reduction" — at 1,600 rpm it also costs the two-blade propeller. And the
+8 dB assumes sound *pressure* going as tip speed to the fifth; that reproduces as
+−7.5 dB, so the number is consistent, but it is very sensitive to the exponent and
+a power-based reading gives roughly −3.7 dB instead. Pin it to a measurement
+before spending a redrive ratio on it. Check the available belt ratios too — the
+F-33 makes power above 6,000 rpm, so 1,600 at the prop is close to 3.9:1, and the
+redrive may cap the tip speed reduction before the aerodynamics does.
 
 Advance ratio only ranges 0.39 to 0.48, which is unusually narrow, so fixed pitch
 is correct and constant speed is not worth paying for. Buy a cheap ground
