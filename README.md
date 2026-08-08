@@ -52,8 +52,16 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 | Engine | Hirth F-33, 28 hp | direct-drive, ~16 hp |
 | Brakes | yes | yes |
 
+**Powerplant roadmap: gasoline first, hybrid second, electric third.** Electric,
+when it comes, is an EAB-only path — a Part 103 all-electric build has 8 lb of
+battery budget left after the airframe and drive, which is about four minutes.
+Part 103 stays gasoline. Worked in
+[docs/trades/pusher-vs-tractor.md](docs/trades/pusher-vs-tractor.md).
+
 ## Configuration
 
+- Nose-mounted tractor propeller. Pusher was analysed and rejected for the
+  gasoline aircraft: efficiency is a wash, and it does not close on balance
 - Welded 4130 steel tube fuselage, all-wood cantilever wing
 - Constant chord, 3-piece removable wing, two bolts per cap per joint
 - Douglas fir truss ribs, plywood D-tube leading edge, fabric covered
@@ -87,6 +95,7 @@ pilot. See [Junco](https://github.com/allenmcghan/junco).
 
 ```
 docs/          design log, specs, load cases, open questions
+docs/trades/   worked configuration trades, with the numbers
 analysis/      spar sizing, performance, V-n diagram
 drawings/      wing, fuselage, tail, gear, fittings
 model/         quarter-scale RC validation aircraft

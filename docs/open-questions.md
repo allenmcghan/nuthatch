@@ -39,6 +39,12 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   spring scale at 25 and 35 mph before trusting that airflow shuts it.
 - **Whether the 24 kt power-off stall is actually met with slats.** Calculated at
   23.8 kt, which is 0.8 kt of margin on an estimated CLmax.
+- **Battery capital cost, currently carried as $500/kWh in design-log §3.** That
+  single figure decides the electric argument and has never been re-verified
+  against current DIY 21700 pack prices. Check it before citing §3 again.
+- **Whether the tail can give adequate roll authority unblown.** Gates any future
+  pusher configuration, since the rudder is the roll control. The quarter-scale
+  model cannot answer it — it is a full-scale, power-on question.
 
 ## Not technical, but decide early
 

@@ -60,6 +60,28 @@ toward the 254 lb Part 103 empty weight, and that Part 103 imposes no
 reciprocating-engine restriction, unlike light-sport. A hybrid Part 103 is legal.
 It just is not cheaper.
 
+**Powerplant priority is gasoline first, hybrid second, electric third.** That
+ordering is the project's, not a conclusion of this analysis, and the sections
+below are written to serve it.
+
+**Electric, if it happens, is EAB only.** Worked in
+[trades/pusher-vs-tractor.md §3](trades/pusher-vs-tractor.md): the Part 103
+airframe less propulsion is 206 lb, a 15 kW direct-drive electric group adds
+about 40 lb, and that is 246 lb before a single cell. Eight pounds of pack
+against the 254 lb cap is 0.6 kWh, or **four minutes**. Part 103 electric is not
+a weight-optimisation problem, it is arithmetic. **Part 103 stays gasoline.**
+
+That is a limit of the *rule*, not of the airframe. The same analysis found that
+on an equal 5 kWh pack Nuthatch would fly roughly **50% longer than the European
+electric ULMs it gets compared to** — about 30 minutes against 20 at 50 mph —
+because those aircraft fly under a 330 kg gross limit with no empty weight cap at
+all, and glide at about 8 where this one glides at 10.7. Every point of L/D is
+endurance that does not have to be bought in cells.
+
+**The $500/kWh figure above has not been re-verified** and it is the number the
+whole electric argument turns on. Re-check it against current DIY 21700 pack
+costs before citing this section again.
+
 ## 4. Airframe: why derive from an existing design
 
 A clean-sheet version of this aircraft came out at roughly 2,000 hours and
@@ -329,6 +351,52 @@ quarter-turn cam so vibration cannot walk the pin down.
 Preflight is a full-deflection check in both directions with eyes on both
 spoilerons, not a tug on the stick.
 
+## 18. Tractor, not pusher — and why that answer is different for electric
+
+Full working in [trades/pusher-vs-tractor.md](trades/pusher-vs-tractor.md). The
+baseline is unchanged: nose-mounted tractor.
+
+**Efficiency does not decide it.** A tractor gives away 8–11% of cruise power
+scrubbing its own slipstream over the fuselage, the open-cockpit pilot, and the
+tail — a bigger penalty than the usual 2–5% quoted for light aircraft, because
+this airframe is parasite-dominated and the slipstream covers a lot of it. A
+pusher recovers that and then spends 4–7% on propeller efficiency lost to
+distorted inflow behind the wing and pylon, plus about 4% on pylon parasite drag.
+**Net is 0 to +5% for the pusher, inside the error bar on an `f` that was itself
+back-solved from a published glide ratio.** Nobody should switch configuration
+for a number that small.
+
+**What decides it is the tail.** A tractor's empennage sits in accelerated flow.
+On a two-axis aircraft **the rudder is the roll control**, so an unblown tail
+loses authority at rotation, in the go-around, and in the low-and-slow regime the
+aircraft exists for. That is a handling argument, it never shows up in a drag
+calculation, and it is the strongest single reason this design stays a tractor.
+Debris off the nosewheel into the disc on a grass strip is the second reason, and
+it also conflicts with the carved wood prop of §16.
+
+**Balance is where it gets interesting.** The gas power group — engine, redrive,
+mount, 58 lb — has to move aft as a unit, because the engine must be at the
+propeller. That shifts empty CG aft 19 in, which forces the wing 12 in aft, which
+drives the trailing edge into the volume the disc needs. Move the prop further
+back to make room and the CG follows it, the tail arm keeps shrinking, and the
+tail has to grow. It diverges. **A gasoline pusher is not a modification of this
+fuselage, it is the Quicksilver/Minifox layout with the pilot forward of the
+wing** — a new fuselage, cabane, gear, and tail.
+
+**Electric breaks that loop**, and this is the useful finding:
+
+> An electric drivetrain decouples the mass of the powerplant from the location
+> of the thrust. Only the motor must be at the propeller. The pack, controller,
+> and HV gear go wherever balance wants them.
+
+Of a ~68 lb electric drive group only about 38 lb is forced aft; the pack becomes
+a trim tool rather than a trim problem, and it does not move in flight the way
+fuel does. With the prop on a pylon about 32 in aft of the wing TE it closes at
+the existing seat station, 29–31% MAC across a 130–220 lb pilot range, no ballast.
+
+**So a pusher, if it ever happens, arrives with the electric conversion and not
+before.** For the gasoline aircraft the question is closed.
+
 ---
 
 ## Configurations that lost, with the number
@@ -338,6 +406,8 @@ spoilerons, not a tug on the stick.
 | Canard, Long-EZ style | Cannot use flaps by definition, since the canard must stall first. 14 lb/ft² wing loading, 66 mph stall, 775 ft takeoff. Rutan's own canard sailplane needed mid-span twist to fight canard downwash and still underperformed conventional ships of the same span. |
 | Shorter front wing on a tandem | 25% of lift on 53% of the span generates 3.6x the induced drag it would on the main wing. Comes out 14% worse than a plain monoplane. |
 | Equal-span tandem wing | Genuinely good: Prandtl's biplane relation gives 22% off induced drag at 15% gap-to-span. But chords fall to 1.4–2.1 ft, Reynolds number drops to 430,000, and you are building 76 ft of wing and folding four panels. Net win about 8%. |
+| Pusher propeller, gasoline | Does not close on balance. The 58 lb power group must move aft as a unit, shifting empty CG 19 in aft; rebalancing drives the wing TE into the propeller disc, and chasing it aft shrinks the tail arm and grows the tail. Net cruise efficiency was only 0 to +5% anyway, and the unblown tail costs roll authority on a two-axis aircraft. See [trades/pusher-vs-tractor.md](trades/pusher-vs-tractor.md). |
+| Part 103 all-electric | 206 lb of airframe plus a 40 lb electric drive group is 246 lb before any cells, leaving 8 lb of pack against the 254 lb empty cap. 0.6 kWh, four minutes. Batteries count toward empty weight (FAA Chief Counsel, 2012). Not a weight-reduction problem. |
 | Ducted fans | Two 16 in fans have one seventh the disc area of a 60 in prop. Propulsive efficiency 0.50 against 0.78, and static thrust 121 lb against 205. Ground roll would go from 180 ft to about 470. |
 | Wing-mounted motors | Distributed propulsion exists to let you shrink a wing. At 3.8 lb/ft² there is no wing to shrink. Two 54 in discs over 40% of span buys maybe 8 ft of takeoff roll, and puts a 150A connection across a joint you mate every flight. |
 | Series hybrid | Generator, rectifier, inverter, motor is 0.82 end to end against 0.97 for a belt redrive. 18% more fuel for the same thrust, plus a third machine. |
