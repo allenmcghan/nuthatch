@@ -202,7 +202,104 @@ end before finalising the cap shape, not after.
 matter are the lower-surface cut-off angle and how far outboard the upper surface
 is carried, and both are published.
 
-## 6. What this does not settle
+## 6. What about just printing the tips in ASA?
+
+Tempting, and it deletes the entire mould problem — no cavity, no undercut, no
+release agent, no bagging, no 20 sections of tooling. It also removes the galvanic
+issue in §4 outright, since plastic against aluminium does nothing.
+
+**It fails on weight**, and it fails in exactly the way the winglet did.
+
+### Shell weight, both tips
+
+| Cap length | 0.8 mm | 1.2 mm | 1.6 mm | 2.0 mm | 2.4 mm |
+|---|---|---|---|---|---|
+| 4 in | 1.51 lb | 2.26 lb | 3.02 lb | 3.77 lb | 4.53 lb |
+| **6 in** | 2.01 lb | **3.01 lb** | **4.02 lb** | 5.02 lb | 6.03 lb |
+| 8 in | 2.51 lb | 3.76 lb | 5.02 lb | 6.27 lb | 7.52 lb |
+
+Against **1.07 lb** for bagged carbon and **1.30 lb** for a wood bow with fabric.
+
+### How thin can it go?
+
+Not as thin as you would like. ASA is about **2.0 GPa** against roughly 45 GPa for
+a quasi-isotropic carbon laminate — a factor of 22. Panel bending stiffness goes
+as `E·t³`, so matching a 0.5 mm carbon skin needs **1.4 mm of ASA**, which is
+3.5 lb across both tips.
+
+At Vne the loads are not trivial either: q = 583 Pa (12.2 psf), so a 6 × 10 in
+unsupported bay carries about **5 lb**. An 0.8 mm shell over that span will
+oil-can and buzz. The efficient fix is **printed-in internal ribs every ~3 in**,
+which lets the wall stay at 1.2–1.6 mm — but ribs are more material, so realistic
+landing zone is **3 to 4 lb across both tips**.
+
+### Which puts it back in winglet territory
+
+| | Both tips | vs wood |
+|---|---|---|
+| carbon, 2 ply 3.7 oz bagged | 1.07 lb | −0.23 lb |
+| wood bow + fabric | 1.30 lb | — |
+| **ASA, 1.2 mm + ribs** | **3.01 lb** | **+1.71 lb** |
+| ASA, 1.6 mm + ribs | 4.02 lb | +2.72 lb |
+| ASA, 2.0 mm no ribs | 5.02 lb | +3.72 lb |
+| *1.5 ft winglet, for reference* | *4–6 lb* | *+3 to +5 lb* |
+
+The whole reason the carbon cap escaped §5's tip-mass objection is that it was
+weight-neutral. **A printed ASA cap is not**, and at +1.7 to +3.7 lb it is 60–75%
+of the winglet's mass penalty, at the same spanwise station.
+
+It is genuinely better than a winglet in one respect — the mass wraps *onto* the
+existing tip instead of cantilevering outboard on a lever arm, and it adds no new
+lifting surface — so the aeroelastic coupling is milder for the same mass. But
+"milder" is not "irrelevant." **This is the change that turns the missing flutter
+analysis from an academic gap into a live question.**
+
+### Surface finish is a smaller problem than expected
+
+Admissible roughness at 50 mph is `100·ν/V` = **0.065 mm**:
+
+| Layer height | Ridge | Verdict |
+|---|---|---|
+| **0.12 mm** | 0.06 mm | **below admissible — aerodynamically fine as printed** |
+| 0.20 mm | 0.10 mm | above admissible, trips the boundary layer |
+| 0.28 mm | 0.14 mm | above admissible |
+
+**Print at 0.12 mm layers and the surface needs no filling at all.** That is a
+genuine advantage over the male-plug approach and over coarser printing. It costs
+print time, and a lot of it, on a part this size.
+
+### Practical ASA notes
+
+- **ASA needs an enclosure.** Large sections will lift and warp without one.
+- **ASA solvent-welds** with acetone or MEK, so section joints can be real welds
+  rather than glue joints — better than the bonded seams a carbon part needs.
+- **UV stability is ASA's actual advantage** over ABS and the reason it is the
+  right pick here. An aircraft lives outside.
+- **Do not print or paint it black.** Black ASA in direct sun reaches 70–80 °C
+  against a Tg near 100 °C. Light colours keep that margin comfortable.
+- **Layer adhesion is 30–70% of in-plane strength.** Orient sections so loads run
+  in-plane, and do not self-tap screws into thin walls — use heat-set inserts or
+  thread into a bonded block.
+
+### The recommendation
+
+**Print them in ASA for Phase I, then decide.**
+
+1. Print at 0.12 mm layers, 1.2 mm wall, internal ribs every ~3 in. Accept ~3 lb.
+2. Fly it. `flight-test/phase-1-plan.md` item 7 already measures glide by timed
+   descent, which is exactly the number that says whether the shape earned its
+   keep.
+3. If it did, mould it in carbon and take 2 lb back off the tips. The printed
+   part becomes the plug for a female tool, so nothing is wasted.
+4. If glide did not move measurably, the shape was not worth the tip mass and the
+   answer is a plain wood bow.
+
+This is the cheapest possible way to learn the answer, and it makes the printed
+tip a **development step rather than a final part** — which is the role it is
+genuinely good at. What it should not be is the permanent configuration, because
++3 lb at the wingtips is precisely the cost that killed the winglet.
+
+## 7. What this does not settle
 
 - The actual tip geometry. Copy it, do not derive it.
 - Where the full-span slat terminates, which constrains the cap.
@@ -212,6 +309,9 @@ is carried, and both are published.
   [winglets.md](winglets.md). Phase I item 7 measures glide; that is the check.
 - Vacuum bagging capability. The weight case depends on it. Without a bag, use
   3.7 oz cloth and accept the result — do not substitute heavier twill.
+- **Flutter, again, and now it matters.** A weight-neutral carbon cap does not
+  move the problem. A 3 lb printed ASA cap does. If the printed tips fly in
+  Phase I, the flutter gap in `open-questions.md` stops being deferrable.
 
 ---
 

@@ -169,6 +169,26 @@ Resin fraction is the whole weight budget — bagged runs 55% fibre, wet hand la
 40%. If it is not going to be bagged, use the light cloth anyway. Heavy twill wet
 is +1.9 lb over both tips for nothing.
 
+**Printed ASA tips are a Phase I development step, not the final part.** ASA is
+2.0 GPa against 45 for a carbon laminate, and since panel stiffness goes as `E·t³`
+it takes 1.4 mm of ASA to match a 0.5 mm carbon skin. With internal ribs at
+1.2–1.6 mm that lands at **3 to 4 lb across both tips** — 60–75% of the winglet
+mass penalty this section just rejected, arriving through the back door on a part
+that was supposed to be free. Better than a winglet, because the mass wraps onto
+the tip rather than cantilevering outboard and adds no lifting surface, but not
+free.
+
+Print them anyway for Phase I: they cost nothing, item 7 of the flight test plan
+already measures glide by timed descent, and that measurement is what says whether
+the shape earned its keep. If it did, the printed tip becomes the plug for the
+female tool and 2 lb comes back off the tips. If glide did not move, the answer
+was a plain wood bow all along.
+
+Two print notes. **0.12 mm layers put the ridge height at 0.06 mm, just under the
+0.065 mm admissible roughness at 50 mph**, so a fine-layer print needs no filling
+at all — coarser layers do. And do not print or paint them black: black ASA in
+direct sun reaches 70–80 °C against a Tg near 100 °C.
+
 ## 7. Spar: aluminum caps and a shear web
 
 Bending is carried at maximum distance from the neutral axis. A wrapped tube puts
