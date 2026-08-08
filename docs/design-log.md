@@ -626,3 +626,36 @@ weight-neutral and a penalty.
 **Verify the Maslow's calibration before it cuts the rib jig.** That board defines
 the airfoil on all 31 ribs. At a 50 in chord ±1 mm is 0.08% of chord and fine — but
 only if it is ±1 mm.
+
+## 20. The common airframe: one structure, both configurations
+
+Worked in [trades/common-airframe.md](trades/common-airframe.md), on top of the
+weight scrub. The requirement: the airframe must not change between the Part 103
+build and the EAB build — only the powerplant and small additions do.
+
+**It closes.** The invariant airframe is **212 lb** with the full safety package.
+The 103 kit (Thor-DS-class engine, 53 in compliance prop) lands at **253.2 lb**;
+the EAB kit (F-33 + belt, 60 in prop, windshield, tablet) at **275.7 lb**. Both
+balance at 27–34% MAC on the **same wing position** — the engine swap moves CG
+about 4% MAC and stays in band, so the wing, cabane, and gear never move.
+
+**The load basis unifies through the absolute-strength framing.** The documented
+spar is a 2,331 lb limit / 3,472 lb ultimate structure, and maximum attainable
+lift depends only on q. **Placard Vne 62 mph on both kits** and the wing is
+stall-protected at every gross with zero added spar weight — resolving the §12
+correction (audit Finding 1) by the Vne route for the whole fleet. Load factor
+then falls out per weight: 5.1 g available at the 103's 456 lb max, 4.4 g at the
+EAB's 526.
+
+**The one real cost: the EAB also lives with Vne 62 and a ~56 mph cruise
+placard.** The F-33's surplus becomes climb and short-field margin, not speed.
+A 69 mph EAB redline requires the 5.7 g spar on the common structure, which adds
+6–10 lb and kills the 103 kit — a common airframe and a fast EAB are mutually
+exclusive. If a fast EAB ever matters it is a second spar off the same drawings,
+explicitly a different airframe.
+
+Rules that follow, now design requirements: one engine-mount cluster sized for
+the heavier engine at light-weight g with per-engine bolt-on adapters; nose and
+gear geometry clear the 60 in disc; gear sized at the EAB max gross; all
+deletable items (windshield, tablet, BRS bridle) on permanent hard points;
+5 gal fuel in both kits; per-kit placards.
