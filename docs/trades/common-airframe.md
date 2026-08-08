@@ -139,22 +139,28 @@ That pilot is lighter than any case above, and it finds two things:
 **Found: an aft-CG bust.** At 105 lb and low fuel the CG walks aft as fuel
 burns — 33.8% MAC at full fuel, **36.3% at empty tank, aft of the 35% limit.**
 
-**The fix is the parachute.** Mount the BRS canister **forward, at ~station
-40** (bridle channel to the carry-through unchanged). Its 19 lb — excluded from
-the 254 lb count under 103.1(e)(1) but very much real for balance — pulls the
-whole fuel range back into band:
+**The chosen fix is nose ballast** (decided; the forward-chute alternative
+remains documented below as an optional provision). **8 lb at station 20**:
 
-| 103 kit + forward chute | Gross | CG | Stall |
+| 103 kit + 8 lb ballast | Gross | CG | Stall |
 |---|---|---|---|
-| 105 lb pilot, full fuel | 407 | 31.4% | 22.7 kt |
-| 105 lb pilot, empty tank | 377 | **33.6%** | 21.8 kt |
-| 154 lb pilot, full fuel | **456 (max)** | 30.2% | **24.0 kt** |
+| 105 lb pilot, empty tank | 366 | **34.2%** | 21.5 kt |
+| 105 lb pilot, full fuel | 396 | 32.0% | 22.4 kt |
 
-One installation solves the light-pilot balance problem *and* puts a ballistic
-chute over the lightest, least-experienced pilot in the family. If the chute is
-ever not fitted, the fallback is **5–8 lb of nose ballast at ~station 20,
-placarded for pilots under ~125 lb.** Either way, the airframe provisions both:
-the forward canister tray and a ballast boss are permanent hard points.
+**The ballast placard covers more pilots than expected.** Re-checking the
+empty-tank case across the pilot range shows even a 130 lb pilot reaches 35.2%
+MAC with no fuel — the earlier band table only ran light pilots *with* fuel.
+Placard: **8 lb nose ballast required for pilots under 135 lb** (5 lb is exactly
+on the 35.0% line — use 8). The ballast boss at station 20 is a permanent
+airframe hard point; the ballast is removable loading equipment and does not
+count toward the 254 lb empty weight, though it does count toward flight weight
+(stall stays comfortable: 21.5 kt).
+
+*Optional chute provision:* a forward BRS canister (19 lb at ~sta 40, excluded
+from 254 under 103.1(e)(1)) does the same CG job and adds the safety device —
+the two-position tray (sta 40 light pilots / sta 55 heavy) stays in the
+drawings as hard points. Note the interaction: with a chute installed, the
+456 lb max-weight budget shrinks so a 170 lb pilot gets only ~14 lb of fuel.
 
 **Pilot-weight placards on the 103 kit** (declared max weight 456 lb for the
 24 kt gate): pilot + fuel ≤ 184 lb with the chute — a 105 lb pilot with full
@@ -179,13 +185,17 @@ experiment platform (autopilot, Junco, larger engine, hybrid propulsion).
 Aircraft #2 is the 105 lb pilot's — it stays pure Part 103. Design pilot cap:
 **200 lb** (structural and W&B design case; placards may read lower).
 
-**Why #1 is EAB regardless of add-ons — stated honestly:** the stall gate caps
-the 103 kit at pilot + fuel ≤ 184 lb (with chute). A 200 lb pilot is not legal
-on the 103 configuration at any fuel load; a 170 lb pilot gets 14 lb of fuel.
-The owner's aircraft must be EAB *because of the owner's weight*, before a
-single add-on goes aboard. The add-ons (autopilot + Junco, ~4–7 lb; larger
-engine) then cost nothing extra regulatorily. Register #1 EAB from the start —
-flying it "as 103" over 456 lb would satisfy neither rule set.
+**Correction — the owner weighs 170 lb, and that changes the legality picture
+for the better.** Without a chute, the 103 kit's max-weight budget is
+456 − 253.2 = 202.8 lb: a 170 lb pilot with full 5 gal is **200.0 lb — legal
+with 2.8 lb of margin** (CG 31.8–33.8% across the fuel range, stall 23.9 kt at
+max). So **both pilots can legally fly either 103-configured aircraft** (the
+owner without ballast, the 105 lb pilot with the 8 lb ballast placard).
+
+**#1 registers EAB by choice, not necessity** — for the add-ons (autopilot +
+Junco, ~4–7 lb; larger engine; hybrid experiments), which take it over 254 and
+out of 103 regardless of pilot. The 200 lb design pilot cap stays as the
+*structural* case (gear, fittings, seat) — it is margin, not a person.
 
 **What building both airframes 103-compliant buys:** aircraft #2 needs no
 N-number, no DAR, no inspection — the save-time-on-compliance goal lands on the
