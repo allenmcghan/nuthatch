@@ -41,7 +41,7 @@ def wing_section(y, z0, chord, le_x, twist_deg, xf, zf):
 
 # ---- wing: 31 ft, 50 in chord, LE sta 48, dihedral 5, washout 2.5, incidence 2
 xf, zf = naca4(0.04, 0.4, 0.12)
-CH = 50.0; LE = 48.0; Z0 = 78.0   # wing root height above ground
+CH = 50.0; LE = 48.0; Z0 = 64.0   # wing root height above ground (low stance, gear-design.py)
 DIH = np.radians(5.0)
 for side in (+1, -1):
     secs = []
@@ -55,7 +55,7 @@ for side in (+1, -1):
 xt, zt = naca4(0, 0, 0.09)
 hc = 30.0/10*12
 for side in (+1, -1):
-    secs = [wing_section(side*60*eta, 40.0, hc*(1-0.15*eta), 182+0.15*hc*eta, -1.5, xt, zt)
+    secs = [wing_section(side*60*eta, 27.0, hc*(1-0.15*eta), 182+0.15*hc*eta, -1.5, xt, zt)
             for eta in np.linspace(0, 1, 3)]
     add_loft(secs)
 # ---- vertical tail: 15 ft2, 5 ft tall
@@ -64,19 +64,19 @@ secs = []
 for eta in np.linspace(0, 1, 3):
     ch = vc*(1-0.4*eta)
     lex = 182 - 0.3*vc + (0.55*vc)*eta
-    pts = np.stack([lex + xt*ch, zt*ch, np.full_like(xt, 40.0+60*eta)], axis=1)
+    pts = np.stack([lex + xt*ch, zt*ch, np.full_like(xt, 27.0+60*eta)], axis=1)
     secs.append(pts)
 add_loft(secs)
 # ---- fuselage pod + boom (station, z-center above ground, half-height, half-width)
-fu = [(4,52,3,3),(14,52,8,7),(30,54,12,10),(48,56,14,11),(62,54,14,11),
-      (80,52,12,10),(100,52,9,7),(125,48,6,4.5),(150,44,4,3),(170,42,3,2.2),(184,40,2.5,2)]
+fu = [(4,38,3,3),(14,38,8,7),(30,29,12,10),(48,30,14,11),(62,30,14,11),
+      (80,30,12,10),(100,31,9,7),(125,29,6,4.5),(150,28,4,3),(170,27,3,2.2),(184,27,2.5,2)]
 th = np.linspace(0, 2*np.pi, 17)
 secs = [np.stack([np.full_like(th, x), w*np.sin(th), z + h*np.cos(th)], axis=1)
         for x, z, h, w in fu]
 add_loft(secs)
 # ---- prop disc ring at sta 2 (60 in) + spinner
 th2 = np.linspace(0, 2*np.pi, 33)
-ring = [np.stack([np.full_like(th2, 2.0), r*np.sin(th2), 52 + r*np.cos(th2)], axis=1)
+ring = [np.stack([np.full_like(th2, 2.0), r*np.sin(th2), 40 + r*np.cos(th2)], axis=1)
         for r in (29.5, 30.0)]
 add_loft(ring)
 # ---- gear: nose sta 34, mains sta 78; 5.00-5 tires ~ 13 in dia
@@ -85,7 +85,7 @@ def wheel(x, y, r=6.5, w=3.0):
     s1 = np.stack([x + r*np.cos(a), np.full_like(a, y-w/2), r + r*np.sin(a)], axis=1)
     s2 = s1.copy(); s2[:,1] = y + w/2
     add_loft([s1, s2])
-wheel(34, 0); wheel(78, 24); wheel(78, -24)
+wheel(32, 0, r=4.5, w=2.5); wheel(70.5, 28); wheel(70.5, -28)
 def strut(p1, p2, r=1.0):
     a = np.linspace(0, 2*np.pi, 9)
     d = np.array(p2)-np.array(p1); d = d/np.linalg.norm(d)
@@ -94,9 +94,13 @@ def strut(p1, p2, r=1.0):
     s1 = np.array([p1 + r*np.cos(t)*u + r*np.sin(t)*v for t in a])
     s2 = np.array([p2 + r*np.cos(t)*u + r*np.sin(t)*v for t in a])
     add_loft([s1, s2])
-strut([34,0,42],[34,0,6],1.2); strut([70,0,46],[78,24,6],1.2); strut([70,0,46],[78,-24,6],1.2)
+strut([32,0,26],[32,0,4.5],1.2)
+strut([64,0,18],[70.5,28,6.5],1.4); strut([64,0,18],[70.5,-28,6.5],1.4)
+strut([76,0,18],[70.5,28,6.5],1.0); strut([76,0,18],[70.5,-28,6.5],1.0)
 # cabane struts wing-to-fuselage
-strut([55,10,66],[58,8,Z0],1.0); strut([55,-10,66],[58,-8,Z0],1.0)
+strut([55,10,44],[58,8,Z0],1.0); strut([55,-10,44],[58,-8,Z0],1.0)
+# tail skid
+strut([182,0,26],[185,0,22],0.8)
 
 V = np.array(V); F = np.array(F, dtype=np.int64)
 print(f"mesh: {len(V)} vertices, {len(F)} triangles")

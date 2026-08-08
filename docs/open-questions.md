@@ -50,8 +50,11 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - Spar cap taper schedule, web thickness, stiffener spacing
 - Wing carry-through and cabane geometry, which sets the wing LE station that
   trims CG to 30% MAC
-- Gear geometry: main gear 12-16% MAC aft of CG, track, wheelbase, nose steering
-  stops and travel
+- Gear geometry — **resolved** ([trades/landing-gear.md](trades/landing-gear.md)):
+  mains sta 70.5 (15% MAC aft of CG), nose sta 32, track 56 in, seat 20 in AGL,
+  8 fps / N=3 energy basis, 13×5.00-6 mains at 8–10 psi, tail skid. Remaining:
+  leg curve/spring rate in gate 4, nose-leg spring detail, steering stops, and a
+  456 lb drop test before first flight
 - Tail sizing — **gate-3 analysis done** ([trades/trim-tail.md](trades/trim-tail.md)):
   keep 30 + 15 ft², i_t = −1.1°, elevator 45% chord ±25° (consider −30/+20),
   gearing ~4.5°/in, SM ~20–25%. Flare passes at forward CG in ground effect with
