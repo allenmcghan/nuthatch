@@ -40,7 +40,7 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 
 | | EAB build | Part 103 build |
 |---|---|---|
-| Empty weight | 296 lb | 250 lb |
+| Empty weight | 296 lb* | 250 lb* |
 | Gross | 580 lb | 450 lb |
 | Span / area | 31 ft / 130 ft² | same |
 | Stall, with slats | 28.8 mph | 23.8 kt |
@@ -51,6 +51,11 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 | Range | ~150 mi | fuel limited |
 | Engine | Hirth F-33, 28 hp | direct-drive, ~16 hp |
 | Brakes | yes | yes |
+
+\* The weight workbook omits the slats and cabane that the build-log CSV
+carries; honest totals are ~308 / ~262 lb until reconciled — see
+[docs/trades/weight-scrub-103.md](docs/trades/weight-scrub-103.md), which also
+works a single-build path to ~253 lb.
 
 **Powerplant roadmap: gasoline first, hybrid second, electric third.** Electric,
 when it comes, is an EAB-only path — a Part 103 all-electric build has 8 lb of

@@ -5,6 +5,20 @@ in the order they need resolving.
 
 ## Blocking everything
 
+**The two weight statements disagree.** The workbook Weight sheet omits the slats
+(6 lb) and the cabane (6 lb) that `build-log/measured-weights.csv` carries:
+honest EAB empty is ~308 lb, and the 103 strip is ~262 — **8 lb over the limit,
+not 4 under**. Reconcile the workbook before quoting it. Full scrub and a
+single-build path to ~253 lb in
+[trades/weight-scrub-103.md](trades/weight-scrub-103.md).
+
+**The engine, if the first build chases Part 103.** The scrub shows the airframe
+can reach ~224 lb less power package, but the F-33 + belt (45 lb) cannot land
+under 254 — a ~31 lb dual-spark paramotor-class engine (Polini Thor 250 DS
+class, integral redrive) can, at ~253 lb and 23.9 kt stall. §15's 300-hr TBO
+objection is mission-dependent at ~40 hr/yr. Verify actual engine weights on a
+scale; keep the F-33 as the documented EAB upgrade path on the same mount.
+
 **Airfoil section and its real CLmax.** Everything downstream hangs on it: stall
 speed, slat geometry, spar depth, rib templates. Current numbers assume the Sky
 Pup section at CLmax 1.4 clean, which is an assumption, not a measurement.
@@ -62,7 +76,10 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - **Spoileron aerodynamic close direction.** Tape a panel on and measure with a
   spring scale at 25 and 35 mph before trusting that airflow shuts it.
 - **Whether the 24 kt power-off stall is actually met with slats.** Calculated at
-  23.8 kt, which is 0.8 kt of margin on an estimated CLmax.
+  23.8 kt, which is 0.8 kt of margin on an estimated CLmax. **Upgraded by the
+  weight scrub: this is now a legality item, not performance** — the stall gate
+  caps gross at 456 lb, which independently enforces the 254 lb empty limit.
+  If real slatted CLmax is 1.7 instead of 1.8, the compliance equation breaks.
 - **Battery capital cost, currently carried as $500/kWh in design-log §3.** That
   single figure decides the electric argument and has never been re-verified
   against current DIY 21700 pack prices. Check it before citing §3 again.
