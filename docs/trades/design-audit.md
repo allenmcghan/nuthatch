@@ -85,6 +85,13 @@ Option 2 is the recommendation. The whole point of §12 was that the envelope
 protects the structure; 6–10 lb buys that property back for the aircraft as
 actually configured.
 
+**Update — option 3 is closed.** The gate-3 trim analysis
+([trim-tail.md](trim-tail.md)) shows full-up elevator commands 1.6–2.2× the
+slatted CLmax at every CG: the wing stalls before the elevator runs out, at any
+speed in the envelope. There is no tail-authority protection, and cutting the
+throw to create one (~−11°) cannot flare the airplane (needs −19.3°). The
+choice is now option 2 (+6–10 lb of cap, recommended) or option 1 (Vne ≈ 62).
+
 **Corollary for fittings:** the g available rises as weight falls (6.7 g at
 426 lb). Fixed-mass items — engine mount, seat, harness anchors, BRS hard
 points — see n × (their own fixed mass), so they should be sized at the

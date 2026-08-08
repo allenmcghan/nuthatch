@@ -28,8 +28,9 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - Full V-n diagram — **with the load basis re-set first**. The audit
   ([trades/design-audit.md](trades/design-audit.md)) shows fixed slats break the
   §12 stall-limit argument: g available at Vne is 5.74 at design weight, so
-  either limit load rises to ~5.7 (+6–10 lb of cap, recommended), Vne drops to
-  ~62 mph, or a tail-authority analysis retires it. **Include the negative
+  either limit load rises to ~5.7 (+6–10 lb of cap, recommended) or Vne drops to
+  ~62 mph — the tail-authority escape is closed: gate-3 trim analysis shows the
+  elevator commands stall at every speed and CG. **Include the negative
   branch** (−1.9 g gust at Vc exists and no negative case does), and size
   fixed-mass fittings at the light-weight load factor
 - Spar cap taper schedule, web thickness, stiffener spacing
@@ -37,8 +38,11 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   trims CG to 30% MAC
 - Gear geometry: main gear 12-16% MAC aft of CG, track, wheelbase, nose steering
   stops and travel
-- Tail sizing, with a generous rudder since it is doing the rolling — audit
-  puts current areas at Vh 0.56 / Vv 0.038, sane and correctly rudder-heavy
+- Tail sizing — **gate-3 analysis done** ([trades/trim-tail.md](trades/trim-tail.md)):
+  keep 30 + 15 ft², i_t = −1.1°, elevator 45% chord ±25° (consider −30/+20),
+  gearing ~4.5°/in, SM ~20–25%. Flare passes at forward CG in ground effect with
+  23% margin. Remaining: re-run with the measured slat pitching-moment increment
+  once slat geometry is copied from the donor installation
 - **Symmetric spoiler deployment mode.** Landing over the mission's own 50 ft
   trees at L/D 10.7 with no glidepath control uses ~720 of the 1,000 ft field,
   and a two-axis aircraft cannot slip. Both-spoilers-up (separate lever,
