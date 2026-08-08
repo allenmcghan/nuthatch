@@ -74,6 +74,19 @@ future decision to hang mass at the wingtips.
 templates, a materials list with sizes and sources, and an assembly sequence.
 Roughly triple the drafting effort.
 
+**Whether the CAD is built to output cut files.** This has to be decided before
+the first drawing, not after — see [trades/digital-fabrication.md](trades/digital-fabrication.md).
+Drawing in 3D so that DXF and STL fall out is nearly free now and expensive to
+retrofit, and it is worth an estimated 90–160 adjusted hours across the build.
+It also decides whether published plans can ship cut files, which no other design
+in this class does.
+
+**The covering system, which is worth more hours than any tooling decision.**
+§14 prices Oratex at roughly 75 hours against Stewart for about $1,400. Covering
+is the single largest task on the build at 120 raw hours and digital fabrication
+does essentially nothing for it. If hours bind harder than dollars, settle this
+first.
+
 **Where Phase I happens.** The test area goes into the operating limitations as a
 radius and altitude block. It needs to be somewhere 40 hours can actually be flown
 without fighting airspace, and first flight of a modified one-off does not belong

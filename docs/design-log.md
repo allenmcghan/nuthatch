@@ -542,3 +542,46 @@ before.** For the gasoline aircraft the question is closed.
 | Inflated ram-air wing | Dynamic pressure at 37 mph is 0.024 psi. An inflated 6 in beam carries about 2 in-lb; the tail boom alone needs 37,800. The Goodyear Inflatoplane used about 25 psi with a blower running continuously in flight. |
 | Heavy duty aluminum foil as sandwich skin | 0.8–1 mil in O temper at 90–120 MPa, against 0.020 in 6061-T6 at 310. Roughly two hundredths of the strength. |
 | Solid foam core wing | 39 ft³ of enclosed volume, so 39 lb of foam in 1 lb/ft³ EPS before any skin. Rutan gets away with it on smaller, thinner wings. |
+
+## 19. Fabrication method: digital tooling, not digital parts
+
+Worked in [trades/digital-fabrication.md](trades/digital-fabrication.md). Estimated
+**90–160 adjusted hours** across the build, taking 693 to between 537 and 607. The
+largest single block is the 85-hour *remakes and learning curve* line, which is
+what accuracy upstream actually buys.
+
+**The rule that decides every case: use CNC, laser, and printing for tooling, not
+for flight parts.** Tooling has no weight penalty, no fatigue life, and no
+airworthiness argument, and a jig that is wrong gets reprinted for two dollars.
+§6's tip cap analysis already showed what happens the other way — every printed
+option came out 2 to 3× heavier than the laminate it replaced.
+
+Four interventions carry most of it. **One laser-cut 4130 sheet package** for every
+flat steel part on the aircraft, which is worth more in symmetry than in hours —
+§9 already says roll authority is adequate rather than crisp, and an asymmetric
+airframe spends control travel it does not have. **Printed tube coping saddles**,
+which apply to the 130-hour fuselage and the 55-hour tail together. **CNC-cut
+plywood jigs**, both a fuselage eggcrate and a rib board that makes 31 genuinely
+identical ribs, which is what constant chord was chosen for in §6. And **printed
+drill jigs with hardened bushings** for the wing joint holes.
+
+Three process notes that belong on the drawings. **Do not laser-cut holes to final
+size** — the heat affected zone lands in the bearing surface, and §13 establishes
+that bolt bearing governs the entire joint design. Undersize on the laser, ream
+after. **Do not laser-cut structural plywood** — char is a weak boundary layer
+adhesive cannot bond through, so rout the rib gussets or sand every glue face back
+to clean wood. **Print jigs in PLA, not ASA**: it is the most dimensionally stable
+common filament, jigs never see sun, and printed fixtures cannot go within a couple
+of inches of a tack weld anyway.
+
+**The best use of printing here is not a part, it is a process.** §10 says slat
+gap, chord, overlap, and droop decide whether a slat works, at millimetre
+resolution, and should be copied rather than derived. Printed bracket sets make
+that a measurable parameter — print a set, fly it, change one dimension, print
+another. Then the printed brackets end their life as weld fixtures holding the slat
+while the real 4130 brackets are tacked. Print to find it, machine to fly it.
+
+**And it does nothing for covering**, which at 120 raw hours is the largest task on
+the aircraft. The lever there is material, not method: §14 already prices Oratex at
+about 75 hours against Stewart. **That single unresolved decision is worth more
+time than every tooling intervention combined.**
