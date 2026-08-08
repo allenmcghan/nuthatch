@@ -51,6 +51,17 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - **The tip-speed noise exponent in §16.** The 8 dB claim reproduces only under a
   pressure ∝ V⁵ law; a power-based reading gives about 3.7 dB. Worth a measurement
   or a cited model before a redrive ratio is bought to chase it.
+- **Wingtip shape.** Free L/D, and currently unspecified. Worth +2.9% off the
+  assumed span efficiency and +9.5% against a square-cut tip — more than any
+  winglet, at zero weight. Decide it with the tip bow, not after.
+
+## Not analysed anywhere, and should be
+
+**Flutter.** No flutter analysis exists for this wing, tail, or control surfaces at
+any configuration. §12 establishes the wing is stall-limited and therefore cannot
+be aerodynamically overstressed, which is a load-factor argument and says nothing
+about flutter. This gates Vne, mass balance on the elevator and rudder, and any
+future decision to hang mass at the wingtips.
 
 ## Not technical, but decide early
 

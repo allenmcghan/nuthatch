@@ -116,6 +116,34 @@ Tapering costs about 40 hours and saves roughly 3% in induced drag.
 you cannot shrink a wing later and the 20 ft² is the difference between a Part 103
 configuration being reachable and not. Cost is 24 ft of takeoff roll.
 
+**No winglets, and shape the tips instead.** Worked in
+[trades/winglets.md](trades/winglets.md). A buildable winglet returns +3 to +4.5%
+L/D, which is real — but the wing is already three-piece removable, so the garage
+and trailer bound the *panel*, not the span. One foot of span beats a 1.0 ft
+winglet and adds 4 ft² of wing on the way past. Winglets exist to buy span
+efficiency when you cannot buy span, and here you can.
+
+More to the point, **a properly shaped tip is worth +2.9% off the assumed baseline
+and +9.5% against a square-cut tip, for zero weight and zero structure.** The
+`e = 0.85` every number in this project rests on is a placeholder with a ±0.05
+band, which is wider than the winglet's whole benefit. Fitting winglets before the
+Phase I glide measurement is tuning below the noise floor of the model.
+
+Tip mass is also the worst mass on this aircraft. A winglet is a mass *and* a
+lifting surface at the tip of an 11.5 ft removable panel that carries the
+spoilerons, and it feeds torsion into a joint §13 sized for bending. §12's
+stall-limited argument is about load factor and says nothing about flutter —
+**for which no analysis exists at any configuration.**
+
+One argument does survive: winglets add effective span without adding *area*, so
+unlike a span extension they do not move the Part 103 empty weight. If the 103
+configuration ever needs span efficiency it cannot pay for in wing area, this is
+where to come back.
+
+Carbon, if they are ever built, is fine here — near-zero CTE against fir's 4 is a
+far better thermal match than the aluminium-to-birch bond rejected below, and §7's
+"undetectable void" objection does not carry to a secondary surface.
+
 ## 7. Spar: aluminum caps and a shear web
 
 Bending is carried at maximum distance from the neutral axis. A wrapped tube puts
