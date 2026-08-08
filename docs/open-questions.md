@@ -87,6 +87,18 @@ is the single largest task on the build at 120 raw hours and digital fabrication
 does essentially nothing for it. If hours bind harder than dollars, settle this
 first.
 
+It gets worse on a repeat. [trades/second-build.md](trades/second-build.md) puts
+covering at **27% of a second aircraft** — everything else improves with tooling
+and experience and covering does not. If a second build is plausible, §14's lean
+toward Stewart should be revisited before the first order.
+
+**Whether there is ever a second aircraft, decided before the first steel order.**
+The marginal cost of a second nested set of laser-cut 4130 is far below the first,
+since the DXF and nesting are already paid for. Same for spar cap stock and any
+minimum-order material. And if a second EAB aircraft is a real plan, ask a DAR
+early — the major portion rule and the repairman certificate both apply per
+aircraft, and the answer may change what gets documented during build 1.
+
 **Where Phase I happens.** The test area goes into the operating limitations as a
 radius and altitude block. It needs to be somewhere 40 hours can actually be flown
 without fighting airspace, and first flight of a modified one-off does not belong
