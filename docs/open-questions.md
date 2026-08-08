@@ -8,6 +8,11 @@ in the order they need resolving.
 **Airfoil section and its real CLmax.** Everything downstream hangs on it: stall
 speed, slat geometry, spar depth, rib templates. Current numbers assume the Sky
 Pup section at CLmax 1.4 clean, which is an assumption, not a measurement.
+*First numbers now exist*: NeuralFoil at Re 1.12 M puts NACA 4412 at 2-D CLmax
+1.61 (≈1.45 on the wing), so 1.4 is sound and slightly conservative. **4412 is the
+working candidate** — see the addendum in
+[trades/design-audit.md](trades/design-audit.md). Confirm against the true Sky Pup
+section if it can be obtained.
 
 **Dihedral and washout.** On a two-axis aircraft dihedral *is* roll control. Too
 little means no authority, too much means dutch roll. Current placeholder is 4-6

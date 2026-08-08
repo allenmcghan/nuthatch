@@ -201,3 +201,39 @@ Finding 3 — deployed spoilers are speed brakes in a descent.
   inherits it, and the 103 stall margin is 0.8 kt.
 - The elevator-authority question raised in Finding 1(c) — a real tail analysis
   would either retire Finding 1 cheaply or confirm the +6–10 lb.
+
+
+---
+
+## Addendum: first computational model (aero-model.py)
+
+The repo now carries a parametric model — `analysis/aero-model.py` (AeroSandbox
+VLM + component buildup, NeuralFoil section polars) and `analysis/geometry-mesh.py`
+(mesh → `model/nuthatch.stl`, `drawings/general-arrangement.png`). Interactive
+viewer with results published as an artifact. New results on top of the audit:
+
+**The CLmax 1.4 assumption is sound.** NACA 4412 makes 1.61 in 2-D at the stall
+Reynolds number (1.12 M); a finite wing delivers ≈0.9× section, ≈1.45. Candidates:
+4412 CLmax 1.61 / cd 0.0059 at cruise CL; 6409 1.67/0.0069; 4415 1.60/0.0069;
+2412 1.51/0.0063 — **4412 is the working recommendation** (best cruise drag, 12%
+thick for spar depth, buildable bottom). 2412 misses the assumption; avoid. At the
+RC model's Re 161 k the same section drops to 1.42 2-D — confirming model/README's
+warning that the model must not size the slats.
+
+**Oswald e is probably 0.72–0.80, not 0.85.** Component buildup with fuselage and
+trim gives 0.72. Induced power ~10–18% above what the workbook carries; re-run the
+103 climb margin at e = 0.75. Phase I item 7 measures the truth.
+
+**The smooth airframe is only f = 0.084 m² against the 0.45 carried.** So ~80% of
+the drag budget is cockpit, pilot, gear, rigging, and cooling — the back-solved
+0.45 is not optimistic, and the cleanup upside is in housekeeping, not the wing.
+
+**Static margin 24–40% MAC at 30% CG with the placeholder tail** (VLM low end,
+buildup high end). Stable to the point of raising the audit's Finding 1(c) as a
+real possibility: the elevator may not command slatted CLmax — but that must be a
+designed property, verified by a trim analysis across the CG range, not an
+accident of a placeholder tail. It also means big elevator throws to flare.
+
+**Dihedral 5° placeholder survives**: Clβ −0.082 /rad against Cnβ +0.107 /rad is a
+healthy rudder-roll ratio with strong weathercock. The dynamic modes (dutch roll,
+spiral) remain the quarter-scale model's job.
