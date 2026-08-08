@@ -53,7 +53,12 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   or a cited model before a redrive ratio is bought to chase it.
 - **Wingtip shape.** Free L/D, and currently unspecified. Worth +2.9% off the
   assumed span efficiency and +9.5% against a square-cut tip — more than any
-  winglet, at zero weight. Decide it with the tip bow, not after.
+  winglet, at zero weight. Decide it with the tip bow, not after. Direction is
+  moulded carbon caps to a copied Hoerner geometry — see
+  [trades/wingtip-caps.md](trades/wingtip-caps.md).
+- **Where the full-span slat terminates at the tip.** Constrains the tip cap
+  geometry, and §10's "copy a known installation" rule has nothing to copy for a
+  slat-to-moulded-tip junction. Resolve before the cap shape is frozen.
 
 ## Not analysed anywhere, and should be
 

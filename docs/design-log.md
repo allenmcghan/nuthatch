@@ -144,6 +144,31 @@ Carbon, if they are ever built, is fine here — near-zero CTE against fir's 4 i
 far better thermal match than the aluminium-to-birch bond rejected below, and §7's
 "undetectable void" objection does not carry to a secondary surface.
 
+**Moulded carbon tip caps instead, and this one is worth building.** Detailed in
+[trades/wingtip-caps.md](trades/wingtip-caps.md). Two plies of 3.7 oz cloth
+vacuum bagged comes to 0.54 lb per tip against 0.65 lb for a laminated wood bow
+with fabric — **weight neutral**, so none of the tip-mass objection above applies.
+
+The reason is not surface finish. **A Hoerner tip's defining feature is a sharp
+lower outboard corner, and fabric over a wood bow cannot hold a sharp edge** — it
+shrinks into a radius. A moulded part holds it exactly, so the mould enables a
+geometry that is otherwise unbuildable on this wing. Symmetry is the second
+reason and it is a handling item: two parts off mirrored moulds are identical by
+construction, and with §9's roll authority already "adequate rather than crisp,"
+a tip mismatch spends spoileron travel holding a wing up.
+
+Two build notes that belong on the drawing rather than in a note. **Print the
+mould female and lay up inside it** — wrapping carbon around a printed plug puts
+the tool surface on the inside of the part, and the air only touches the outside.
+And **isolate the carbon from the aluminium spar caps with a glass ply and
+sealant**: carbon is strongly cathodic to aluminium, the caps run to the tip, and
+the resulting corrosion happens inside a closed bay where nothing will be seen
+until an inspection that may never happen.
+
+Resin fraction is the whole weight budget — bagged runs 55% fibre, wet hand layup
+40%. If it is not going to be bagged, use the light cloth anyway. Heavy twill wet
+is +1.9 lb over both tips for nothing.
+
 ## 7. Spar: aluminum caps and a shear web
 
 Bending is carried at maximum distance from the neutral axis. A wrapped tube puts
