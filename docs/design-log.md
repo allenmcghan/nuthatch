@@ -336,6 +336,26 @@ stall speed and therefore impact energy.
 Spend margin instead on fittings, bolt bearing, and bonded joints, which is where
 manufacturing variability actually lives.
 
+**Correction, from the end-to-end audit
+([trades/design-audit.md](trades/design-audit.md)): this section's argument fails
+once §10 fixes the slats.** First the arithmetic: (69/32.7)² is 4.45, not 4.65.
+Then the substance: with fixed full-span slats, CLmax 1.8 is always available and
+the clean 32.7 mph stall never exists in flight. At the slatted stall the g
+available at Vne is **5.74 at the design point** (and 6.7 at light weight) — the
+wing *can* be aerodynamically overstressed, and pulling to CLmax at Vne needs 23%
+more ultimate than is provided. Recommended fix is raising limit load to 5.74 g
+(ultimate 8.6) at a cost of roughly 6–10 lb of cap by this section's own pricing,
+which honestly restores the stall-protected property for the aircraft as actually
+configured. Alternatives — Vne down to ~62 mph, or a tail-authority analysis
+showing CLmax is unreachable at speed — are worked in the audit.
+
+Two adjacent gaps from the same audit: **no negative-g case exists** anywhere
+(gusts reach −1.9 at Vc, and the §7 spar web wrap is asymmetric top-to-bottom, so
+check reversed bending before drawings freeze), and **fixed-mass fittings should
+be sized at the light-weight load factor**, since available g rises as weight
+falls. Also note full-throttle level flight reaches ~80 mph against a 69 mph Vne —
+pick the fixed prop pitch so the engine runs out of rpm near redline.
+
 ## 13. Wing joints: bearing, not shear
 
 At an 8 ft center section the joint sits 4 ft out, where moment is about 72,400

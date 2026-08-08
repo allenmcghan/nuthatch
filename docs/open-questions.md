@@ -20,21 +20,36 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 
 ## Then, in order
 
-- Full V-n diagram at 4.7g limit, 7.0g ultimate
+- Full V-n diagram — **with the load basis re-set first**. The audit
+  ([trades/design-audit.md](trades/design-audit.md)) shows fixed slats break the
+  §12 stall-limit argument: g available at Vne is 5.74 at design weight, so
+  either limit load rises to ~5.7 (+6–10 lb of cap, recommended), Vne drops to
+  ~62 mph, or a tail-authority analysis retires it. **Include the negative
+  branch** (−1.9 g gust at Vc exists and no negative case does), and size
+  fixed-mass fittings at the light-weight load factor
 - Spar cap taper schedule, web thickness, stiffener spacing
 - Wing carry-through and cabane geometry, which sets the wing LE station that
   trims CG to 30% MAC
 - Gear geometry: main gear 12-16% MAC aft of CG, track, wheelbase, nose steering
   stops and travel
-- Tail sizing, with a generous rudder since it is doing the rolling
+- Tail sizing, with a generous rudder since it is doing the rolling — audit
+  puts current areas at Vh 0.56 / Vv 0.038, sane and correctly rudder-heavy
+- **Symmetric spoiler deployment mode.** Landing over the mission's own 50 ft
+  trees at L/D 10.7 with no glidepath control uses ~720 of the 1,000 ft field,
+  and a two-axis aircraft cannot slip. Both-spoilers-up (separate lever,
+  spring-return fail-safe per §9) cuts it to ~480 ft. Cheapest meaningful
+  improvement the audit found; decide before the spoileron rigging is drawn
 - Cockpit geometry from actual seated dimensions
 - Every fitting, detailed
 
 ## Verify before committing
 
-- **The Part 103 engine's actual power rating.** The 103 configuration leans on a
-  direct-drive engine around 16 hp at 28 lb. If the rating is lower than assumed,
-  climb margin goes with it.
+- **The Part 103 engine's actual power rating — and more importantly its prop
+  diameter.** The audit shows a direct-drive two-stroke is tip-speed limited to a
+  35–42 in prop, giving ~96–114 lb static and a **240–340 ft ground roll**, not
+  the ~160 ft claimed. The deleted 10 lb redrive is worth ~140 ft of runway.
+  Either the 103 keeps a lightened redrive or the README's 103 field numbers get
+  rewritten.
 - **Spoileron aerodynamic close direction.** Tape a panel on and measure with a
   spring scale at 25 and 35 mph before trusting that airflow shuts it.
 - **Whether the 24 kt power-off stall is actually met with slats.** Calculated at
