@@ -62,7 +62,9 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   and a two-axis aircraft cannot slip. Both-spoilers-up (separate lever,
   spring-return fail-safe per §9) cuts it to ~480 ft. Cheapest meaningful
   improvement the audit found; decide before the spoileron rigging is drawn
-- Cockpit geometry from actual seated dimensions
+- Cockpit geometry from actual seated dimensions — now for a **105–220 lb
+  pilot range** (common-airframe §7): adjustable pedals, and seat geometry that
+  fits both the EAB owner and a 105 lb Part 103 pilot
 - Every fitting, detailed
 
 ## Verify before committing

@@ -130,12 +130,53 @@ CLmax 1.8). **Weigh every part before installation, and nail the slat geometry
 early** — those are the two compliance instruments. The BRS chute, when
 installed, is excluded from the 254 count under 103.1(e)(1).
 
-## 7. What this does not settle
+## 7. The light-pilot case: a 105 lb pilot on the 103 kit
+
+The fleet decision is now: **fast EAB abandoned, Vne 62 fleet-wide; the EAB is
+the heavy-pilot/add-on aircraft, and the 103 kit must fly a 105 lb pilot.**
+That pilot is lighter than any case above, and it finds two things:
+
+**Found: an aft-CG bust.** At 105 lb and low fuel the CG walks aft as fuel
+burns — 33.8% MAC at full fuel, **36.3% at empty tank, aft of the 35% limit.**
+
+**The fix is the parachute.** Mount the BRS canister **forward, at ~station
+40** (bridle channel to the carry-through unchanged). Its 19 lb — excluded from
+the 254 lb count under 103.1(e)(1) but very much real for balance — pulls the
+whole fuel range back into band:
+
+| 103 kit + forward chute | Gross | CG | Stall |
+|---|---|---|---|
+| 105 lb pilot, full fuel | 407 | 31.4% | 22.7 kt |
+| 105 lb pilot, empty tank | 377 | **33.6%** | 21.8 kt |
+| 154 lb pilot, full fuel | **456 (max)** | 30.2% | **24.0 kt** |
+
+One installation solves the light-pilot balance problem *and* puts a ballistic
+chute over the lightest, least-experienced pilot in the family. If the chute is
+ever not fitted, the fallback is **5–8 lb of nose ballast at ~station 20,
+placarded for pilots under ~125 lb.** Either way, the airframe provisions both:
+the forward canister tray and a ballast boss are permanent hard points.
+
+**Pilot-weight placards on the 103 kit** (declared max weight 456 lb for the
+24 kt gate): pilot + fuel ≤ 184 lb with the chute — a 105 lb pilot with full
+fuel carries **49 lb of margin**; a 154 lb pilot is the ceiling. Heavier pilots
+fly the EAB kit, which has no stall gate. The family division of duties falls
+straight out of the regulation.
+
+**Rule 1 updated:** the lightest flight case is now ~360–380 lb, where the wing
+can pull **6.1–6.4 g** at Vne 62. Size all fixed-mass fittings (engine mount,
+seat, harness anchors, chute tray) at **6.4 g limit / 9.6 g ultimate** — up
+from the 5.6 g of the 130 lb case.
+
+**Cockpit note for the open questions:** the seat and pedals must now fit a
+105–220 lb, presumably different-stature pilot set. Adjustable pedals (three
+positions) cost ounces and belong in the drawings from the start.
+
+## 8. What this does not settle
 
 - Real engine weights on a scale — the mount adapter and the whole 103 margin
   hang on the ~31 lb figure.
 - Slatted CLmax, now a legality item (see weight-scrub §5).
-- Whether a 56 mph cruise placard on the EAB is acceptable to the owner
-  long-term; the alternative is documented and priced above.
+- ~~Whether a 56 mph cruise placard on the EAB is acceptable~~ **Decided:
+  fast EAB abandoned. Vne 62 fleet-wide is final.**
 - Landing-gear load cases at 526 lb — not yet analysed anywhere.
 - The workbook reconciliation from the weight scrub still applies.
