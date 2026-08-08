@@ -175,6 +175,31 @@ without buckling — before either aircraft flies on them.** Precedent exists:
 Legal-Eagle-class and Bloop minimum ultralights have flown spoked bicycle
 wheels at these weights for decades.
 
+**Refinement — modern high-performance wheelsets, already owned:** the wheels
+in hand are high-end aluminum/carbon MTB wheelsets with sub-2 lb tires, which
+puts the pair at the light end of the range (~6–7 lb with sealant) at zero
+cost — and a 29er, if that's the size, crosses the 2 in bump at **0.59**,
+better still. Updates that follow:
+
+- **Prefer the aluminum rims for the gear.** An aluminum rim fails by denting
+  and keeps rolling; carbon fails by cracking, suddenly, and a crack from a
+  hard landing is hard to see (tap-test at best). For a *forgiving* gear the
+  dent is the right failure mode. Carbon is acceptable with a
+  post-hard-landing inspection protocol and a tire insert — the §7 spar
+  objection (undetectable void) doesn't carry to a factory-molded QC'd rim,
+  but inspectability still favours metal here.
+- **Use rear boost hubs (12×148 through-axle) on both sides** — widest flange
+  spacing, stiffest laterally, native 6-bolt disc; a single-speed spacer kit
+  replaces the cassette. Modern 28–32-spoke boost disc wheels are far stronger
+  laterally than the old 36h assumption; the ~400 lb lateral proof test stands
+  regardless, and MTB wheels routinely take bigger instantaneous hits under a
+  250 lb rider than this aircraft's 788 lb limit case.
+- **Tubeless with a tire insert** (CushCore-class): rim-strike protection at
+  landing loads *and* a run-flat — which improves the flat-tire prop-clearance
+  case the stance analysis already carries.
+- Weigh the actual wheels and tires and enter them in the build log — these
+  are the first components where "estimate" can become "measurement" today.
+
 **Flotation is the accepted trade:** ~24 psi ground pressure against the fat
 tire's ~9. Fine on the firm mowed home strip; the 13×5 (or EAB 16×6.5) remains
 the soft/wet-field wheel. Design the trailing-arm axle with **interchangeable
