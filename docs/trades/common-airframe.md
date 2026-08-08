@@ -171,12 +171,63 @@ from the 5.6 g of the 130 lb case.
 105–220 lb, presumably different-stature pilot set. Adjustable pedals (three
 positions) cost ounces and belong in the drawings from the start.
 
-## 8. What this does not settle
+## 8. The fleet plan: two airframes, both built 103-compliant
+
+Decided: **two aircraft, both built to the identical 103-compliant airframe
+spec.** Aircraft #1 is the owner's — it registers EAB and becomes the
+experiment platform (autopilot, Junco, larger engine, hybrid propulsion).
+Aircraft #2 is the 105 lb pilot's — it stays pure Part 103. Design pilot cap:
+**200 lb** (structural and W&B design case; placards may read lower).
+
+**Why #1 is EAB regardless of add-ons — stated honestly:** the stall gate caps
+the 103 kit at pilot + fuel ≤ 184 lb (with chute). A 200 lb pilot is not legal
+on the 103 configuration at any fuel load; a 170 lb pilot gets 14 lb of fuel.
+The owner's aircraft must be EAB *because of the owner's weight*, before a
+single add-on goes aboard. The add-ons (autopilot + Junco, ~4–7 lb; larger
+engine) then cost nothing extra regulatorily. Register #1 EAB from the start —
+flying it "as 103" over 456 lb would satisfy neither rule set.
+
+**What building both airframes 103-compliant buys:** aircraft #2 needs no
+N-number, no DAR, no inspection — the save-time-on-compliance goal lands on the
+second aircraft and on every future copy. It also defines the published
+design's audience: anyone can build the 103 aircraft; the EAB kit is the
+documented growth path on the same structure. The
+[second-build economics](second-build.md) now apply for real: ~370–460 hours
+for airframe #2, order **two nested laser-cut 4130 sets on the first order**,
+and Oratex (chosen in the scrub) is doubly justified at 27% of build #2.
+
+**The chute tray is a two-position fitting, and the position is per-aircraft:**
+
+| | Chute at sta 40 | Chute at sta 55 |
+|---|---|---|
+| 103 kit, 105 lb pilot, empty tank | **33.6% ✓** | 35.1% — out |
+| EAB kit, 200 lb pilot, full fuel | 25.7% — thin | **26.7% ✓** |
+
+Forward slot for the light-pilot aircraft, aft slot for the heavy-pilot one.
+Both positions are permanent hard points on the common airframe; the tray bolts
+to either. Fleet max gross for gear and fitting sizing: **525 lb** (unchanged
+in practice from the 220 lb case).
+
+**Hybrid and electric provisions, built into every airframe now:**
+
+- The **CG-bay tray** (carry-through bay, sta ~62–70) rated for **110 lb** —
+  the battery-pack station from the [pusher trade](pusher-vs-tractor.md), where
+  mass is a trim tool. A hybrid genset or pack lives here, not at the nose.
+- A **conduit channel** nose-to-CG-bay for HV cable or fuel line, closed out
+  with a cover strip until used.
+- The **engine mount cluster limit is 45 lb** at the nose (F-33 + belt is the
+  ceiling; already sized at 6.4 g light-weight). Any heavier engine or a
+  nose-mounted genset is a re-analysis, not a bolt-on. The series-hybrid
+  efficiency numbers in the design-log losers table still stand — the platform
+  supports the *experiment*; it does not promise the experiment wins.
+
+## 9. What this does not settle
 
 - Real engine weights on a scale — the mount adapter and the whole 103 margin
   hang on the ~31 lb figure.
 - Slatted CLmax, now a legality item (see weight-scrub §5).
 - ~~Whether a 56 mph cruise placard on the EAB is acceptable~~ **Decided:
   fast EAB abandoned. Vne 62 fleet-wide is final.**
-- Landing-gear load cases at 526 lb — not yet analysed anywhere.
+- Landing-gear load cases at 525 lb — not yet analysed anywhere.
+- Actual chute canister mass and dimensions for the two-position tray design.
 - The workbook reconciliation from the weight scrub still applies.

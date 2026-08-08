@@ -659,3 +659,16 @@ the heavier engine at light-weight g with per-engine bolt-on adapters; nose and
 gear geometry clear the 60 in disc; gear sized at the EAB max gross; all
 deletable items (windshield, tablet, BRS bridle) on permanent hard points;
 5 gal fuel in both kits; per-kit placards.
+
+**§20 addendum — the fleet plan.** Two aircraft, both built to the identical
+103-compliant airframe. #1 registers EAB from the start: the stall gate caps the
+103 configuration at pilot + fuel ≤ 184 lb, so a 200 lb owner is not legal on it
+at any fuel load — EAB is required by the owner's weight before any add-on.
+#2 stays pure 103 for the 105 lb pilot, with no N-number, DAR, or inspection.
+Design pilot cap 200 lb; fleet max gross 525 for gear and fittings. The BRS tray
+gets two permanent positions — sta 40 for the light-pilot aircraft, sta 55 for
+the heavy-pilot one, since each fixes a different end of the CG band. Every
+airframe carries the hybrid/electric provisions: a 110 lb CG-bay tray at the
+carry-through, a nose-to-bay conduit channel, and a 45 lb engine-mount ceiling.
+The published design's audience follows the same split: anyone builds the 103;
+the EAB kit is the documented growth path on the same structure.
