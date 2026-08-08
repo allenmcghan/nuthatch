@@ -203,20 +203,103 @@ already sitting in the design log unresolved.
 If hours genuinely bind harder than dollars, **settle the covering system before
 buying a CNC router.**
 
-## 6. Cost
+## 6. Given the shop that actually exists
+
+The shop is **five 3D printers, a desktop laser cutter, a desktop CNC, and a
+Maslow 4 × 8 CNC router.** That removes the tooling-acquisition question entirely
+and changes three of the conclusions above.
+
+### The Maslow is the one that changes the workflow, not just a task
+
+A 4 × 8 work area is larger than every part on this aircraft except the spar. That
+makes a **full-size digital loft** possible: draw once in CAD, then cut every
+template, jig, form, and former at full scale from sheet goods. That replaces the
+traditional mylar-lofting workflow rather than accelerating it, and it is the
+single biggest capability in the list.
+
+What it should cut:
+
+- **Fuselage side-truss layout boards.** The fuselage is about 190 in, so two
+  spliced sheets. Pocket or engrave the truss geometry full size, pin the tubes to
+  it, and tack. This is how tube fuselages get built accurately, and it is the
+  method the 130-hour line assumes you improvise.
+- **The fuselage eggcrate station jig.** Two to three sheets.
+- **The rib jig board.** Entire jig on one sheet.
+- **D-tube bending forms**, and the developed 1/16 birch ply shapes themselves.
+- **Gear leg bend formers**, wing assembly cradles, tail rib templates.
+
+**Verify the calibration before trusting it.** A Maslow is a belt-and-sled machine
+with accuracy in the region of 1/32 in over a sheet, which is fine for jigs and
+templates and not fine for fittings. Cut a large test rectangle and measure the
+diagonals before cutting the rib jig, because that jig defines the airfoil on all
+31 ribs. At a 50 in chord, ±1 mm is 0.08% of chord and acceptable — but only if it
+is ±1 mm and not ±4.
+
+**Thin ply needs hold-down.** 1/16 in birch on a router wants a sacrificial board,
+a downcut bit, and either vacuum or tape-and-CA, plus tabs. Otherwise it lifts.
+
+### The desktop laser cannot do the part that matters most
+
+A desktop laser does thin plywood, templates, patterns, and marking. **It does not
+cut 4130 sheet.** The single highest-value intervention in §2A therefore stays an
+outside order — a laser, plasma, or waterjet service — and it is the only thing on
+this list that has to leave the shop.
+
+Everything in §2C's caveat still applies to the laser: it chars plywood, and char
+is a weak adhesive boundary. **Rout the structural rib gussets on the desktop CNC;
+use the laser for non-structural templates and patterns.**
+
+### Five printers changes throughput, which changes what is worth printing
+
+The 12–20 mould sections in [wingtip-caps.md](wingtip-caps.md), and the hundred-odd
+tube coping saddles in §2B, stop being a month of printing and become a few
+overnight runs. Two consequences:
+
+- **Coping saddles become obviously worth it.** At one printer the print time
+  competes with just coping the tubes by hand. At five it does not.
+- **The tip cap decision gets cheaper on both branches.** Print the ASA tips for
+  Phase I *and* print the female mould, because neither is now a scheduling
+  problem. The measure-then-decide sequence stands, but nothing is gated on print
+  time.
+
+### The desktop CNC covers the fittings, with one substitution
+
+It should do the **rotor-to-hub adapters** (§11, currently "machine yourself"),
+bracket blanks, spacers, and drill-jig bushing plates.
+
+**What is missing is a lathe**, for §13's internal joint rods and external sleeves.
+Do not buy one for this. §13 only requires close tolerance *"in the last two inches
+near each bolt"* — so **buy precision-ground rod and honed tube stock**, which
+arrives round and on-size, and machine nothing but the chamfer and the holes. That
+removes the lathe from the critical path entirely.
+
+**Also missing: a vacuum pump.** The carbon tip cap weight case in
+[wingtip-caps.md](wingtip-caps.md) depends on bagging — 0.54 lb per tip bagged
+against 1.13 lb wet-laid. A pump is $150–300 and it is the difference between the
+cap being weight-neutral and being a penalty.
+
+## 7. Cost, revised
 
 | | |
 |---|---|
-| Laser-cut 4130 sheet package | $300–600 |
-| CNC-cut ply jig set (fuselage eggcrate, rib board, D-tube forms) | $150–400 |
+| Laser-cut 4130 sheet package (**the only outside order**) | $300–600 |
+| Sheet goods for jigs — MDF and ply, 5–8 sheets | $120–250 |
 | Filament, tooling only | $80–200 |
-| Machined rods, sleeves, rotor adapters | already in the BOM |
-| **Net add** | **$530–1,200** |
+| Vacuum pump and bagging consumables | $150–300 |
+| Precision-ground rod and honed tube stock (replaces lathe work) | in BOM |
+| Machined rotor adapters, bracket blanks | in BOM, now in-house |
+| **Net add** | **$650–1,350** |
 
 The BOM carries a 30% contingency line, roughly $3,300. This fits inside it, and
 some of it returns as material not wasted on remakes.
 
-## 7. The strategic argument, for an open-hardware aircraft
+The $150–400 CNC jig line from the first version of this estimate is now sheet
+goods only. The machines are already paid for, which means **the optimistic column
+in §1 is the more realistic one** — most of the gap between conservative and
+optimistic was tooling access and print throughput, and neither is a constraint
+here.
+
+## 8. The strategic argument, for an open-hardware aircraft
 
 The README licenses this under CERN-OHL-S and says the two files worth reading
 first are the design log and the measured weights, because *"drawings exist for a
@@ -235,14 +318,14 @@ It also makes the *"you are the manufacturer"* disclaimer more honest, not less:
 a builder reproducing geometry from a file is far less likely to introduce the
 silent asymmetries that hand fabrication produces.
 
-## 8. What this does not settle
+## 9. What this does not settle
 
 - Every hour figure here is an estimate applied on top of estimates that already
   carry a 0.7 correction factor. Treat the *ranking* as more reliable than the
   totals.
-- Whether the tooling is bought, hired out, or built. A hobby CNC router capable
-  of a fuselage eggcrate jig is itself a project, and the Tooling line in the BOM
-  is currently $200.
+- Maslow calibration. The rib jig defines the airfoil on all 31 ribs, so the
+  machine's real accuracy over a full sheet needs measuring before it cuts that
+  board — not assuming from the specification.
 - CAD hours. This assumes the aircraft gets drawn in 3D, which is not obviously
   the plan — the Hours sheet excludes design time entirely, and the clean-sheet
   estimate in §4 of the design log put design work at about 300 hours.

@@ -585,3 +585,24 @@ while the real 4130 brackets are tacked. Print to find it, machine to fly it.
 the aircraft. The lever there is material, not method: §14 already prices Oratex at
 about 75 hours against Stewart. **That single unresolved decision is worth more
 time than every tooling intervention combined.**
+
+**The shop already has five printers, a desktop laser, a desktop CNC, and a Maslow
+4 × 8 router**, which removes tooling acquisition from the estimate and makes the
+optimistic column the realistic one. Three consequences. The **Maslow enables a
+full-size digital loft** — draw once, then cut every template, jig, form and
+former at full scale, including the fuselage side-truss layout boards the 130-hour
+line currently assumes you improvise. **The desktop laser cannot cut 4130**, so the
+sheet package in the trade stays the one outside order. And **five printers make
+the coping saddles obviously worth it**, where at one printer the print time merely
+competes with coping the tubes by hand.
+
+Two gaps worth closing. There is no lathe for §13's joint rods and sleeves — do not
+buy one, **buy precision-ground rod and honed tube stock** instead, since §13 only
+needs close tolerance in the last two inches near each bolt. And the carbon tip cap
+weight case in §6 depends on vacuum bagging, which needs a $150–300 pump; bagged is
+0.54 lb per tip against 1.13 wet-laid, so that pump is the difference between
+weight-neutral and a penalty.
+
+**Verify the Maslow's calibration before it cuts the rib jig.** That board defines
+the airfoil on all 31 ribs. At a 50 in chord ±1 mm is 0.08% of chord and fine — but
+only if it is ±1 mm.
