@@ -268,6 +268,73 @@ Admissible roughness at 50 mph is `100·ν/V` = **0.065 mm**:
 genuine advantage over the male-plug approach and over coarser printing. It costs
 print time, and a lot of it, on a part this size.
 
+### Carbon-fibre-filled ASA
+
+Chopped-fibre ASA raises modulus from about 2.0 GPa to 4.5–7. Wall thickness for
+equal panel stiffness scales as `E^(-1/3)`, so on paper:
+
+| Material | E (GPa) | Wall to match 0.5 mm carbon skin | ρ | Both tips |
+|---|---|---|---|---|
+| neat ASA | 2.0 | 1.41 mm | 1.07 | 3.54 lb |
+| CF-ASA (typical) | 5.5 | **1.01 mm** | 1.11 | **2.62 lb** |
+| GF-ASA (typical) | 3.5 | 1.17 mm | 1.20 | 3.30 lb |
+| *carbon/epoxy laminate* | *45* | *0.50 mm* | *1.55* | *1.82 lb* |
+
+**But the nozzle blocks it.** Chopped fibre bridges and clogs a 0.4 mm nozzle, so
+CF filament wants 0.5–0.6 mm. At a 0.6 mm nozzle, two perimeters is **1.2 mm** —
+you cannot reach the 1.01 mm the stiffness would allow.
+
+| At a real wall thickness | Wall | Both tips |
+|---|---|---|
+| neat ASA, 0.4 nozzle | 1.2 mm | **3.01 lb** |
+| CF-ASA, 0.6 nozzle | 1.2 mm | **3.13 lb** |
+
+**At the same geometry CF-ASA is heavier**, because the filament is denser. The
+stiffness gain only cashes out if the wall actually gets thinner, and the nozzle
+prevents that.
+
+**Where it does pay is rib spacing.** Panel deflection goes as `q·b⁴/(E·t³)`, so
+maximum bay width for equal stiffness scales as `(E·t³)^(1/4)` — CF-ASA allows
+bays about **28% wider** at the same wall. That is the real saving, and it comes
+from deleting ribs rather than thinning skin.
+
+**The property it costs is the one that matters here:**
+
+| | Tensile MPa | Elongation | Impact |
+|---|---|---|---|
+| neat ASA | 40–45 | 10–20% | good |
+| **CF-ASA** | 45–55 | **1–3%** | **poor, brittle** |
+| GF-ASA | 45–55 | 3–6% | fair |
+
+Chopped fibre buys stiffness, not strength, and it costs elongation badly. **The
+cap exists partly because tips are what gets hit** — §1 lists durability against
+hangar walls and trailer rails as a primary reason to build it. Trading impact
+resistance for stiffness at a wingtip is the wrong direction, and layer adhesion
+gets worse too, on a part that is already anisotropic.
+
+Two more effects, one each way. **Warping improves substantially** — CF cuts
+shrinkage, which on a part printed in 4–5 sections per half is a genuine
+buildability win and may be reason enough on its own. But **CF prints matte with
+fibre microtexture on top of the layer lines**, which probably destroys the
+free-finish result above: neat ASA at 0.12 mm layers squeaks under the 0.065 mm
+admissible roughness, and fibre texture does not. And CF **solvent-welds worse**
+than neat ASA, weakening the section joints.
+
+**Worth confirming what the filler actually is.** Carbon-filled filament is
+essentially always dark grey to black — the fibre is black and dominates the
+colour at any useful loading. A genuinely white filled ASA is much more likely
+**glass**-filled. That is not a downgrade for this part: GF gives less stiffness
+(3.5 vs 5.5 GPa) but retains far more toughness (3–6% elongation against 1–3%),
+is not abrasive so a standard nozzle works, and is cheaper. **For a wingtip, GF is
+arguably the better filler than CF.** A light colour also settles the solar
+heating note below on its own.
+
+**Net: a lateral move.** Every filled and unfilled printed option lands between
+2.6 and 3.5 lb. Only a carbon/epoxy laminate reaches weight-neutral, so the
+material choice here changes the development part, not the conclusion. Use CF or
+GF if warping on large sections is the practical blocker — that alone justifies
+it — and do not expect it to buy weight back.
+
 ### Practical ASA notes
 
 - **ASA needs an enclosure.** Large sections will lift and warp without one.

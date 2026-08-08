@@ -189,6 +189,21 @@ Two print notes. **0.12 mm layers put the ridge height at 0.06 mm, just under th
 at all — coarser layers do. And do not print or paint them black: black ASA in
 direct sun reaches 70–80 °C against a Tg near 100 °C.
 
+**Fibre-filled ASA does not change the answer.** CF-ASA raises modulus 2.0 → 5.5
+GPa, which on paper allows a 1.01 mm wall instead of 1.41. But chopped fibre needs
+a 0.5–0.6 mm nozzle, and two perimeters at 0.6 is 1.2 mm — the thin wall is
+unreachable, and at identical geometry the denser filament comes out *heavier*
+(3.13 lb against 3.01). The stiffness cashes out in **rib spacing** instead, about
+28% wider bays at the same wall. Meanwhile elongation drops from 10–20% to 1–3%,
+which is the wrong trade at the one location on the aircraft chosen partly for
+impact resistance. Every printed option lands between 2.6 and 3.5 lb; only a
+carbon/epoxy laminate reaches weight-neutral.
+
+Use a filled filament if warping across the printed sections is the practical
+blocker — that alone justifies it. Prefer **glass** over carbon if so: less
+stiffness, but it keeps 3–6% elongation, needs no hardened nozzle, and comes in
+light colours, which settles the solar heating note above for free.
+
 ## 7. Spar: aluminum caps and a shear web
 
 Bending is carried at maximum distance from the neutral axis. A wrapped tube puts
