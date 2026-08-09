@@ -116,11 +116,14 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   already cover. Decide with the pod shape, not after
 - **Gap seals — seal the elevator; on the rudder, couple sealing to sizing.**
   NACA TN-632 measured a **sealed smaller surface matching an unsealed larger
-  one at one-third the operating force**, so "sealed and smaller" may beat
-  "unsealed and larger" on the twist grip's wrist-torque budget — ask before
-  the tail is drawn. Friction, not hinge moment, is the real enemy: a teflon
-  chafe strip under the seal is mandatory. Measure breakout with a spring
-  scale on the built surfaces
+  one at one-third the operating force**. First-order pass: a sealed rudder
+  at cf/c ~0.29 (from 0.50) holds the same authority at **~57% less hinge
+  moment** — twist-grip peak ~19 → ~8 in-lb, enough that **the 45% horn
+  balance could become optional rather than mandatory**. Estimate only —
+  but it means **rudder chord and sealing must be traded together, before
+  the tail is drawn**, while both are still free. Friction, not hinge
+  moment, is the real enemy: a teflon chafe strip under the seal is
+  mandatory. Measure breakout with a spring scale on the built surfaces
 - **Field rigging time as a numeric requirement** — proposed: one person, no
   helper, 15 minutes, no tools past a pin puller. Free if it constrains the
   wing-joint design now, expensive to retrofit after the joints are drawn

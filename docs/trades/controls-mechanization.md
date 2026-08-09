@@ -65,6 +65,14 @@ transient ~19: acceptable.
    sized (or copied from practice) before the tail drawings freeze. Bonus:
    the horn's mass ahead of the hinge line works *toward* the mass balance
    the flutter item will want anyway.
+   **Possible alternative, found later — see
+   [borrowed-optimizations.md §4](borrowed-optimizations.md):** NACA TN-632
+   shows a *sealed smaller* surface matching an unsealed larger one at about
+   a third the operating force. A first-order pass puts a sealed rudder at
+   cf/c ~0.29 (from 0.50) with the same authority and **~57% less hinge
+   moment** — enough that the horn balance could become optional rather than
+   mandatory. Estimate only; the point is that rudder chord and sealing must
+   be traded *together*, before the tail is drawn.
 2. **Gearing 2.4:1 with a centering spring/detent** — the throw trade is
    fixed by wrist range, so the balance is not optional headroom, it is the
    mechanism's feasibility.

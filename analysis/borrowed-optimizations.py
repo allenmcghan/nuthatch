@@ -2,8 +2,9 @@
 """What the ultralight/STOL world does that this design hasn't mined yet.
 Three quantified items: (1) drag cleanup on the 80% the audit flagged and
 never attacked, (2) elevator stick force -> the missing pitch trim system,
-(3) control-surface gap seals, which this aircraft must treat asymmetrically
-because the rudder is on a wrist.
+(3) control-surface gap seals on NACA TN-632's real numbers - including the
+sealed-and-smaller rudder option, which matters because the rudder is worked
+by a wrist.
 Basis: audit drag model f = 0.45 m^2 total, smooth airframe 0.084 m^2, e 0.75.
 """
 import math
@@ -90,16 +91,48 @@ print("""
   a spring to the stick base with a small ratchet lever, ~0.4 lb, no change
   to the elevator, no tab, no hinge. Uses ~8% of the 4.8 lb freed today.""")
 
-print("=== 3. GAP SEALS: SEAL THE ELEVATOR, NOT THE RUDDER ===")
-print("""  Sealing a control-surface gap typically returns ~10% control
-  effectiveness and a small drag credit - but it RAISES hinge moment by a
-  similar order. This aircraft must therefore split the decision:
-    ELEVATOR - seal. More authority per degree helps the flap-flare case
-      (gate-3 rerun expects to be tight), and the added stick force is
-      exactly what the trim system above now exists to remove.
-    RUDDER  - do NOT seal. The twist-grip closes on a wrist-torque budget
-      (~9 in-lb sustained, ~19 peak, AFTER a 45% horn balance). Sealing
-      spends that margin for authority the rudder does not need.""")
+print("=== 3. GAP SEALS: SEAL THE ELEVATOR; ON THE RUDDER, SEAL *AND SHRINK* ===")
+print("""  Basis is NACA TN-632 (flight test, Fairchild 22), not a rule of thumb:
+  sealing gained ~20% effectiveness on 0.18c surfaces and ~33% on 0.09c -
+  smaller surfaces gain more - and the headline result was that SEALED 0.09c
+  ailerons matched UNSEALED 0.18c effectiveness at about ONE-THIRD the
+  operating force. So the question for a wrist-driven rudder is not 'does
+  sealing cost hinge moment' but 'can a sealed smaller rudder do the same
+  job for less force'. First-order answer below.""")
+
+def tau(cf_c):
+    """Ideal thin-airfoil control effectiveness. Real surfaces run ~85-90%
+    of this; ratios are far less sensitive to that offset than absolutes."""
+    th = math.acos(2*cf_c - 1)
+    return 1 - (th - math.sin(th))/math.pi
+
+CF_NOW = 0.50                  # rudder chord / VT chord as drawn
+SEAL_GAIN = 1.25               # effectiveness multiplier, TN-632 mid-range
+SEAL_HM_PEN = 1.25             # hinge-moment penalty, same order
+target = tau(CF_NOW)/SEAL_GAIN
+lo, hi = 0.05, 0.50
+for _ in range(60):
+    mid = 0.5*(lo+hi)
+    if tau(mid) < target: lo = mid
+    else: hi = mid
+cf_new = 0.5*(lo+hi)
+hm_ratio = (cf_new/CF_NOW)**2 * SEAL_HM_PEN     # HM ~ S_r * c_r ~ (cf/c)^2
+print(f"  rudder as drawn: cf/c {CF_NOW:.2f}, tau {tau(CF_NOW):.3f}")
+print(f"  sealed equivalent: cf/c {cf_new:.2f}, tau {tau(cf_new):.3f} x {SEAL_GAIN} seal "
+      f"= {tau(cf_new)*SEAL_GAIN:.3f} (same authority)")
+print(f"  hinge moment ratio {hm_ratio:.2f} -> ~{(1-hm_ratio)*100:.0f}% LESS, seal penalty included")
 hm_r = 0.008*25*q(35)*7.5*1.5*12.0
-print(f"  rudder check: unsealed balanced+geared peak ~{hm_r*0.55/2.4:.0f} in-lb;")
-print(f"  a 10% seal penalty pushes it to ~{hm_r*0.55*1.10/2.4:.0f} in-lb - into the fatigue band.")
+peak_now = hm_r*0.55/2.4
+print(f"  twist-grip peak: {peak_now:.0f} in-lb today -> ~{peak_now*hm_ratio:.0f} in-lb sealed+shrunk")
+print("""  -> a sealed, smaller rudder may buy back roughly half the wrist budget,
+     and could relax the 45% horn balance the twist grip currently depends on.
+     ESTIMATE ONLY - ideal tau, assumed seal factors. Worth asking BEFORE the
+     tail is drawn, which is the actual finding; do not size on this number.
+
+  ELEVATOR - seal it. Authority per degree helps the tight flap flare, and
+     the added stick force is what the trim system in section 2 removes.
+  BOTH     - the real enemy is FRICTION, not hinge moment. Sailplane practice
+     runs mylar over a teflon glass-tape chafe strip specifically to stop
+     breakout force creeping up. On a wrist-driven rudder that strip is
+     mandatory: breakout is what kills small precise yaw inputs.
+  NOT the spoilerons - they are not hinged trailing-edge surfaces.""")

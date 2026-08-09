@@ -181,8 +181,25 @@ TN-632**, flight-tested on a Fairchild 22 **[M]**:
 
 So the right question is not "does sealing cost hinge moment" but **"can a
 sealed smaller surface do the same job for less force?"** — which is a live
-question for a rudder on a wrist-torque budget, not a closed one. It should
-be asked before the tail is drawn, not after.
+question for a rudder on a wrist-torque budget, not a closed one.
+
+A first-order pass says the answer may be yes, by a lot. Holding yaw
+authority constant with ideal thin-airfoil effectiveness and a mid-range
+seal factor, the rudder goes from **cf/c 0.50 to ~0.29**, and hinge moment —
+seal penalty already included — falls **~57%**:
+
+| | As drawn | Sealed and shrunk |
+|---|---|---|
+| Rudder chord / VT chord | 0.50 | ~0.29 |
+| Effectiveness (τ, × seal) | 0.818 | 0.818 |
+| Twist-grip peak, 35 mph full | ~19 in-lb | **~8 in-lb** |
+
+If that survives a real analysis it does more than save effort: it could
+**relax the 45% horn balance the twist-grip scheme currently depends on** —
+turning a hard requirement into a choice. Treat the number as an estimate
+(ideal τ, assumed seal factors) and **do not size on it** — the finding is
+that the question must be asked *before the tail is drawn*, when both
+variables are still free.
 
 **The real downside is friction, not hinge moment.** Sailplane practice
 **[B]** builds a three-layer stack — double-sided tape to the fixed surface,
