@@ -105,6 +105,15 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - **Where the full-span slat terminates at the tip.** Constrains the tip cap
   geometry, and §10's "copy a known installation" rule has nothing to copy for a
   slat-to-moulded-tip junction. Resolve before the cap shape is frozen.
+- **Flaps-for-slats (Path B).** Open decision, not a change:
+  [trades/flaps.md](trades/flaps.md) shows plain flaps replacing the slats nets
+  ~−1 lb, moves the 103 stall margin from 0.1 kt to ~1.2 kt on better-known
+  aerodynamics, and deletes the slat cruise drag — gated on (1) the
+  quarter-scale model demonstrating a docile stall flaps up and down, and
+  (2) a gate-3 trim rerun with flap moments (full-flap flare at forward CG may
+  saturate the elevator; expect to land at 25°). Slatted wing remains the
+  design of record until both gates pass. If Path B is adopted, the two slat
+  items above retire.
 
 ## Not analysed anywhere, and should be
 
