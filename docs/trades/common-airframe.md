@@ -175,9 +175,11 @@ can pull **6.1–6.4 g** at Vne 62. Size all fixed-mass fittings (engine mount,
 seat, harness anchors, chute tray) at **6.4 g limit / 9.6 g ultimate** — up
 from the 5.6 g of the 130 lb case.
 
-**Cockpit note for the open questions:** the seat and pedals must now fit a
-105–220 lb, presumably different-stature pilot set. Adjustable pedals (three
-positions) cost ounces and belong in the drawings from the start.
+**Cockpit note for the open questions:** the seat must now fit a 105–220 lb,
+presumably different-stature pilot set. *(Superseded in part: the adjustable
+pedals this note originally called for are deleted — the twist-grip controls
+decision, [controls-mechanization.md](controls-mechanization.md), removed
+rudder pedals entirely, so the accommodation is seat-and-footrest only.)*
 
 ## 8. The fleet plan: two airframes, both built 103-compliant
 

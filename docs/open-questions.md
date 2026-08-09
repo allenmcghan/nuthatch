@@ -71,18 +71,19 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   (flaps adopted, [trades/flaps.md](trades/flaps.md)) — full-flap flare at
   forward CG may saturate the elevator; expect a 25° landing notch or ~1° of
   tail incidence
-- **Symmetric spoiler mode — ADOPTED (design-log §21); mechanization open.**
-  Landing over the mission's own 50 ft trees at L/D 10.7 with no glidepath
-  control uses ~720 of the 1,000 ft field, and a two-axis aircraft cannot
-  slip; both-spoilers-up cuts it to ~480 ft. What remains is the **lever
-  arrangement**: recommended is differential on the lateral stick + one
-  dedicated symmetric lever with a mechanical sum (the flare needs a hand on
-  the stick), but the owner is considering individual per-side control /
-  two levers — decide before the spoileron rigging is drawn. Non-negotiables
-  either way: §9 spring-return to closed, no failure mode that holds one
-  side up alone, and compatibility with the Junco servo provision
+- **Controls mechanization — DECIDED (design-log §21 + addendum,
+  [trades/controls-mechanization.md](trades/controls-mechanization.md)):**
+  one stick (elevator / lateral spoilerons / twist-grip rudder), left-hand
+  symmetric spoiler lever (spring-return closed), rudder pedals deleted.
+  Symmetric mode's payoff stands: ~720 → ~480 ft over the 50 ft trees.
+  Remaining engineering, not decisions: **horn balance ~45% on the rudder**
+  (the wrist-torque numbers do not close without it — size before the tail
+  drawings freeze), grip centering/breakout behavior and brake-lever
+  placement at the full-size seating mockup, no single-side hang-up from the
+  symmetric path, Junco servo compatibility
 - Cockpit geometry from actual seated dimensions — now for a **105–220 lb
-  pilot range** (common-airframe §7): adjustable pedals, and seat geometry that
+  pilot range** (common-airframe §7): seat-only adjustment (the pedals are
+  deleted with the twist-grip decision), footrest position, and geometry that
   fits both the EAB owner and a 105 lb Part 103 pilot
 - Every fitting, detailed
 

@@ -103,8 +103,8 @@ print(f"     -> ~7 in remaining (rev C vertical leg had ~4.6) - better")
 print("  leg: triangulated bay, main raked member (30,0,17)->(15,0,10) at ~63 deg rake,")
 print("       near-axial to the rut-strike resultant (the genuine structural win);")
 print("       second member (14,0,30)->(15.5,0,10.5) closes the triangle.")
-print("       The triangle doubles as ~15 in of crush structure ahead of the rudder")
-print("       pedals - progressive collapse before the cockpit sees the load.")
+print("       The triangle doubles as ~15 in of crush structure ahead of the")
+print("       pilot's feet - progressive collapse before the cockpit sees the load.")
 Pn = aft/wb*GROSS          # static nose reaction
 Pb = 0.35*GROSS*CG_H/wb    # braking weight transfer at ~0.35 g
 print(f"  nose gear limit load ~ static {Pn:.0f} lb + braking transfer {Pb:.0f} lb = {Pn+Pb:.0f} lb")

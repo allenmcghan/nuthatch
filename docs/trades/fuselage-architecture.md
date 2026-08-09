@@ -62,7 +62,7 @@ Design-log §5's argument for steel was never about the aft fuselage — it was
 about the concentrated-load hardware: **nose bow, rollover hoop, harness
 anchors, gear mounts, engine mount cluster**. All of that lives forward of
 sta 96, in the cockpit cage. The cage keeps every crash-structure property
-already committed (rev D crush bay, 15 in ahead of the rudder pedals,
+already committed (rev D crush bay, 15 in ahead of the pilot's feet,
 included). The cage-to-boom joint is a machined/bolted sleeve collar at the
 aft bulkhead; per the project's copy-a-known-installation rule, the boom root
 and tail-post fittings get **copied dimension-for-dimension from a Kolb

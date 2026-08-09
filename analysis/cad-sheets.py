@@ -125,12 +125,13 @@ dim_v(ax, 20, 0, 20, "SEAT PAN 20.0")
 dim_v(ax, 128, 0, 26, "STEP-OVER 26")
 dim_v(ax, 8, 0, 40, "THRUSTLINE 40")
 dim_v(ax, 100, 55.5, 64, "HEAD CLR ~8")
-ax.text(70, 74, "6'0\" / 170 LB PILOT SHOWN · PEDALS ADJUSTABLE 3 POS (105-200 LB PILOT RANGE)\n"
+ax.text(70, 74, "6'0\" / 170 LB PILOT SHOWN · NO RUDDER PEDALS (TWIST-GRIP RUDDER) · SEAT ADJ (105-200 LB RANGE)\n"
+                "STICK: PITCH / LATERAL SPOILERONS / TWIST RUDDER · L-HAND SYMMETRIC SPOILER LEVER\n"
                 "BALLAST BOSS STA 20 (8 LB REQ'D < 135 LB PILOT) · GRAB: CABANE STRUT",
         ha="center", fontsize=9, color=INK, family="monospace",
         bbox=dict(fc="#f2f5f7", ec=EDGE))
 ax.set_title("COCKPIT & ENTRY — SIDE"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
-title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "B")
+title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "C")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/CP-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 

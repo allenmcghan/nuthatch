@@ -236,7 +236,7 @@ meets first. Diameter is what grass taxes — §7a's own rule.)
 ~63°, so a rut-strike or nose-first impact loads it near-axially — the genuine
 structural advantage of the rake — and a second near-vertical member
 (14, 0, 30) → (15.5, 0, 10.5) closes the triangle. That triangle is
-**~15 in of progressive crush structure ahead of the rudder pedals**: in a
+**~15 in of progressive crush structure ahead of the pilot's feet**: in a
 nose-first accident it collapses and absorbs energy before the cockpit sees
 the load, exactly the "extend it forward at an angle" intent.
 

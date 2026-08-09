@@ -75,7 +75,9 @@ Part 103 stays gasoline. Worked in
 - Aluminum tube spar caps with a wrapped sheet shear web
 - Single-lever plain flaps, inboard ~60% span (0/25/40°, one-piece torque
   tube; replaced the fixed slats — [docs/trades/flaps.md](docs/trades/flaps.md))
-- Two-axis control: elevator and rudder, roll via spoilerons and dihedral
+- Two-axis control: elevator and rudder, roll via spoilerons and dihedral —
+  one stick (pitch fore/aft, spoilerons lateral, twist-grip rudder), left-hand
+  symmetric spoiler lever for glidepath; no rudder pedals
 - Tricycle gear, castoring raked nose leg, trailing-arm mains with MTB
   coil-overs, bicycle hydraulic disc brakes
 - Structural nose bow ahead of the pedals, rollover hoop, 5-point harness,

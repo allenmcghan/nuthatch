@@ -751,3 +751,17 @@ Five open items closed in one sitting; each points at the trade that priced it.
 Still open after this batch: the spoiler lever arrangement (above), and where
 Phase I flight testing happens (needed before the EAB airworthiness
 application, not before drawing).
+
+**§21 addendum — controls mechanization decided (owner, same date):** one
+stick — elevator fore/aft, spoilerons lateral, **rudder on a twist grip** —
+plus the left-hand symmetric spoiler lever; **rudder pedals deleted**. On a
+two-axis aircraft this is coherent (rudder-then-dihedral is the turn, and
+both roll-producing controls live on independent motions of one wrist), but
+it closes physically only with a **~45% horn-balanced rudder and 2.4:1
+gearing**: unbalanced, full rudder at 35 mph is ~85 in-lb at the wrist.
+Deleting pedals nets ~−2 lb (unbanked), kills the adjustable-pedal
+requirement for the 105–200 lb pilot range (seat-only adjustment), and
+empties the rev D crush bay's footwell — nothing left to trap feet. Gates:
+horn balance sized before the tail freezes; grip/centering-spring behavior
+and brake-lever placement verified on the full-size seating mockup. Worked in
+[trades/controls-mechanization.md](trades/controls-mechanization.md).
