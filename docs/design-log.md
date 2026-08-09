@@ -733,6 +733,21 @@ Five open items closed in one sitting; each points at the trade that priced it.
   linkage must always override or back-drive the servo; fail-safe analysis
   joins the EAB autopilot work, not this airframe's critical path.
 
-Still open after this batch: the symmetric-spoiler *landing* mode (a separate
-both-up lever for glidepath — a different function from roll, still
-recommended and still undecided), and where Phase I flight testing happens.
+- **Symmetric spoiler mode: adopted** (owner decision, same date). The
+  spoilers get two functions: differential for roll (as designed) and
+  **symmetric both-up for glidepath control** — the audit's ~720 → ~480 ft
+  improvement on the over-the-trees landing. **Mechanization is deliberately
+  open**: the owner may want individual control per side, possibly two
+  separate levers. Recorded engineering position for the rigging study:
+  differential should stay on the lateral stick motion and symmetric on one
+  dedicated lever with a mechanical sum, because the flare needs a hand on
+  the stick — two independent spoiler levers puts three controls in two
+  hands at the worst moment. Whatever wins, the §9 fail-safe stands:
+  spring-return to closed on release, and the symmetric path must never be
+  able to hold one side up alone. Decide the lever arrangement before the
+  spoileron rigging is drawn; it shares linkage with the Junco servo
+  provision above.
+
+Still open after this batch: the spoiler lever arrangement (above), and where
+Phase I flight testing happens (needed before the EAB airworthiness
+application, not before drawing).

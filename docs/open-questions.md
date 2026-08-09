@@ -71,11 +71,16 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   (flaps adopted, [trades/flaps.md](trades/flaps.md)) — full-flap flare at
   forward CG may saturate the elevator; expect a 25° landing notch or ~1° of
   tail incidence
-- **Symmetric spoiler deployment mode.** Landing over the mission's own 50 ft
-  trees at L/D 10.7 with no glidepath control uses ~720 of the 1,000 ft field,
-  and a two-axis aircraft cannot slip. Both-spoilers-up (separate lever,
-  spring-return fail-safe per §9) cuts it to ~480 ft. Cheapest meaningful
-  improvement the audit found; decide before the spoileron rigging is drawn
+- **Symmetric spoiler mode — ADOPTED (design-log §21); mechanization open.**
+  Landing over the mission's own 50 ft trees at L/D 10.7 with no glidepath
+  control uses ~720 of the 1,000 ft field, and a two-axis aircraft cannot
+  slip; both-spoilers-up cuts it to ~480 ft. What remains is the **lever
+  arrangement**: recommended is differential on the lateral stick + one
+  dedicated symmetric lever with a mechanical sum (the flare needs a hand on
+  the stick), but the owner is considering individual per-side control /
+  two levers — decide before the spoileron rigging is drawn. Non-negotiables
+  either way: §9 spring-return to closed, no failure mode that holds one
+  side up alone, and compatibility with the Junco servo provision
 - Cockpit geometry from actual seated dimensions — now for a **105–220 lb
   pilot range** (common-airframe §7): adjustable pedals, and seat geometry that
   fits both the EAB owner and a 105 lb Part 103 pilot
