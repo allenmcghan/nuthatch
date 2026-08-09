@@ -344,9 +344,32 @@ fatigue problem (EAB-only on weight), and a 58 lb engine on a mast above
 the forward cockpit is a crash-path regression from the rev D layout, which
 deliberately keeps the engine ahead of the crush bay.
 
+**There is no "just high enough."** The minimum raise is set by *where* the
+disc sits over the floats, not by a generic spray number. Properly sized
+floats put their bows ~16 in forward of the prop plane
+([amphibious.md §5](amphibious.md)), so the disc hangs over the **bow root**
+— the single wettest station on the rig, where the bow blister originates
+and where plow-phase green water rides 12–18 in above the static waterline.
+The Cub-style "30 in of clearance is plenty" rule applies five feet *aft* of
+the bows over clean water between the floats; over the bows, light-chop
+sanity wants tips 36–48 in up, which is thrustline 66–78 — the
+exceeds-the-tail case above. A modest raise (46–50 in) buys the worst of
+both: still inside the bow fan, *and* deep into the pitch budget.
+
+And the pitch budget has a water-specific corner that closes early: the
+**skip/bounce recovery**, which combines full power with flare-level
+elevator as routine seaplane technique, not an emergency. Flare alone uses
+−19.3° of the −25° throw (power off). Full power at 35 mph adds +6.0° of
+demand at today's 13 in offset — a combination land operations never visit
+(ground flares happen at idle) but water operations visit weekly. At a
+46 in thrustline the combination needs 28°; at 50 in, 30°; the throw is 25.
+Every inch of raise deepens a corner that water flying makes routine.
+
 **Net:** the high tractor is the best gasoline water idea yet — it genuinely
 solves balance and spray — and it fails on a third, harder wall: at this
-aircraft's speeds and tail size, thrust that high overpowers the elevator.
+aircraft's speeds and tail size, thrust that high overpowers the elevator,
+and the raises small enough to spare the elevator are too small to leave
+the bow spray.
 The pattern across 4a and 4b is now clear: gasoline's 58 lb can sit low and
 forward (balanced, spray-doomed), aft (spray-clear, balance-doomed), or high
 (both solved, pitch-doomed). The mass has nowhere legal to go — which is
