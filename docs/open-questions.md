@@ -55,11 +55,21 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   stick force is 2.5–2.7 lb across the envelope and the twist-grip decision
   put pitch and rudder on the same hand.
   [trades/borrowed-optimizations.md §3](trades/borrowed-optimizations.md)
-  recommends bungee/spring trim at the stick base (~0.4 lb, no tab, no new
-  flutter surface). Decide the mechanism before the stick base is drawn
+  gives two options: **spring/bungee trim** at the stick base (lightest, no
+  tab, no new flutter surface — AeroConversions' two-opposing-spring unit is
+  $95, weight unpublished), or a **jackscrew-trimmable stabilizer**, which is
+  heavier but solves trim, the incidence item below, and — critically —
+  **preserves full elevator travel at every trim setting**, which a tab does
+  not. That third property is not academic on an aircraft whose flare is its
+  tightest control case. **Evaluate both in the gate-3 flap rerun** rather
+  than defaulting to the lighter one; decide before the stick base is drawn
 - **Adjustable stabilizer incidence — decide before the tail is welded.**
   The pending gate-3 flap rerun already expects to want ~1°; three shim
-  positions at ±0.5° cost grams and turn a rebuild into a wrench
+  positions at ±0.5° cost grams and turn a rebuild into a wrench. RV practice
+  documents real post-first-flight corrections worth 2–3 kt of trim drag —
+  a larger share of *excess power* on 22–31 hp than on their engines. On a
+  welded cage with a single boom, retrofitting means cutting and re-welding.
+  A jackscrew stabilizer (above) delivers this and the trim system together
 - Spar cap taper schedule, web thickness, stiffener spacing
 - Boom-root and tail-post fittings — the architecture is decided
   ([trades/fuselage-architecture.md](trades/fuselage-architecture.md): cage to
@@ -104,10 +114,13 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   deleted pedals made free. ≈ −0.95 ft² of flat plate → **cruise L/D +15%,
   cruise power −13%** for ~1.6 lb, which the flaps/twist-grip/sling savings
   already cover. Decide with the pod shape, not after
-- **Gap seals, split by surface** — seal the elevator (authority for the tight
-  flap flare), do **not** seal the rudder (a ~10% hinge-moment penalty pushes
-  the twist grip from ~19 to ~21 in-lb peak). Measure the real penalty on the
-  built surfaces with a spring scale
+- **Gap seals — seal the elevator; on the rudder, couple sealing to sizing.**
+  NACA TN-632 measured a **sealed smaller surface matching an unsealed larger
+  one at one-third the operating force**, so "sealed and smaller" may beat
+  "unsealed and larger" on the twist grip's wrist-torque budget — ask before
+  the tail is drawn. Friction, not hinge moment, is the real enemy: a teflon
+  chafe strip under the seal is mandatory. Measure breakout with a spring
+  scale on the built surfaces
 - **Field rigging time as a numeric requirement** — proposed: one person, no
   helper, 15 minutes, no tools past a pin puller. Free if it constrains the
   wing-joint design now, expensive to retrofit after the joints are drawn
@@ -123,6 +136,24 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   rewritten.
 - **Spoileron aerodynamic close direction.** Tape a panel on and measure with a
   spring scale at 25 and 35 mph before trusting that airflow shuts it.
+- **The ASI will lie during stall testing, and this project cannot afford
+  that.** A Belite (Part 103) builder found his airspeed indicator failed
+  completely at high alpha because the **pitot was micro-stalling** in
+  oblique flow — 28–32.5 mph indicated against 29.1 calculated — fixed by
+  bending the pitot into the local flow. This design chases a 23 kt stall
+  with ~1 kt of regulatory margin: **plan pitot alignment and a calibration
+  method (GPS three-leg or trailing cone) before first stall testing**, not
+  after the numbers disagree.
+- **Three weights nobody publishes, each blocking a decision** (see
+  [trades/borrowed-optimizations.md](trades/borrowed-optimizations.md)): VG
+  kit weight, GSC/Warp Drive ground-adjustable hub weight (**this one decides
+  whether the 103 kit can use a re-pitchable prop**), and the
+  AeroConversions trim system. All three want a phone call and a scale.
+- **BRS package type against the pod-and-boom architecture.** §103.1 excludes
+  the chute from the 254 lb empty weight, but an open cockpit with a single
+  tail boom has nowhere to bury a softpack — which is why BRS catalogues
+  vertical-launch (VLS) units specifically for the Kolb FireFly/FireStar.
+  Confirm the BRS tray suits a VLS or canister unit before the cage is drawn.
 - **Whether the 24 kt power-off stall is actually met in landing
   configuration.** Still a **legality item** — the stall gate caps gross at
   456 lb, which independently enforces the 254 lb empty limit. Much improved by

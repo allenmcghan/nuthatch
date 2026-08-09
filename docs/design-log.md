@@ -807,14 +807,43 @@ where noted, because five are owner decisions and one is a hole.
   pitch and rudder on the same hand, so that force is held by the wrist that
   must also twist for yaw. Fix: bungee/spring trim at the stick base,
   ~0.4 lb, no tab and no new flutter surface. Treat as required equipment.
-- **Gap seals, split by surface.** Seal the elevator (authority for the
-  tight flap flare; the new trim system absorbs the added force). Do **not**
-  seal the rudder — a ~10% hinge-moment penalty pushes the twist grip from
-  ~19 to ~21 in-lb peak, spending margin for authority it does not need.
-- **Ground-adjustable prop: EAB only.** The fleet buys two fixed wood props
-  today; a re-pitchable hub is what the UL world uses and what a two-engine,
-  Phase-I-measured programme wants — but the 103's ~1 lb margin cannot carry
-  a composite hub. Wood stays on the 103.
+- **Gap seals — and the sourced answer is subtler than "don't seal the
+  rudder."** NACA TN-632 (flight test) gives +20% effectiveness sealing an
+  0.18c surface and +33% on 0.09c, and the real lesson is that **a sealed
+  smaller surface matched an unsealed larger one at one-third the operating
+  force**. So for the twist-grip rudder, sealing is *coupled to sizing* and
+  is a live question to ask before the tail is drawn, not a closed one.
+  Seal the elevator regardless. **The genuine enemy is friction, not hinge
+  moment**: sailplane practice mandates a teflon chafe strip under the seal
+  precisely to stop breakout force creeping up — mandatory here, where the
+  rudder is worked by a wrist.
+- **Ground-adjustable prop — and it need not cost weight.** The EAB-only
+  reasoning was wrong on one fact: **GSC makes a ground-adjustable *wood*
+  prop** (aluminium hub, maple blades, 36–72 in in 2 in steps, individually
+  replaceable blades), which removes the composite-hub weight penalty and
+  obsoletes buying two fixed props. Supporting: a nine-prop back-to-back
+  test found static thrust 155–196 kg and climb 910–1,034 fpm while **cruise
+  fell within 1–2 kt across every prop** — props buy climb, not cruise, which
+  is what a 200 ft ground roll wants; pitch is also how a two-stroke's EGT is
+  managed, and how Vh is legally set for §103.1(e)(3). **Blocked on one
+  number: GSC publishes no hub weight.** If it costs more than ~1 lb over
+  fixed wood, the EAB-only split stands after all.
+- **The Quicksilver precedent, recorded because it is the cautionary one.**
+  The MX — 28 ft span, 250 lb empty, 24 mph stall, near-identical to this
+  aircraft — went two-axis with heavy dihedral, added spoilerons that proved
+  *"only minimally effective,"* and the next generation moved to true
+  ailerons. That is this project's core control decision, tried at this
+  scale, and found wanting. The counter-evidence is stronger and the
+  distinction is the whole point: Kohlman's flight tests (SAE 770441) of
+  aircraft **designed around spoilers** found excellent roll, **yaw coupling
+  virtually eliminated**, high roll rates with flaps down, and no deadband or
+  lag. Quicksilver's were bolted onto a wing that was not. This design is in
+  Kohlman's category — which is the reason to expect the good outcome, and
+  the reason the quarter-scale model's roll work is the item that decides
+  whether the configuration works at all. Bonus from the same history: the MX
+  deployed **both spoilerons symmetrically off the rudder pedals to kill lift
+  for short fields** — §21's symmetric mode is recovered practice, not
+  invention.
 - **Adjustable stabilizer incidence, decided before the tail is welded.**
   The pending gate-3 flap rerun already expects to want ~1° of tail
   incidence; three shim positions at ±0.5° turn a rebuild into a wrench.
