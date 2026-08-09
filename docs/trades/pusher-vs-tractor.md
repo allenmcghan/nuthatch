@@ -250,6 +250,62 @@ speed and power source dominate the noise budget.
    compared against**, by about 50% on the same pack. The glide ratio the project
    already bought is what pays for it.
 
+## 4a. Follow-up: "just move the engine up" and the remote belt drive
+
+Two refinements proposed after the amphibious discussion — mount the whole
+engine on a pylon the way ultralight pushers do, or leave the engine low and
+run a long belt up to a pusher prop shaft. Both are real techniques; neither
+survives this airframe's invariants.
+
+**Why the pylon works for Quicksilvers and Aventuras but not here.** Those
+aircraft hang the engine at the wing with the prop just behind the trailing
+edge — and balance, because their **pilot sits well forward of the wing as
+the counterweight**. The Nuthatch deliberately does the opposite: the pilot
+sits *at* the CG. That placement is not a styling choice — it is the fleet
+plan's load-bearing invariant, the reason a 105 lb pilot and a 170 lb pilot
+fly the same airplane with nothing but an 8 lb ballast placard. Pilot-at-CG
+means the pilot cannot be the counterweight for anything; the engine at the
+nose is what balances the boom and tail. The arithmetic with no forward
+pilot: a pusher prop must clear the wing TE (sta 98), putting the 58 lb
+power group at ~sta 99 — 36 in aft of the CG. Countering 58 × 36 ≈ 2,100
+in-lb from the nose (~55 in arm) takes **~38 lb of permanent nose ballast**
+on an airframe with a 0.8 lb margin. The alternative — move the wing aft —
+drags the TE, and therefore the prop and engine, aft with it: the divergence
+§1 already documented ("chasing it aft shrinks the tail arm and grows the
+tail"). The pylon doesn't escape the trade; it *is* the trade.
+
+**The remote belt drive attacks the right problem and picks up a worse one.**
+Engine low in the CG bay, belt up and aft to a prop shaft behind the wing:
+the mass problem genuinely dissolves — this is the gas-powered version of
+what electric does for free. What it costs:
+
+- **Center distance ~45–60 in** (CG bay to a shaft above the TE), against
+  the 6–10 in of every proven ultralight belt redrive (including the F-33's
+  own). Long spans need idlers and a tensioner; belt flap on a 4–5 ft run
+  is its own aeroelastic problem.
+- **Two-stroke torque pulses through a long compliant drive** is the
+  BD-5's disease: torsional resonance between engine pulses, belt
+  compliance, and prop inertia. Solvable with a tuned cush drive and a
+  development program; fatal to a 750-hour wood airplane that must not
+  carry a development program in its propulsion.
+- The run crosses **flexing wood structure** (fuselage to pylon/wing);
+  belt alignment across a joint that moves is a maintenance item forever.
+- **+12–18 lb** of shaft, bearings, pylon, idlers, and guards — EAB-only
+  on weight, before any of the above is solved.
+
+**And the unblown tail stands regardless of how the mass is solved.** The
+rudder is the roll control, and it flies in prop wash today. Every pusher
+variant — pylon, belt, or electric — removes that wash at rotation and
+low speed, and §5's gating question (adequate roll authority unblown, a
+full-scale power-on question) applies to all of them equally.
+
+**Net:** for gasoline, the pylon and the belt are both ways to spend weight
+and risk arriving at the same two unsolved problems (balance-or-ballast, and
+the unblown tail). The clean pusher path remains the electric conversion on
+the EAB — motor light enough to need no counterweight, batteries on the CG
+tray the airframe already carries — with the unblown-tail question as its
+gate.
+
 ## 5. What this does not settle
 
 - Whether the tail can be sized to give adequate roll authority unblown. This is
