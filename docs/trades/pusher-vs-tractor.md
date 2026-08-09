@@ -306,6 +306,56 @@ the EAB — motor light enough to need no counterweight, batteries on the CG
 tray the airframe already carries — with the unblown-tail question as its
 gate.
 
+## 4b. Follow-up: the high tractor — keep it a tractor, lift the whole engine
+
+The third variant: engine stays in front of the wing, still a tractor, but
+raised on a mast so the prop clears water spray. This one has real
+precedent — the PBY Catalina, the Grumman Goose, and the AirCam are all
+high-thrustline tractors — and it fixes the two problems the other variants
+couldn't: **the mast can sit at the nose station, so balance is preserved**
+(no 38 lb ballast), and a prop at z ≈ 75 puts the tips ~40 in above the
+waterline, which combined with height over the float bows starts to look
+like real seaplane geometry.
+
+**What kills it is the thrust line itself.** Thrust acts where the prop is;
+raising the prop raises the thrust line above the CG, and every power change
+becomes a pitch moment the tail must cancel. The arithmetic at 180 lb of
+takeoff thrust:
+
+| Thrustline | Offset above CG (z 27) | Power pitch moment | Tail ΔCL needed at 30 mph | Elevator |
+|---|---|---|---|---|
+| 40 in (today) | 13 in | 2,340 in-lb | 0.28 | ~8° — inside the trim analysis |
+| 60 in | 33 in | 5,940 in-lb | 0.72 | **~21° of the ±25° throw** |
+| 75 in (spray-clear) | 48 in | 8,640 in-lb | **1.05** | **~30° — MORE than the tail has** |
+
+At rotation speed, the spray-clearing thrustline demands more than the
+tail's entire authority just to hold the nose against full power — before
+rotating, before flaring, before gusts. Even the modest 60 in raise leaves
+4° of elevator for everything else. The big flying boats live with this by
+carrying proportionally larger tails, higher speeds (q rescues the tail),
+and three-axis controls; the Aventura's known power-pitch coupling is the
+same physics accepted as a handling signature. A two-axis aircraft whose
+flare already uses all but 5.7° of elevator has no room to accept it.
+
+Secondary costs, each real: the horizontal tail leaves the prop wash (the
+blown-tail rudder-roll advantage §1 credits to the tractor is partially
+forfeited), the mast is +8–12 lb of structure and an engine-vibration
+fatigue problem (EAB-only on weight), and a 58 lb engine on a mast above
+the forward cockpit is a crash-path regression from the rev D layout, which
+deliberately keeps the engine ahead of the crush bay.
+
+**Net:** the high tractor is the best gasoline water idea yet — it genuinely
+solves balance and spray — and it fails on a third, harder wall: at this
+aircraft's speeds and tail size, thrust that high overpowers the elevator.
+The pattern across 4a and 4b is now clear: gasoline's 58 lb can sit low and
+forward (balanced, spray-doomed), aft (spray-clear, balance-doomed), or high
+(both solved, pitch-doomed). The mass has nowhere legal to go — which is
+the original §1 conclusion, reached from the third direction. Electric up
+high shares the pitch-coupling physics but at 12 lb of motor the *installation*
+problems (mast structure, crash path, vibration) shrink to manageable, and
+the thrust offset becomes a design variable (smaller disc, lower pylon)
+instead of a fixed consequence of hauling an engine into the air.
+
 ## 5. What this does not settle
 
 - Whether the tail can be sized to give adequate roll authority unblown. This is
