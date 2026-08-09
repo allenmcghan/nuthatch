@@ -20,7 +20,7 @@ objection is mission-dependent at ~40 hr/yr. Verify actual engine weights on a
 scale; keep the F-33 as the documented EAB upgrade path on the same mount.
 
 **Airfoil section and its real CLmax.** Everything downstream hangs on it: stall
-speed, slat geometry, spar depth, rib templates. Current numbers assume the Sky
+speed, flap geometry, spar depth, rib templates. Current numbers assume the Sky
 Pup section at CLmax 1.4 clean, which is an assumption, not a measurement.
 *First numbers now exist*: NeuralFoil at Re 1.12 M puts NACA 4412 at 2-D CLmax
 1.61 (≈1.45 on the wing), so 1.4 is sound and slightly conservative. **4412 is the
@@ -33,9 +33,13 @@ little means no authority, too much means dutch roll. Current placeholder is 4-6
 degrees per side and 2-3 degrees washout. Needs the original design's actual
 values or a defensible derivation.
 
-**Slat geometry.** Chord, gap, overlap, droop angle. Millimeters decide whether a
-slat produces CLmax or just drag. Intent is to copy a known installation
-dimension-for-dimension (CH701, Highlander) rather than derive it.
+**Flap geometry.** Chord fraction (25%c working number), span (~60% inboard),
+hinge/false-spar detail, torque-tube diameter, Johnson-bar geometry and notch
+loads. Plain flaps are far more forgiving than slats were — no
+millimeter-critical gap — but the increment still wants verification:
+NeuralFoil the flapped section at Re ~1M the same way the clean sections were
+done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
+§21, with the quarter-scale stall demo as the escape clause.)
 
 ## Then, in order
 
@@ -63,8 +67,10 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
 - Tail sizing — **gate-3 analysis done** ([trades/trim-tail.md](trades/trim-tail.md)):
   keep 30 + 15 ft², i_t = −1.1°, elevator 45% chord ±25° (consider −30/+20),
   gearing ~4.5°/in, SM ~20–25%. Flare passes at forward CG in ground effect with
-  23% margin. Remaining: re-run with the measured slat pitching-moment increment
-  once slat geometry is copied from the donor installation
+  23% margin. Remaining: **re-run with flap pitching moment and downwash**
+  (flaps adopted, [trades/flaps.md](trades/flaps.md)) — full-flap flare at
+  forward CG may saturate the elevator; expect a 25° landing notch or ~1° of
+  tail incidence
 - **Symmetric spoiler deployment mode.** Landing over the mission's own 50 ft
   trees at L/D 10.7 with no glidepath control uses ~720 of the 1,000 ft field,
   and a two-axis aircraft cannot slip. Both-spoilers-up (separate lever,
@@ -85,11 +91,13 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   rewritten.
 - **Spoileron aerodynamic close direction.** Tape a panel on and measure with a
   spring scale at 25 and 35 mph before trusting that airflow shuts it.
-- **Whether the 24 kt power-off stall is actually met with slats.** Calculated at
-  23.8 kt, which is 0.8 kt of margin on an estimated CLmax. **Upgraded by the
-  weight scrub: this is now a legality item, not performance** — the stall gate
-  caps gross at 456 lb, which independently enforces the 254 lb empty limit.
-  If real slatted CLmax is 1.7 instead of 1.8, the compliance equation breaks.
+- **Whether the 24 kt power-off stall is actually met in landing
+  configuration.** Still a **legality item** — the stall gate caps gross at
+  456 lb, which independently enforces the 254 lb empty limit. Much improved by
+  the flaps decision: margin is now ~1.2 kt on a NeuralFoil-verified clean 1.45
+  plus a textbook plain-flap increment, versus 0.1 kt on the unverified slatted
+  1.8 it replaced. Verify the flapped section at Re ~1M, then on the
+  quarter-scale model, then full-scale in Phase I.
 - **Battery capital cost, currently carried as $500/kWh in design-log §3.** That
   single figure decides the electric argument and has never been re-verified
   against current DIY 21700 pack prices. Check it before citing §3 again.
@@ -107,18 +115,13 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   winglet, at zero weight. Decide it with the tip bow, not after. Direction is
   moulded carbon caps to a copied Hoerner geometry — see
   [trades/wingtip-caps.md](trades/wingtip-caps.md).
-- **Where the full-span slat terminates at the tip.** Constrains the tip cap
-  geometry, and §10's "copy a known installation" rule has nothing to copy for a
-  slat-to-moulded-tip junction. Resolve before the cap shape is frozen.
-- **Flaps-for-slats (Path B).** Open decision, not a change:
-  [trades/flaps.md](trades/flaps.md) shows plain flaps replacing the slats nets
-  ~−1 lb, moves the 103 stall margin from 0.1 kt to ~1.2 kt on better-known
-  aerodynamics, and deletes the slat cruise drag — gated on (1) the
-  quarter-scale model demonstrating a docile stall flaps up and down, and
-  (2) a gate-3 trim rerun with flap moments (full-flap flare at forward CG may
-  saturate the elevator; expect to land at 25°). Slatted wing remains the
-  design of record until both gates pass. If Path B is adopted, the two slat
-  items above retire.
+- **Flap conversion weight on a scale.** The ~−1 lb net for flaps-for-slats
+  (now adopted — design-log §21) is an estimate; hinges, torque tube, lever,
+  and TE stiffening get weighed before the 253.2/275.7 lb ledger re-baselines.
+- **Docile stall on the quarter-scale model, flaps up and down.** The
+  flaps decision's escape clause: straight-ahead break, no wing drop, or the
+  decision reverts to slats. (The slat-tip-termination item retired with the
+  slats — the moulded tip cap is now unconstrained at the leading edge.)
 
 ## Not analysed anywhere, and should be
 
@@ -130,36 +133,34 @@ future decision to hang mass at the wingtips.
 
 ## Not technical, but decide early
 
-**Drafting for yourself or for publication.** Publishable plans need full-size rib
-templates, a materials list with sizes and sources, and an assembly sequence.
-Roughly triple the drafting effort.
+**~~Drafting for yourself or for publication~~ — DECIDED (design-log §21):
+for publication.** Full-size rib templates, a materials list with sizes and
+sources, an assembly sequence; roughly triple the drafting effort, accepted.
 
-**Whether the CAD is built to output cut files.** This has to be decided before
-the first drawing, not after — see [trades/digital-fabrication.md](trades/digital-fabrication.md).
-Drawing in 3D so that DXF and STL fall out is nearly free now and expensive to
-retrofit, and it is worth an estimated 90–160 adjusted hours across the build.
-It also decides whether published plans can ship cut files, which no other design
-in this class does.
+**~~Whether the CAD is built to output cut files~~ — DECIDED (design-log §21):
+yes.** 3D-first CAD from which DXF and STL fall out, per
+[trades/digital-fabrication.md](trades/digital-fabrication.md). Published
+plans ship cut files, which no other design in this class does.
 
-**The covering system, which is worth more hours than any tooling decision.**
-§14 prices Oratex at roughly 75 hours against Stewart for about $1,400. Covering
-is the single largest task on the build at 120 raw hours and digital fabrication
-does essentially nothing for it. If hours bind harder than dollars, settle this
-first.
+**~~The covering system~~ — DECIDED (design-log §14 addendum): Oratex.**
+75 hours and 8 lb bought for ~$1,400. The second-build caveat (covering is 27%
+of aircraft #2 and Oratex pays its premium twice) was acknowledged and
+accepted, because:
 
-It gets worse on a repeat. [trades/second-build.md](trades/second-build.md) puts
-covering at **27% of a second aircraft** — everything else improves with tooling
-and experience and covering does not. If a second build is plausible, §14's lean
-toward Stewart should be revisited before the first order.
+**~~Whether there is ever a second aircraft~~ — DEFERRED, deliberately
+(design-log §21): decided after #1 proves out.** The first steel order is
+sized for one aircraft. The DXF nesting is paid regardless, so a second 4130
+set later costs only a repeat shop setup — that is the price of deferring, and
+it is small. If #2 becomes real, ask a DAR early (major-portion rule and
+repairman certificate apply per aircraft).
 
-**Whether there is ever a second aircraft, decided before the first steel order.**
-The marginal cost of a second nested set of laser-cut 4130 is far below the first,
-since the DXF and nesting are already paid for. Same for spar cap stock and any
-minimum-order material. And if a second EAB aircraft is a real plan, ask a DAR
-early — the major portion rule and the repairman certificate both apply per
-aircraft, and the answer may change what gets documented during build 1.
-
-**Where Phase I happens.** The test area goes into the operating limitations as a
-radius and altitude block. It needs to be somewhere 40 hours can actually be flown
-without fighting airspace, and first flight of a modified one-off does not belong
-in a backyard.
+**Where Phase I happens — still open, and fine to hold until the build is well
+along.** Phase I is the FAA's initial flight-test period for the EAB aircraft:
+its operating limitations assign a test area (a radius and altitude block) in
+which the required hours — typically 40 for a non-certified engine — must be
+flown before passengers or ordinary cross-country flying. So the question
+means: *which airport or large field hosts the initial test flying?* It needs
+somewhere those hours can be flown without fighting airspace, and first flight
+of a modified one-off does not belong in a backyard. (The pure-103 sister ship
+has no formal Phase I, but its shakedown flying wants the same big field.)
+Needs deciding before the EAB airworthiness application, not before drawing.

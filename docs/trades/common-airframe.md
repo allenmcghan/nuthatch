@@ -18,7 +18,9 @@ price.
 Everything except the power package, windshield, and tablet — per the
 [weight-scrub](weight-scrub-103.md) configuration, full safety package intact:
 
-wing (78 lb incl. slats and Oratex) + fuselage structure (55) + tail (18.5) +
+wing (78 lb incl. high-lift system and Oratex — slats at the time of this
+trade; the flaps-for-slats swap since adopted nets an estimated −1 lb, held
+as margin until weighed) + fuselage structure (55) + tail (18.5) +
 gear with brakes (29.5) + controls incl. symmetric-spoiler lever (15.5) + fuel
 system, logger, wiring, BRS points, hardware (15.5) = **212.2 lb**.
 

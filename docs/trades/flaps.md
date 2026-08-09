@@ -7,7 +7,7 @@ stall speed without much added complexity? Script: `analysis/flaps.py`.
 but the 103 weight margin turns "add flaps" into a sharper question: *add them
 to the slatted wing* (busts the 103 kit) *or let them replace the slats* (nets
 slightly lighter and multiplies the stall legality margin by ten). The second
-path is the interesting one, and it is a real design decision, left open below.
+path won: **Path B adopted, owner decision 2026-08-09 — see §5.**
 
 ## 1. Why this wing takes flaps more easily than most
 
@@ -94,16 +94,16 @@ the 13.4° skid geometry.
 
 ## 5. Recommendation and status
 
-**Flaps: yes — as Path B, flaps-for-slats, pending two gates:**
+**DECIDED — Path B adopted, owner decision 2026-08-09.** The flapped wing is
+now the design of record; the slats retire (design-log §10 addendum). The two
+former decision gates convert to **required verifications before the wing
+drawings freeze**:
 
-1. Quarter-scale model demonstrates docile stall, flaps up and down.
+1. Quarter-scale model demonstrates docile stall, flaps up and down —
+   straight-ahead break, no wing drop. **If the model shows a wing drop, this
+   decision reverts to slats**; that is the escape clause, recorded here.
 2. Gate-3 trim rerun with flap moments and downwash; expect to land at 25°
    or adjust tail incidence ~1°.
-
-Until both pass, the slatted wing remains the design of record. This is
-recorded as an open decision, not a change — the wing drawings are not yet
-frozen (gate 5), so the decision costs nothing to hold open until the model
-flies.
 
 ## 6. What this does not settle
 

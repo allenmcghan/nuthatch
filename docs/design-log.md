@@ -314,6 +314,17 @@ Slat gap, chord, overlap, and droop should be copied dimension-for-dimension fro
 a known installation (CH701, Highlander) rather than derived. Millimeters decide
 whether a slat works or is pure drag.
 
+**Addendum — superseded (owner decision 2026-08-09): flaps replace the slats.**
+This section's "slats, not flaps, because there are no ailerons" argument
+assumed flaps would strip the outer panel; the adopted flap is **inboard-only
+(~60% span), leaving the spoileron panels on washed-out outer wing** — the tips
+keep flying by geometry, verified on the quarter-scale model before the wing
+drawings freeze. The swap nets ~−1 lb, moves the 103 stall margin from 0.1 kt
+on an unverified slatted CLmax to ~1.2 kt on better-known aerodynamics, and
+deletes the slat cruise drag this section priced at 7% of L/D. Worked in
+[trades/flaps.md](trades/flaps.md), which carries the escape clause: a wing
+drop on the model reverts this decision.
+
 ## 11. Brakes: bicycle hydraulic discs
 
 To decelerate 424 lb at 0.4g needs 85 lb of tire friction per wheel, which at a
@@ -402,6 +413,14 @@ direction.
 
 Oratex buys 75 hours for about $1,400 and is worth considering if hours bind
 harder than dollars.
+
+**Addendum (owner decision 2026-08-09): Oratex adopted.** Hours bind harder
+than dollars on this build, and Oratex is also the lightest system on the
+table — 8 lb under Stewart, on an airframe with a ~1 lb legality margin. The
+[second-build](trades/second-build.md) caveat (covering is 27% of aircraft #2
+and Oratex pays the premium twice) is acknowledged and accepted: the second
+aircraft is deferred until #1 proves out, and covering #1 in Stewart to hedge
+a hypothetical #2 would be optimizing the wrong aircraft.
 
 ## 15. Engine: Hirth F-33
 
@@ -670,7 +689,7 @@ gear geometry clear the 60 in disc; gear sized at the EAB max gross; all
 deletable items (windshield, tablet, BRS bridle) on permanent hard points;
 5 gal fuel in both kits; per-kit placards.
 
-**§20 addendum — the fleet plan.** Two aircraft, both built to the identical
+**§20 addendum — the fleet plan (see also §21).** Two aircraft, both built to the identical
 103-compliant airframe. #1 registers EAB from the start: the stall gate caps the
 103 configuration at pilot + fuel ≤ 184 lb, so a 200 lb owner is not legal on it
 at any fuel load — EAB is required by the owner's weight before any add-on.
@@ -682,3 +701,38 @@ airframe carries the hybrid/electric provisions: a 110 lb CG-bay tray at the
 carry-through, a nose-to-bay conduit channel, and a 45 lb engine-mount ceiling.
 The published design's audience follows the same split: anyone builds the 103;
 the EAB kit is the documented growth path on the same structure.
+
+## 21. Owner decisions, 2026-08-09
+
+Five open items closed in one sitting; each points at the trade that priced it.
+
+- **Flaps replace the slats (Path B adopted).** [trades/flaps.md](trades/flaps.md).
+  Single-lever plain flap, ~60% span inboard, Johnson bar 0/25/40°, one-piece
+  torque tube, VFE 55 mph. 103 stall margin goes 0.1 → ~1.2 kt on
+  better-verified aerodynamics; ~−1 lb net (held as margin, not banked, until
+  the conversion weight is measured on a scale — the 253.2/275.7 lb ledger
+  numbers stand until then). §10's slat arguments superseded per its addendum.
+  Escape clause: a wing drop on the quarter-scale model reverts this.
+- **Covering: Oratex.** §14 addendum. 75 hours and 8 lb bought for ~$1,400.
+- **Second aircraft: deferred until #1 proves out.** The first steel order is
+  sized for one aircraft; the DXF nesting is paid regardless, so a second 4130
+  set later costs only a repeat shop setup. Revisit after Phase I.
+- **Plans are for publication, and the CAD outputs cut files.** The drafting
+  standard is set before the first drawing, as
+  [trades/digital-fabrication.md](trades/digital-fabrication.md) required:
+  3D-first CAD from which DXF and STL fall out, full-size rib templates, a
+  materials list with sizes and sources, and an assembly sequence. The
+  roughly-triple drafting effort is accepted; this design ships cut files,
+  which no other aircraft in its class does.
+- **Spoileron servo provision (Junco).** The spoilerons remain the roll/
+  crosswind control, manually actuated on this aircraft. Design requirement
+  recorded now, while the linkage is undrawn: the spoileron circuit gets a
+  **servo attachment provision** so the EAB's Junco tablet can later parallel
+  the manual linkage for wing-leveling in crosswind — same pattern as the
+  hybrid provisions (grams of bracket now, capability later). The manual
+  linkage must always override or back-drive the servo; fail-safe analysis
+  joins the EAB autopilot work, not this airframe's critical path.
+
+Still open after this batch: the symmetric-spoiler *landing* mode (a separate
+both-up lever for glidepath — a different function from roll, still
+recommended and still undecided), and where Phase I flight testing happens.

@@ -43,7 +43,7 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 | Empty weight | 296 lb* | 250 lb* |
 | Gross | 580 lb | 450 lb |
 | Span / area | 31 ft / 130 ft² | same |
-| Stall, with slats | 28.8 mph | 23.8 kt |
+| Stall, flaps 40° | 28.4 mph | 22.9 kt |
 | Takeoff roll | 140 ft | ~160 ft |
 | Climb | 1,010 fpm | ~500 fpm |
 | Glide ratio | 10.7 | 10.7 |
@@ -52,8 +52,9 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 | Engine | Hirth F-33, 28 hp | direct-drive, ~16 hp |
 | Brakes | yes | yes |
 
-\* The weight workbook omits the slats and cabane that the build-log CSV
-carries; honest totals are ~308 / ~262 lb until reconciled — see
+\* The weight workbook omits rows (slats — since retired for flaps — and
+cabane) that the build-log CSV carries; honest totals are ~308 / ~262 lb until
+reconciled — see
 [docs/trades/weight-scrub-103.md](docs/trades/weight-scrub-103.md), which also
 works a single-build path to ~253 lb.
 
@@ -67,13 +68,16 @@ Part 103 stays gasoline. Worked in
 
 - Nose-mounted tractor propeller. Pusher was analysed and rejected for the
   gasoline aircraft: efficiency is a wash, and it does not close on balance
-- Welded 4130 steel tube fuselage, all-wood cantilever wing
+- Welded 4130 cockpit cage + single straight 6061 tail boom, all-wood
+  cantilever wing, non-structural stringer-and-fabric cockpit fairing
 - Constant chord, 3-piece removable wing, two bolts per cap per joint
-- Douglas fir truss ribs, plywood D-tube leading edge, fabric covered
+- Douglas fir truss ribs, plywood D-tube leading edge, Oratex covered
 - Aluminum tube spar caps with a wrapped sheet shear web
-- Fixed full-span leading edge slats
+- Single-lever plain flaps, inboard ~60% span (0/25/40°, one-piece torque
+  tube; replaced the fixed slats — [docs/trades/flaps.md](docs/trades/flaps.md))
 - Two-axis control: elevator and rudder, roll via spoilerons and dihedral
-- Tricycle gear, steerable nose, sprung tube mains, bicycle hydraulic disc brakes
+- Tricycle gear, castoring raked nose leg, trailing-arm mains with MTB
+  coil-overs, bicycle hydraulic disc brakes
 - Structural nose bow ahead of the pedals, rollover hoop, 5-point harness,
   energy-absorbing seat
 - BRS hard points designed in
@@ -121,7 +125,7 @@ this class is a claim. This one will be a measurement.
 ## Contributing
 
 Corrections to the analysis are the most valuable contribution, especially on
-spar sizing, slat geometry, and load cases. Open an issue with your numbers.
+spar sizing, flap geometry, and load cases. Open an issue with your numbers.
 
 ## License
 
