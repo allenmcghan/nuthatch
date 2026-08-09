@@ -1030,3 +1030,50 @@ allow, keep the run-out unkinked, and do not chase a fully closed teardrop.
 3.8 of the 4.8 lb that flaps, the twist grip and the sling seat freed.
 **The margin is now spoken for**; nothing further joins the 103 kit without
 finding new weight.
+
+## 25. Rev G: reclined pilot, enclosed cabin, and the wing brought down onto it
+
+Worked in [trades/enclosed-cockpit.md](trades/enclosed-cockpit.md) with
+`analysis/enclosed-cockpit.py`. Owner objection: the wing attachment was not
+aerodynamic or efficient, the pilot should recline, the windshield should run
+from the nose up to the wing, and the cabin should be enclosed with doors.
+
+**The objection was right.** Rev F left **15 in of open air** between the pod
+top and the wing underside, with cabane struts crossing it at the widest
+station on the aircraft.
+
+**Reclining 35°** drops the head 6.5 in (56 → 49.5). It also swings pilot CG
+**5.7 in aft** — +4.3% MAC, at the aft limit — so the **seat moves forward
+~6 in** (hip sta 57 → 51) and aircraft CG never moves. The room exists only
+because §21 deleted the rudder pedals and emptied the footwell: two decisions
+paid for each other without either knowing.
+
+**The wing comes down from chord line 64 to 58** (underside 55, giving 5.5 in
+over the head). **The cabane is deleted entirely** — the main hoop at sta 61.5
+picks the front spar up directly at the cabin roof, so the load path gets
+shorter as well as cleaner.
+
+**Drag: −1.17 ft², f 4.84 → 3.68, L/D max 10.8 → 12.4 (+15%)**; stacked with
+the §22 cleanup, **f → 3.08 and L/D 13.6 (+25%)**, glide 2.05 → 2.57 miles
+from 1,000 ft. The largest single performance change in the project, and it
+came from a shape wanted for looks.
+
+**Weight, and the fleet rule survives:** the cabane deletion is an *airframe*
+change worth **−5.5 lb to both aircraft**, taking the **103 kit from 253.2 to
+247.7 — margin 0.8 → 6.3 lb**, which more than covers the all-steel boom
+(−2.2) and the drag cleanup (−1.6) that had just spoken for everything. The
+**enclosure (+7.5 lb net) is an EAB kit item**, exactly like the windshield
+and tablet: hard points are permanent grams in the cage, doors bolt on or
+stay home. **Aircraft #2 flies open under the same wing on the same cage.**
+
+**Three honest costs recorded.** Roll: the high-wing pendulum arm drops
+37 → 31 in above CG, **−16%**, on the aircraft whose roll control *is*
+dihedral — expect to put 0.5–1° back, and re-run the aero model before
+drawing. Entry: ducking under a 55 in wing is a regression from the 26 in
+step-over; doors fix it on the EAB, the open 103 gets a duck-and-sit.
+Ventilation: an enclosed cabin in a Tennessee summer is a greenhouse, so
+NACA ducts and an openable panel become required equipment — which partly
+undercuts the sling seat's cooling rationale (§21 addendum 2). Plus a new
+question the open cockpit never had: **egress from an enclosed cabin under a
+BRS**, possibly inverted, through doors that share structure with the
+rollover hoop.

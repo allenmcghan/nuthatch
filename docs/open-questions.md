@@ -81,8 +81,22 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   rolling moment better and fouls shoulders sooner — a mockup question); and
   the welded boom-to-cage cluster layout, still worth copying from Kolb even
   though the fitting is gone
-- Wing carry-through and cabane geometry, which sets the wing LE station that
-  trims CG to 30% MAC
+- **Wing carry-through — cabane DELETED (rev G,
+  [trades/enclosed-cockpit.md](trades/enclosed-cockpit.md)).** The wing sits
+  on the cabin roof at chord line 58 and the sta 61.5 main hoop picks the
+  front spar up directly at z=55. Remaining: **re-run `aero-model.py` for
+  dihedral** — the high-wing pendulum arm drops 16% and this aircraft's roll
+  control *is* dihedral, so expect +0.5–1°; and confirm the wing LE station
+  still trims CG to 30% MAC with the seat moved forward 6 in for the recline
+- **Egress from an enclosed cabin — a question the open cockpit never had.**
+  Doors share structure with the rollover hoop that now also carries the wing.
+  Decide jettison vs frangible panel, and check it against the BRS, before
+  the cage is welded
+- **Recline angle and seat station — mockup items.** 35° is the working
+  number (head top z 49.5, hip sta 51); 30° eases entry and CG, 40° saves
+  more drag. Also check head clearance (5.5 in on paper) with a helmet and
+  the sling at full sag, and whether "open a door and sit in" actually works
+  at the chosen sill height
 - Gear geometry — **resolved** ([trades/landing-gear.md](trades/landing-gear.md)):
   mains sta 70.5 (15% MAC aft of CG), nose sta 32, track 56 in, seat 20 in AGL,
   8 fps / N=3 energy basis, 13×5.00-6 mains at 8–10 psi, tail skid. Remaining:

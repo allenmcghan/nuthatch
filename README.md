@@ -68,8 +68,12 @@ Part 103 stays gasoline. Worked in
 
 - Nose-mounted tractor propeller. Pusher was analysed and rejected for the
   gasoline aircraft: efficiency is a wash, and it does not close on balance
-- Welded 4130 cockpit cage + single straight 6061 tail boom, all-wood
-  cantilever wing, non-structural stringer-and-fabric cockpit fairing
+- Welded 4130 cockpit cage + single straight 4130 tail boom, all-wood
+  cantilever wing sitting directly on the cabin roof (no cabane), fabric
+  over everything
+- Reclined pilot, windshield sweeping from the nose to the wing; **enclosed
+  cabin with doors both sides is an EAB kit item** — the Part 103 aircraft
+  flies open under the same wing on the same cage
 - Constant chord, 3-piece removable wing, two bolts per cap per joint
 - Douglas fir truss ribs, plywood D-tube leading edge, Oratex covered
 - Aluminum tube spar caps with a wrapped sheet shear web

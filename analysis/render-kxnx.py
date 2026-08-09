@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synthetic renderings: Nuthatch rev F lifting off runway 35 at Music City
+"""Synthetic renderings: Nuthatch rev G lifting off runway 35 at Music City
 Executive Airport (KXNX), Gallatin TN — 6,300 x 100 ft asphalt, elev 583 ft.
 Sun-shaded painter render of the actual mesh with cast shadow. These are
 renderings of the design geometry, not photographs.
@@ -22,7 +22,8 @@ MAT = {  # base RGB per group (fabric cream, steel graphite, black rubber...)
  "wing":(0.93,0.90,0.82),"tail":(0.93,0.90,0.82),"fuse":(0.88,0.86,0.80),
  "prop":(0.25,0.22,0.20),"tire_n":(0.13,0.13,0.14),"gear":(0.30,0.33,0.36),
  "cage":(0.34,0.37,0.40),
- "wheel_m":(0.15,0.15,0.17),"struts":(0.30,0.33,0.36)}
+ "wheel_m":(0.15,0.15,0.17),"struts":(0.30,0.33,0.36),
+ "doors":(0.55,0.62,0.68)}
 fcol = np.zeros((len(F),3))
 for name,a,b in GROUPS: fcol[a:b] = MAT[name]
 # accent: rudder + wingtips in a warm orange
@@ -119,7 +120,7 @@ def render(fname, cam, look, pitch_deg, alt_ft, sunaz=250, sunel=18, fov=8.5,
         r = 2.5/zh[0]*(1/np.tan(np.radians(fov)))
         ax.add_patch(Ellipse(ph[0], r*0.5, r*2, angle=8, fc=(0.9,0.9,0.9,0.14),
                              ec=(0.85,0.85,0.85,0.3), lw=1, zorder=6))
-    fig.text(0.012,0.02,"NUTHATCH rev F — synthetic rendering of the design mesh · "
+    fig.text(0.012,0.02,"NUTHATCH rev G — synthetic rendering of the design mesh · "
              "runway 35, Music City Executive (KXNX), Gallatin TN · not a photograph",
              fontsize=8, color="white", alpha=0.85, family="monospace")
     os.makedirs("drawings/renders", exist_ok=True)

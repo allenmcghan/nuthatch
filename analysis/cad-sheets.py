@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dimensioned CAD sheet set from the rev F mesh (welded steel cage + boom).
+"""Dimensioned CAD sheet set from the rev G mesh (enclosed reclined cabin).
 Outputs drawings/sheets/GA-001.png, LG-001.png, CP-001.png and
 drawings/nuthatch-sheets.pdf. Dimensions in inches, datum = prop plane.
 """
@@ -63,7 +63,7 @@ order = np.argsort([np.mean((-V[t, 0]*s+V[t, 1]*c)*c2-V[t, 2]*s2) for t in F])
 for k in order: ax.fill(Vx[F[k]], Vy2[F[k]], facecolor="#e8edf1", edgecolor=EDGE, lw=0.08)
 ax.set_aspect("equal"); ax.axis("off"); ax.set_title("ISOMETRIC")
 fig.suptitle("GENERAL ARRANGEMENT — Vne 62 MPH FLEET · 103 KIT 253 LB / EAB KIT 276 LB", fontsize=13)
-title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "F")
+title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "G")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/GA-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
@@ -115,24 +115,28 @@ sel3 = (V[F].mean(axis=1)[:, 0] < 130)
 for tri in F[sel3]:
     p = V[tri]; ax.fill(p[:, 0], p[:, 2], facecolor=FILL, edgecolor=EDGE, lw=0.12)
 ax.axhline(0, color=INK, lw=1.2)
-# 6'0" pilot silhouette, seated: seat pan at (58, 20)
-hx, hz = 55, 51
-ax.add_patch(plt.Circle((hx, hz), 4.2, fc="#b7c3cd", ec=INK, lw=1, zorder=5))
-ax.plot([hx, 57, 57], [hz-4, 34, 20.5], color=INK, lw=7, solid_capstyle="round", zorder=5)   # torso
-ax.plot([57, 44, 42], [21, 22, 12], color=INK, lw=6, solid_capstyle="round", zorder=5)       # thigh+shin
-ax.plot([57, 47, 43.5], [34, 30, 26], color=INK, lw=4, solid_capstyle="round", zorder=5)     # arm to stick
+# 6'0" pilot, RECLINED 35 deg, hip moved fwd to sta 51 to hold CG at 63
+ax.add_patch(plt.Circle((69, 46), 4.2, fc="#b7c3cd", ec=INK, lw=1, zorder=5))
+ax.plot([69, 65, 51], [46, 40, 20], color=INK, lw=7, solid_capstyle="round", zorder=5)   # head-shoulder-hip
+ax.plot([51, 33, 26], [20, 17, 11], color=INK, lw=6, solid_capstyle="round", zorder=5)   # thigh + shin
+ax.plot([65, 58, 56], [40, 34, 30], color=INK, lw=4, solid_capstyle="round", zorder=5)   # arm to stick
+# door outline, EAB enclosure kit
+ax.plot([40, 78, 78, 40, 40], [27, 27, 51, 51, 27], color="#b23a2f", lw=1.4, ls="--", zorder=6)
+ax.text(59, 29, "DOOR (EAB KIT)", fontsize=8, color="#b23a2f", ha="center", zorder=6)
 dim_v(ax, 20, 0, 20, "SLING SEAT 20.0 (1-G SAG)")
 dim_v(ax, 128, 0, 26, "STEP-OVER 26")
 dim_v(ax, 8, 0, 40, "THRUSTLINE 40")
-dim_v(ax, 100, 55.5, 64, "HEAD CLR ~8")
-ax.text(70, 74, "6'0\" / 170 LB PILOT SHOWN · NO RUDDER PEDALS (TWIST-GRIP RUDDER) · FOOTREST ADJ (105-200 LB RANGE)\n"
+dim_v(ax, 100, 50.2, 55, "HEAD CLR ~5")
+dim_v(ax, 112, 0, 55, "WING UNDERSIDE 55")
+ax.text(70, -16, "6'0\" / 170 LB PILOT, RECLINED 35° · HIP STA 51 (FWD 6 IN TO HOLD CG 63) · NO RUDDER PEDALS\n"
                 "STICK: PITCH / LATERAL SPOILERONS / TWIST RUDDER · L-HAND SYMMETRIC SPOILER LEVER\n"
                 "MESH SLING SEAT · CRUSH PAD 2 IN BELOW 1-G SAG · PROOF TEST 1920 LB\n"
-                "BALLAST BOSS STA 20 (8 LB REQ'D < 135 LB PILOT) · GRAB: CABANE STRUT",
+                "ENCLOSED CABIN: WINDSHIELD NOSE-TO-WING, DOORS BOTH SIDES (EAB KIT) · 103 FLIES OPEN\n"
+                "BALLAST BOSS STA 20 (8 LB REQ'D < 135 LB PILOT) · VENTILATION REQUIRED",
         ha="center", fontsize=9, color=INK, family="monospace",
         bbox=dict(fc="#f2f5f7", ec=EDGE))
 ax.set_title("COCKPIT & ENTRY — SIDE"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
-title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "D")
+title_block(fig, "CP-001", "RECLINED CABIN / DOORS / PILOT RANGE", "E")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/CP-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
@@ -147,27 +151,27 @@ for tri in gear:
 for tri in cage:
     p = V[tri]; ax.fill(p[:, 0], p[:, 2], facecolor="#c9d3dc", edgecolor=INK, lw=0.2)
 ax.axhline(0, color=INK, lw=1.0)
-for sta, lab in [(30, "NOSE BOW\nSTA 30"), (61.5, "MAIN HOOP STA 61.5\nROLLOVER + FRONT SPAR"),
+for sta, lab in [(30, "NOSE BOW\nSTA 30"), (61.5, "MAIN HOOP STA 61.5\nROLLOVER + FRONT SPAR\nNO CABANE"),
                  (80.5, "REAR SPAR / SEAT BACK\nSTA 80.5"), (96, "BOOM PICKUP\nSTA 96")]:
     ax.axvline(sta, color=DIM, lw=0.5, ls=":")
     ax.text(sta, 69, lab, fontsize=7.5, color=DIM, ha="center")
 ax.axvline(63, color="#2f7d4f", lw=0.9, ls="--")
 ax.text(63, -9, "CG STA 63", fontsize=8, color="#2f7d4f", ha="center")
 dim_h(ax, 30, 96, -4, "CAGE 66.0")
-dim_v(ax, 104, 27, 64, "WING PICKUP z=64")
+dim_v(ax, 104, 27, 55, "WING PICKUP z=55")
 ax.set_title("SIDE — WELDED 4130 CAGE (fabric pod removed)")
 ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
 ax = axs[1]
 for tri in cage:
     p = V[tri]; ax.fill(p[:, 1], p[:, 2], facecolor="#c9d3dc", edgecolor=INK, lw=0.2)
 ax.axhline(0, color=INK, lw=1.0)
-ax.text(0, 78, "FRONT — MAIN HOOP AT STA 61.5\n"
+ax.text(0, 78, "FRONT — MAIN HOOP AT STA 61.5 (WING PICKUP z=55)\n"
                "ONE FRAME, THREE JOBS: ROLLOVER STRUCTURE OVER THE PILOT,\n"
                "FRONT-SPAR CARRY-THROUGH (88% OF WING LIFT, 1519 LB/SIDE ULT),\n"
                "AND IT SITS AT THE CG SO WING LIFT FEEDS NO PITCHING COUPLE",
         ha="center", fontsize=8.5, color=INK, family="monospace",
         bbox=dict(fc="#f2f5f7", ec=EDGE))
-dim_h(ax, -8, 8, 56, "SPAR PICKUPS 16.0")
+dim_h(ax, -8, 8, 46, "SPAR PICKUPS 16.0")
 ax.set_title("FRONT — CAGE SECTION"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
 fig.suptitle("STRUCTURE — WELDED 4130 CAGE + STEEL BOOM  (trades/cockpit-cage.md)", fontsize=13)
 title_block(fig, "ST-001", "COCKPIT CAGE / WING PICKUP", "A")

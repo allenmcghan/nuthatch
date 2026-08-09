@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate the Nuthatch 3D mesh, rev F: all-steel pod-and-boom (welded 4130
-cage faired as a fabric pod to sta 96, then a straight 3.5-in steel boom),
+"""Generate the Nuthatch 3D mesh, rev G: enclosed reclined cabin (welded 4130
+cage, wing lowered onto the cabin roof, doors both sides, 3.5-in steel boom),
 raked nose leg with 20-in bike wheel just aft of the prop, trailing-arm
 mains, MTB coil-overs, 29-in bicycle mains.
 Outputs: model/nuthatch.stl (binary, inches), drawings/general-arrangement.png,
@@ -78,7 +78,7 @@ def bike_wheel(x0, y0, R=14.5, rt=1.2, spokes=14):
 
 # ---- wing: 31 ft, 50 in chord, LE sta 48, dihedral 5, washout 2.5, incidence 2
 xf, zf = naca4(0.04, 0.4, 0.12)
-CH = 50.0; LE = 48.0; Z0 = 64.0
+CH = 50.0; LE = 48.0; Z0 = 58.0   # rev G: wing lowered onto the cabin roof
 DIH = np.radians(5.0)
 group("wing")
 for side in (+1, -1):
@@ -108,9 +108,12 @@ endgroup()
 # single straight 3.50-in steel boom at z=27 (trades/cockpit-cage.md).
 # Max section at sta ~56 (pilot shoulders), smooth run-out into the boom.
 group("fuse")
-fu = [(2,40,3.5,3.5),(10,38,7,6),(22,34,11,8.5),(34,32,13.5,10),(46,31,14.5,11),
-      (56,31,15,11.5),(66,31,14,11),(78,30,11,8.5),(88,28.5,7,5.5),
-      (96,27.5,3.0,3.0),(184,27,1.75,1.75)]
+# (station, z-centre, half-height, half-width). Upper line sweeps from the
+# spinner up to the wing underside (z=55) at the LE and runs aft under the
+# wing root; belly held at ~16. Enclosed cabin, doors in the sides.
+fu = [(2,40,3.5,3.5),(12,33,11,6),(24,33,15,9),(36,34.5,18.5,10.8),
+      (48,35.5,19.5,11.5),(60,36,19,11.5),(72,36,18,10.5),
+      (84,33,12,7),(96,27.5,3.5,3.2),(184,27,1.75,1.75)]
 th = np.linspace(0, 2*np.pi, 17)
 add_loft([np.stack([np.full_like(th, x), w*np.sin(th), z+h*np.cos(th)], axis=1)
           for x, z, h, w in fu])
@@ -151,24 +154,37 @@ endgroup()
 group("cage")
 LON_R = 0.5
 FS, RS, AFT = 61.5, 80.5, 96.0
+WING_PU = 55.0            # wing underside = cabin roof = spar pickup
 for s in (1, -1):
     strut([30, s*9, 18], [96, s*6, 24], LON_R)          # lower longeron
     strut([30, s*8, 38], [96, s*6, 30], LON_R)          # upper longeron
     strut([30, s*9, 18], [30, s*8, 38], LON_R)          # nose-bow post
     strut([30, s*9, 18], [FS, s*9.5, 38], 0.4)          # fwd side diagonal
     strut([FS, s*9.3, 18], [AFT, s*6, 30], 0.4)         # aft side diagonal
-    # main hoop: lower longeron -> shoulder -> wing front-spar pickup at z=64
-    strut([FS, s*9.5, 18], [FS, s*9.0, 50], 0.55)
-    strut([FS, s*9.0, 50], [FS, s*8.0, Z0], 0.55)
+    # main hoop: lower longeron -> shoulder -> wing front-spar pickup at the
+    # cabin roof (z=53). No cabane: the wing sits on the cabin.
+    strut([FS, s*9.5, 18], [FS, s*9.5, 40], 0.55)
+    strut([FS, s*9.5, 40], [FS, s*8.0, WING_PU], 0.55)
     # rear-spar frame, also the seat-back / harness anchor frame
-    strut([RS, s*7.5, 20], [RS, s*8.0, Z0], 0.45)
+    strut([RS, s*7.5, 20], [RS, s*8.0, WING_PU], 0.45)
     strut([AFT, s*6, 24], [AFT, s*6, 30], 0.45)         # aft frame post
 strut([30, -8, 38], [30, 8, 38], 0.45)                  # nose-bow crown
-strut([FS, -8, Z0], [FS, 8, Z0], 0.6)                   # FRONT SPAR carry-through
-strut([RS, -8, Z0], [RS, 8, Z0], 0.5)                   # REAR SPAR carry-through
-strut([FS, -9, 50], [FS, 9, 50], 0.45)                  # hoop shoulder cross
+strut([FS, -8, WING_PU], [FS, 8, WING_PU], 0.6)         # FRONT SPAR carry-through
+strut([RS, -8, WING_PU], [RS, 8, WING_PU], 0.5)         # REAR SPAR carry-through
+strut([FS, -9.5, 40], [FS, 9.5, 40], 0.45)              # hoop shoulder cross
 strut([AFT, -6, 24], [AFT, 6, 24], 0.45)                # aft frame, boom pickup
 strut([AFT, -6, 30], [AFT, 6, 30], 0.45)
+endgroup()
+
+# ---- door frames (EAB enclosure kit; the cage hard points are permanent)
+group("doors")
+D_F, D_A, D_LO, D_HI = 40.0, 78.0, 27.0, 51.0
+for s2 in (1, -1):
+    y = s2*11.3
+    strut([D_F, y, D_LO], [D_A, y, D_LO], 0.3)      # sill
+    strut([D_F, y, D_HI], [D_A, y, D_HI], 0.3)      # header
+    strut([D_F, y, D_LO], [D_F, y, D_HI], 0.3)      # fwd post
+    strut([D_A, y, D_LO], [D_A, y, D_HI], 0.3)      # aft post
 endgroup()
 
 V = np.array(V); F = np.array(F, dtype=np.int64)
@@ -176,7 +192,7 @@ print(f"mesh: {len(V)} vertices, {len(F)} triangles, groups: {[g[0] for g in GRO
 
 os.makedirs("model", exist_ok=True)
 with open("model/nuthatch.stl", "wb") as f:
-    f.write(b"Nuthatch rev F, inches".ljust(80, b"\0"))
+    f.write(b"Nuthatch rev G, inches".ljust(80, b"\0"))
     f.write(struct.pack("<I", len(F)))
     for tri in F:
         p = V[tri]
@@ -213,7 +229,7 @@ for k in order:
     p = F[k]
     ax.fill(Vx[p], Vy2[p], facecolor="#e3e8ee", edgecolor="#8494a6", lw=0.1)
 ax.set_aspect("equal"); ax.set_title("Isometric", fontsize=11); ax.axis("off")
-fig.suptitle("Nuthatch — general arrangement rev F (welded steel cage + boom, fabric pod)", fontsize=12)
+fig.suptitle("Nuthatch — general arrangement rev G (enclosed reclined cabin, wing on the roof)", fontsize=12)
 fig.tight_layout()
 os.makedirs("drawings", exist_ok=True)
 fig.savefig("drawings/general-arrangement.png", dpi=140)
