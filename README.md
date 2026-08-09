@@ -80,8 +80,9 @@ Part 103 stays gasoline. Worked in
   symmetric spoiler lever for glidepath; no rudder pedals
 - Tricycle gear, castoring raked nose leg, trailing-arm mains with MTB
   coil-overs, bicycle hydraulic disc brakes
-- Structural nose bow ahead of the pedals, rollover hoop, 5-point harness,
-  energy-absorbing seat
+- Structural nose bow ahead of the pilot's feet, rollover hoop, 5-point
+  harness anchored to the cage, mesh sling seat over a crushable
+  bottom-out pad (energy-absorbing, without the rebound of a bare sling)
 - BRS hard points designed in
 
 ## What makes it different

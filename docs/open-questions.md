@@ -82,9 +82,12 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   placement at the full-size seating mockup, no single-side hang-up from the
   symmetric path, Junco servo compatibility
 - Cockpit geometry from actual seated dimensions — now for a **105–220 lb
-  pilot range** (common-airframe §7): seat-only adjustment (the pedals are
-  deleted with the twist-grip decision), footrest position, and geometry that
-  fits both the EAB owner and a 105 lb Part 103 pilot
+  pilot range** (common-airframe §7): **mesh sling seat**
+  ([trades/seat.md](trades/seat.md)) with lacing-tuned sag + adjustable
+  footrest (the pedals are deleted with the twist-grip decision); mockup
+  checks eye line and stick reach across the pilot range; sling **proof test
+  to 1,920 lb** before first flight; crush-pad stroke clearance under the
+  1-g sag point
 - Every fitting, detailed
 
 ## Verify before committing

@@ -765,3 +765,14 @@ empties the rev D crush bay's footwell — nothing left to trap feet. Gates:
 horn balance sized before the tail freezes; grip/centering-spring behavior
 and brake-lever placement verified on the full-size seating mockup. Worked in
 [trades/controls-mechanization.md](trades/controls-mechanization.md).
+
+**§21 addendum 2 — seat decided (owner, same date): mesh sling.**
+Hammock-style sling mesh between cage rails replaces the framed pan + Confor
+foam: cooler, more comfortable, and ~1.8 lb lighter (unbanked). The crash
+property is kept, not deleted — a sling alone is a spring, so a 2 in
+crushable pad sits ~1.5 in below the 1-g sag point: normal sitting never
+touches it, a hard impact crushes it without rebound. Sling carries the
+9.6 g × 200 lb case at ~98 lb/in edge tension (~1.5× margin after seam
+derate); **static proof test to 1,920 lb required before first flight**.
+Harness stays anchored to the cage, never the sling. Worked in
+[trades/seat.md](trades/seat.md).
