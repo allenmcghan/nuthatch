@@ -51,6 +51,15 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   elevator commands stall at every speed and CG. **Include the negative
   branch** (−1.9 g gust at Vc exists and no negative case does), and size
   fixed-mass fittings at the light-weight load factor
+- **Pitch trim system — currently absent entirely, and required.** Elevator
+  stick force is 2.5–2.7 lb across the envelope and the twist-grip decision
+  put pitch and rudder on the same hand.
+  [trades/borrowed-optimizations.md §3](trades/borrowed-optimizations.md)
+  recommends bungee/spring trim at the stick base (~0.4 lb, no tab, no new
+  flutter surface). Decide the mechanism before the stick base is drawn
+- **Adjustable stabilizer incidence — decide before the tail is welded.**
+  The pending gate-3 flap rerun already expects to want ~1°; three shim
+  positions at ±0.5° cost grams and turn a rebuild into a wrench
 - Spar cap taper schedule, web thickness, stiffener spacing
 - Boom-root and tail-post fittings — the architecture is decided
   ([trades/fuselage-architecture.md](trades/fuselage-architecture.md): cage to
@@ -88,6 +97,20 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   checks eye line and stick reach across the pilot range; sling **proof test
   to 1,920 lb** before first flight; crush-pad stroke clearance under the
   1-g sag point
+- **Drag cleanup on the 80%** — open decision, the largest performance number
+  left ([trades/borrowed-optimizations.md §2](trades/borrowed-optimizations.md)):
+  wheel covers on the **mains only** (never the castoring nose — side area
+  makes a weathervane), faired legs and cabane, and the footwell closeout the
+  deleted pedals made free. ≈ −0.95 ft² of flat plate → **cruise L/D +15%,
+  cruise power −13%** for ~1.6 lb, which the flaps/twist-grip/sling savings
+  already cover. Decide with the pod shape, not after
+- **Gap seals, split by surface** — seal the elevator (authority for the tight
+  flap flare), do **not** seal the rudder (a ~10% hinge-moment penalty pushes
+  the twist grip from ~19 to ~21 in-lb peak). Measure the real penalty on the
+  built surfaces with a spring scale
+- **Field rigging time as a numeric requirement** — proposed: one person, no
+  helper, 15 minutes, no tools past a pin puller. Free if it constrains the
+  wing-joint design now, expensive to retrofit after the joints are drawn
 - Every fitting, detailed
 
 ## Verify before committing
@@ -113,6 +136,12 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
 - **Whether the tail can give adequate roll authority unblown.** Gates any future
   pusher configuration, since the rudder is the roll control. The quarter-scale
   model cannot answer it — it is a full-scale, power-on question.
+- **Ground-adjustable composite hub weights on a scale (EAB only).** The
+  fleet currently buys two fixed wood props; a re-pitchable hub is what the
+  ultralight world uses and what a two-engine, Phase-I-measured programme
+  wants — but the 103's ~1 lb margin cannot carry the extra weight, so wood
+  stays there regardless. See
+  [trades/borrowed-optimizations.md §5](trades/borrowed-optimizations.md)
 - **Propeller rpm, which decides blade count.** Two blades is comfortable to about
   1,750 rpm and cannot carry 1,600. Pick the rpm against an actual available belt
   redrive ratio, then the blade count follows. Do not pick blade count first.
@@ -129,7 +158,12 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   and TE stiffening get weighed before the 253.2/275.7 lb ledger re-baselines.
 - **Docile stall on the quarter-scale model, flaps up and down.** The
   flaps decision's escape clause: straight-ahead break, no wing drop, or the
-  decision reverts to slats. (The slat-tip-termination item retired with the
+  decision reverts to slats. **Vortex generators are now the first-line
+  remedy ahead of that reversion**
+  ([trades/borrowed-optimizations.md §1](trades/borrowed-optimizations.md)):
+  ounces, bondable to Oratex, flight-line tunable, and aimed at exactly the
+  outer-panel attached-flow property the slats used to provide. Keep the
+  outer leading edge accessible and do not let the tip cap preclude them. (The slat-tip-termination item retired with the
   slats — the moulded tip cap is now unconstrained at the leading edge.)
 
 ## Not analysed anywhere, and should be

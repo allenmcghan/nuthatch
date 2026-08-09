@@ -776,3 +776,55 @@ touches it, a hard impact crushes it without rebound. Sling carries the
 derate); **static proof test to 1,920 lb required before first flight**.
 Harness stays anchored to the cage, never the sling. Worked in
 [trades/seat.md](trades/seat.md).
+
+## 22. Borrowed optimizations: what the ultralight world still has to offer
+
+Survey of what this design has *not* mined from the rest of the ultralight
+and STOL world, worked in
+[trades/borrowed-optimizations.md](trades/borrowed-optimizations.md) with
+`analysis/borrowed-optimizations.py`. Six items; none adopted here except
+where noted, because five are owner decisions and one is a hole.
+
+- **Vortex generators, as the flaps decision's safety net.** §10 justified
+  slats on roll control, not stall speed — *"spoilerons need attached flow
+  over the outer panel"* — and §21 deleted the slats. VGs are the STOL
+  world's standard active fix for exactly that, weigh ounces, bond to
+  Oratex, and are tunable on the flight line. **They cost nothing to hold
+  open and they change the escape-clause economics**: a wing drop on the
+  quarter-scale model currently reverts the airframe to slats (6 lb, and the
+  103 margin with it); with VGs, the first response is a strip of vanes and
+  slats become the fallback behind that. Keep the outer-panel leading edge
+  accessible and bondable; do not let the tip cap preclude it.
+- **The 80% of drag nobody has attacked.** The audit found housekeeping is
+  3.94 of 4.84 ft² of flat plate and filed it as housekeeping. Wheel covers
+  on the mains (not the castoring nose — side area on a castoring wheel is a
+  weathervane), faired legs, and a footwell closeout the deleted pedals just
+  made free, total ≈ −0.95 ft²: **cruise L/D +15%, cruise power −13%**, for
+  ~1.6 lb. Largest performance number left in the design, and yesterday's
+  ~4.8 lb of freed margin is exactly what should buy it.
+- **There is no pitch trim system — a hole, not an upgrade.** Elevator stick
+  force runs 2.5–2.7 lb across the envelope, and the twist-grip decision put
+  pitch and rudder on the same hand, so that force is held by the wrist that
+  must also twist for yaw. Fix: bungee/spring trim at the stick base,
+  ~0.4 lb, no tab and no new flutter surface. Treat as required equipment.
+- **Gap seals, split by surface.** Seal the elevator (authority for the
+  tight flap flare; the new trim system absorbs the added force). Do **not**
+  seal the rudder — a ~10% hinge-moment penalty pushes the twist grip from
+  ~19 to ~21 in-lb peak, spending margin for authority it does not need.
+- **Ground-adjustable prop: EAB only.** The fleet buys two fixed wood props
+  today; a re-pitchable hub is what the UL world uses and what a two-engine,
+  Phase-I-measured programme wants — but the 103's ~1 lb margin cannot carry
+  a composite hub. Wood stays on the 103.
+- **Adjustable stabilizer incidence, decided before the tail is welded.**
+  The pending gate-3 flap rerun already expects to want ~1° of tail
+  incidence; three shim positions at ±0.5° turn a rebuild into a wrench.
+- **Field rigging as a numeric requirement**, borrowed from Kolb/Quicksilver
+  practice: one person, no helper, 15 minutes, no tools past a pin puller —
+  set now so it constrains the joint design instead of being discovered
+  after the joints are drawn.
+
+**Bookkeeping catch recorded in the same trade:** the flaps decision handed
+back +7.4% of L/D (slat drag deleted) and the audit's Oswald correction took
+−6.1%, so the README's 10.7 survives at 10.80 **for entirely different
+reasons than the repo states**. Fixing either correction without the other
+introduces a real error.
