@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate the Nuthatch 3D mesh, rev E: pod-and-boom fuselage (welded cage
-faired as a compact pod to sta 96, then a single straight 5-in tail boom),
+"""Generate the Nuthatch 3D mesh, rev F: all-steel pod-and-boom (welded 4130
+cage faired as a fabric pod to sta 96, then a straight 3.5-in steel boom),
 raked nose leg with 20-in bike wheel just aft of the prop, trailing-arm
 mains, MTB coil-overs, 29-in bicycle mains.
 Outputs: model/nuthatch.stl (binary, inches), drawings/general-arrangement.png,
@@ -104,11 +104,13 @@ for eta in np.linspace(0, 1, 3):
     secs.append(np.stack([lex+xt*ch, zt*ch, np.full_like(xt, 27.0+60*eta)], axis=1))
 add_loft(secs)
 endgroup()
-# ---- fuselage: pod (fairing over the welded cage) to sta 96, then a single
-# straight 5.00-in boom at z=27 to the tail post (trades/fuselage-architecture.md)
+# ---- fuselage: fabric pod faired over the welded 4130 cage to sta 96, then a
+# single straight 3.50-in steel boom at z=27 (trades/cockpit-cage.md).
+# Max section at sta ~56 (pilot shoulders), smooth run-out into the boom.
 group("fuse")
-fu = [(4,38,3,3),(14,38,8,7),(30,29,12,10),(48,30,14,11),(62,30,14,11),
-      (78,29,10,8),(90,28,6.5,5),(96,27,2.5,2.5),(184,27,2.5,2.5)]
+fu = [(2,40,3.5,3.5),(10,38,7,6),(22,34,11,8.5),(34,32,13.5,10),(46,31,14.5,11),
+      (56,31,15,11.5),(66,31,14,11),(78,30,11,8.5),(88,28.5,7,5.5),
+      (96,27.5,3.0,3.0),(184,27,1.75,1.75)]
 th = np.linspace(0, 2*np.pi, 17)
 add_loft([np.stack([np.full_like(th, x), w*np.sin(th), z+h*np.cos(th)], axis=1)
           for x, z, h, w in fu])
@@ -140,8 +142,33 @@ group("wheel_m")
 bike_wheel(70.5, 28); bike_wheel(70.5, -28)
 endgroup()
 group("struts")
-strut([55, 10, 44], [58, 8, Z0], 1.0); strut([55, -10, 44], [58, -8, Z0], 1.0)
-strut([182, 0, 26], [185, 0, 22], 0.8)
+strut([182, 0, 26], [185, 0, 22], 0.8)          # tail skid
+endgroup()
+
+# ---- welded 4130 cockpit cage, sta 30 to 96 (trades/cockpit-cage.md).
+# Main hoop at sta 61.5 is the rollover structure AND the front-spar
+# carry-through AND sits at the CG (sta 63) - one frame, three jobs.
+group("cage")
+LON_R = 0.5
+FS, RS, AFT = 61.5, 80.5, 96.0
+for s in (1, -1):
+    strut([30, s*9, 18], [96, s*6, 24], LON_R)          # lower longeron
+    strut([30, s*8, 38], [96, s*6, 30], LON_R)          # upper longeron
+    strut([30, s*9, 18], [30, s*8, 38], LON_R)          # nose-bow post
+    strut([30, s*9, 18], [FS, s*9.5, 38], 0.4)          # fwd side diagonal
+    strut([FS, s*9.3, 18], [AFT, s*6, 30], 0.4)         # aft side diagonal
+    # main hoop: lower longeron -> shoulder -> wing front-spar pickup at z=64
+    strut([FS, s*9.5, 18], [FS, s*9.0, 50], 0.55)
+    strut([FS, s*9.0, 50], [FS, s*8.0, Z0], 0.55)
+    # rear-spar frame, also the seat-back / harness anchor frame
+    strut([RS, s*7.5, 20], [RS, s*8.0, Z0], 0.45)
+    strut([AFT, s*6, 24], [AFT, s*6, 30], 0.45)         # aft frame post
+strut([30, -8, 38], [30, 8, 38], 0.45)                  # nose-bow crown
+strut([FS, -8, Z0], [FS, 8, Z0], 0.6)                   # FRONT SPAR carry-through
+strut([RS, -8, Z0], [RS, 8, Z0], 0.5)                   # REAR SPAR carry-through
+strut([FS, -9, 50], [FS, 9, 50], 0.45)                  # hoop shoulder cross
+strut([AFT, -6, 24], [AFT, 6, 24], 0.45)                # aft frame, boom pickup
+strut([AFT, -6, 30], [AFT, 6, 30], 0.45)
 endgroup()
 
 V = np.array(V); F = np.array(F, dtype=np.int64)
@@ -149,7 +176,7 @@ print(f"mesh: {len(V)} vertices, {len(F)} triangles, groups: {[g[0] for g in GRO
 
 os.makedirs("model", exist_ok=True)
 with open("model/nuthatch.stl", "wb") as f:
-    f.write(b"Nuthatch rev E, inches".ljust(80, b"\0"))
+    f.write(b"Nuthatch rev F, inches".ljust(80, b"\0"))
     f.write(struct.pack("<I", len(F)))
     for tri in F:
         p = V[tri]
@@ -186,7 +213,7 @@ for k in order:
     p = F[k]
     ax.fill(Vx[p], Vy2[p], facecolor="#e3e8ee", edgecolor="#8494a6", lw=0.1)
 ax.set_aspect("equal"); ax.set_title("Isometric", fontsize=11); ax.axis("off")
-fig.suptitle("Nuthatch — general arrangement rev E (pod-and-boom fuselage, raked nose leg)", fontsize=12)
+fig.suptitle("Nuthatch — general arrangement rev F (welded steel cage + boom, fabric pod)", fontsize=12)
 fig.tight_layout()
 os.makedirs("drawings", exist_ok=True)
 fig.savefig("drawings/general-arrangement.png", dpi=140)

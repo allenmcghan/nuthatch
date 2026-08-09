@@ -106,11 +106,25 @@ all want welded joints rather than wood with gussets.
 
 **Addendum (rev E):** the steel argument only ever applied to the
 concentrated-load hardware, all of which lives forward of sta 96. The welded
-truss now ends there — a **cockpit cage** — and the tail rides a **single
-straight 6061-T6 5.00 × .065 boom** (Kolb architecture, +26% ultimate margin
-at Vne, ~80 fishmouth joints and the aft jig deleted). The cockpit fairing is
-non-structural: stringers and fabric over the cage, shaped freely. Worked in
+truss now ends there — a **cockpit cage** — and the tail rides a single
+straight boom (Kolb architecture, ~80 fishmouth joints and the aft jig
+deleted). The cockpit fairing is non-structural: stringers and fabric over
+the cage, shaped freely. Worked in
 [trades/fuselage-architecture.md](trades/fuselage-architecture.md).
+
+**Addendum 2 (rev F) — the boom goes back to steel.** Rev E chose 6061-T6 on
+weight; re-run over the tube sizes actually stocked, the penalty for
+**4130 3.50 × .049** is only **+4.4 lb raw and +2.2 lb net** once the welded
+boom-root and tail-post clusters replace a machined sleeve joint and its
+bolted brackets. The reason the gap is small: a thin-wall boom is
+**buckling-limited, not strength-limited**, and steel's 2.9× stiffness very
+nearly cancels its 2.89× density — steel never gets to use its 95 ksi. Two
+things then decide it: the aluminium-to-steel transition joint disappears
+(one material, one process, and the "copy Kolb's fittings" gate retires),
+and **4130 has a true endurance limit where 6061-T6 has none** — an aluminium
+boom is a fatigue-managed part behind a vibrating two-stroke, a steel one is
+not. **Adopted: all-steel cage + boom, fabric over everything.** Worked in
+[trades/cockpit-cage.md](trades/cockpit-cage.md).
 
 ## 6. Wing: constant chord, cantilever, 130 ft²
 
@@ -970,3 +984,49 @@ triage or peer review either, and there is **no published flight-test report
 and no accident report** for a manned ultralight on Pixhawk/ArduPilot, which
 is a data void rather than a safety record. The EAB may experiment at altitude as the declared development
 platform — it can never make such a system a control the pilot depends on.
+
+## 24. Rev F: the cage, the all-steel airframe, and the frame that does three jobs
+
+Worked in [trades/cockpit-cage.md](trades/cockpit-cage.md) with
+`analysis/cage-design.py`; drawn on `drawings/sheets/ST-001.png`.
+
+**The boom returns to steel** (see the §5 addendum): +2.2 lb net, one
+material, no transition joint, and 4130's endurance limit against 6061's
+absence of one. Rev E's aluminium choice was right on the number it scored
+and wrong on the two it did not.
+
+**The cage runs sta 30 to 96 on four longerons**, and its geometry is set by
+a convergence rather than by a layout preference. Three independent
+requirements land within 2.5 in of each other:
+
+| | Station |
+|---|---|
+| CG, 30% MAC | 63.0 |
+| Front spar, 25% chord | 60.5 |
+| Rollover hoop clearing the pilot's head | ~62 |
+
+So they become **one frame at sta 61.5**, which then does three jobs at once:
+carries **88% of wing lift** (3,038 lb ultimate, 1,519 per side) straight
+into the cage; is the rollover structure over the pilot's head; and sits
+**at the CG**, so wing lift feeds essentially no pitching couple into the
+fuselage. That last property is the weight saver — a wing pickup offset from
+the CG has to react a moment through the longerons, and that is how fuselages
+get heavy. The rear frame at sta 80.5 sees only 434 lb and so doubles as the
+seat-back and harness-anchor frame for free. Front-spar pickups at z = 64,
+±8 in, joined by a cross tube that *is* the carry-through; fittings are
+bearing-critical, not bolt-critical.
+
+**The pod is now shaped rather than wrapped** — max section at sta 56 at the
+pilot's shoulders, smooth run-out into a visually slimmer 3.5 in boom. One
+honest finding recorded: the aft-body closure reaches **21.8° and 26.6°** in
+the last two bays against the ~12–15° attached-flow limit, and closing at 12°
+would need the taper to start at sta 40, forward of the shoulders. **Some
+aft-body separation is inherent to a pod-and-boom with a seated pilot**; it
+is already inside the audit's f = 0.45, so it is not a new penalty, but it
+fixes the honest moves: start the closure as far forward as the shoulders
+allow, keep the run-out unkinked, and do not chase a fully closed teardrop.
+
+**Ledger warning.** All-steel (−2.2) plus the §22 drag cleanup (−1.6) spends
+3.8 of the 4.8 lb that flaps, the twist grip and the sling seat freed.
+**The margin is now spoken for**; nothing further joins the 103 kit without
+finding new weight.

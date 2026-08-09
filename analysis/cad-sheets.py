@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dimensioned CAD sheet set from the rev E mesh (pod-and-boom fuselage).
+"""Dimensioned CAD sheet set from the rev F mesh (welded steel cage + boom).
 Outputs drawings/sheets/GA-001.png, LG-001.png, CP-001.png and
 drawings/nuthatch-sheets.pdf. Dimensions in inches, datum = prop plane.
 """
@@ -48,7 +48,7 @@ ax = axs[1][0]; draw_proj(ax, 0, 2)
 dim_v(ax, 226, 0, 87, "HEIGHT 87"); dim_v(ax, -14, 0, 40, "THRUSTLINE 40.0")
 dim_h(ax, 15, 70.5, -10, "WHEELBASE 55.5")
 ax.axvline(63, color=DIM, lw=0.5, ls="--"); ax.text(63, 92, "CG 30% MAC STA 63.0", fontsize=7, color=DIM, ha="center")
-ax.annotate("TAIL BOOM 6061-T6 5.00 x .065\nSTA 96-182 · CABLES INSIDE", (135, 27), (108, 8), fontsize=7.5, color=INK,
+ax.annotate("TAIL BOOM 4130 3.50 x .049\nSTA 96-182 · WELDED TO CAGE", (135, 27), (108, 8), fontsize=7.5, color=INK,
             arrowprops=dict(arrowstyle="->", color=INK, lw=0.8))
 ax.set_title("SIDE VIEW"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
 ax = axs[1][1]; draw_proj(ax, 1, 2)
@@ -63,7 +63,7 @@ order = np.argsort([np.mean((-V[t, 0]*s+V[t, 1]*c)*c2-V[t, 2]*s2) for t in F])
 for k in order: ax.fill(Vx[F[k]], Vy2[F[k]], facecolor="#e8edf1", edgecolor=EDGE, lw=0.08)
 ax.set_aspect("equal"); ax.axis("off"); ax.set_title("ISOMETRIC")
 fig.suptitle("GENERAL ARRANGEMENT — Vne 62 MPH FLEET · 103 KIT 253 LB / EAB KIT 276 LB", fontsize=13)
-title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "E")
+title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "F")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/GA-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
@@ -136,5 +136,43 @@ title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "D")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/CP-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
+# ---------- Sheet ST-001: the welded cage, structure only ----------
+gidx = {g[0]: (g[1], g[2]) for g in m["groups"]}
+cage = F[gidx["cage"][0]:gidx["cage"][1]] if "cage" in gidx else F[:0]
+gear = F[gidx["gear"][0]:gidx["gear"][1]] if "gear" in gidx else F[:0]
+fig, axs = plt.subplots(1, 2, figsize=(15, 8))
+ax = axs[0]
+for tri in gear:
+    p = V[tri]; ax.fill(p[:, 0], p[:, 2], facecolor="#eef1f4", edgecolor="#b9c4cf", lw=0.12)
+for tri in cage:
+    p = V[tri]; ax.fill(p[:, 0], p[:, 2], facecolor="#c9d3dc", edgecolor=INK, lw=0.2)
+ax.axhline(0, color=INK, lw=1.0)
+for sta, lab in [(30, "NOSE BOW\nSTA 30"), (61.5, "MAIN HOOP STA 61.5\nROLLOVER + FRONT SPAR"),
+                 (80.5, "REAR SPAR / SEAT BACK\nSTA 80.5"), (96, "BOOM PICKUP\nSTA 96")]:
+    ax.axvline(sta, color=DIM, lw=0.5, ls=":")
+    ax.text(sta, 69, lab, fontsize=7.5, color=DIM, ha="center")
+ax.axvline(63, color="#2f7d4f", lw=0.9, ls="--")
+ax.text(63, -9, "CG STA 63", fontsize=8, color="#2f7d4f", ha="center")
+dim_h(ax, 30, 96, -4, "CAGE 66.0")
+dim_v(ax, 104, 27, 64, "WING PICKUP z=64")
+ax.set_title("SIDE — WELDED 4130 CAGE (fabric pod removed)")
+ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
+ax = axs[1]
+for tri in cage:
+    p = V[tri]; ax.fill(p[:, 1], p[:, 2], facecolor="#c9d3dc", edgecolor=INK, lw=0.2)
+ax.axhline(0, color=INK, lw=1.0)
+ax.text(0, 78, "FRONT — MAIN HOOP AT STA 61.5\n"
+               "ONE FRAME, THREE JOBS: ROLLOVER STRUCTURE OVER THE PILOT,\n"
+               "FRONT-SPAR CARRY-THROUGH (88% OF WING LIFT, 1519 LB/SIDE ULT),\n"
+               "AND IT SITS AT THE CG SO WING LIFT FEEDS NO PITCHING COUPLE",
+        ha="center", fontsize=8.5, color=INK, family="monospace",
+        bbox=dict(fc="#f2f5f7", ec=EDGE))
+dim_h(ax, -8, 8, 56, "SPAR PICKUPS 16.0")
+ax.set_title("FRONT — CAGE SECTION"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
+fig.suptitle("STRUCTURE — WELDED 4130 CAGE + STEEL BOOM  (trades/cockpit-cage.md)", fontsize=13)
+title_block(fig, "ST-001", "COCKPIT CAGE / WING PICKUP", "A")
+fig.tight_layout(rect=[0, 0.03, 1, 0.96])
+fig.savefig("drawings/sheets/ST-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
+
 pdf.close()
-print("wrote drawings/sheets/{GA-001,LG-001,CP-001}.png + drawings/nuthatch-sheets.pdf")
+print("wrote drawings/sheets/{GA-001,LG-001,CP-001,ST-001}.png + drawings/nuthatch-sheets.pdf")

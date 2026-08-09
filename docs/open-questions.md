@@ -71,11 +71,16 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   welded cage with a single boom, retrofitting means cutting and re-welding.
   A jackscrew stabilizer (above) delivers this and the trim system together
 - Spar cap taper schedule, web thickness, stiffener spacing
-- Boom-root and tail-post fittings — the architecture is decided
-  ([trades/fuselage-architecture.md](trades/fuselage-architecture.md): cage to
-  sta 96, 6061-T6 5.00 × .065 boom to 182), but the two fittings get **copied
-  dimension-for-dimension from a Kolb installation**, and the tube size needs
-  a stock-length purchase check before structure is drawn around it
+- **Cage member sizing — the architecture is decided, the tubes are not.**
+  [trades/cockpit-cage.md](trades/cockpit-cage.md) fixes the rev F layout:
+  all-steel, cage sta 30–96 on four longerons, **4130 3.50 × .049 boom welded
+  to the aft frame** (the Kolb-fitting gate retires with the transition
+  joint). Still open: longeron and diagonal sizes against the crash, gear and
+  engine-mount reactions; **a rollover load basis, which no standard has been
+  chosen for**; whether the front-spar pickups stay at ±8 in (wider reacts
+  rolling moment better and fouls shoulders sooner — a mockup question); and
+  the welded boom-to-cage cluster layout, still worth copying from Kolb even
+  though the fitting is gone
 - Wing carry-through and cabane geometry, which sets the wing LE station that
   trims CG to 30% MAC
 - Gear geometry — **resolved** ([trades/landing-gear.md](trades/landing-gear.md)):
