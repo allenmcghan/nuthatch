@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Generate the Nuthatch 3D mesh, rev D: raked nose leg with 20-in bike wheel
-just aft of the prop, trailing-arm mains, MTB coil-overs, 29-in bicycle mains.
+"""Generate the Nuthatch 3D mesh, rev E: pod-and-boom fuselage (welded cage
+faired as a compact pod to sta 96, then a single straight 5-in tail boom),
+raked nose leg with 20-in bike wheel just aft of the prop, trailing-arm
+mains, MTB coil-overs, 29-in bicycle mains.
 Outputs: model/nuthatch.stl (binary, inches), drawings/general-arrangement.png,
 and a JSON mesh (with material groups) for the interactive viewer / renderer.
 Axes: X aft from prop plane (station, in), Y right, Z up. Ground at z=0.
@@ -102,10 +104,11 @@ for eta in np.linspace(0, 1, 3):
     secs.append(np.stack([lex+xt*ch, zt*ch, np.full_like(xt, 27.0+60*eta)], axis=1))
 add_loft(secs)
 endgroup()
-# ---- fuselage pod + boom
+# ---- fuselage: pod (fairing over the welded cage) to sta 96, then a single
+# straight 5.00-in boom at z=27 to the tail post (trades/fuselage-architecture.md)
 group("fuse")
 fu = [(4,38,3,3),(14,38,8,7),(30,29,12,10),(48,30,14,11),(62,30,14,11),
-      (80,30,12,10),(100,31,9,7),(125,29,6,4.5),(150,28,4,3),(170,27,3,2.2),(184,27,2.5,2)]
+      (78,29,10,8),(90,28,6.5,5),(96,27,2.5,2.5),(184,27,2.5,2.5)]
 th = np.linspace(0, 2*np.pi, 17)
 add_loft([np.stack([np.full_like(th, x), w*np.sin(th), z+h*np.cos(th)], axis=1)
           for x, z, h, w in fu])
@@ -146,7 +149,7 @@ print(f"mesh: {len(V)} vertices, {len(F)} triangles, groups: {[g[0] for g in GRO
 
 os.makedirs("model", exist_ok=True)
 with open("model/nuthatch.stl", "wb") as f:
-    f.write(b"Nuthatch rev D, inches".ljust(80, b"\0"))
+    f.write(b"Nuthatch rev E, inches".ljust(80, b"\0"))
     f.write(struct.pack("<I", len(F)))
     for tri in F:
         p = V[tri]
@@ -183,7 +186,7 @@ for k in order:
     p = F[k]
     ax.fill(Vx[p], Vy2[p], facecolor="#e3e8ee", edgecolor="#8494a6", lw=0.1)
 ax.set_aspect("equal"); ax.set_title("Isometric", fontsize=11); ax.axis("off")
-fig.suptitle("Nuthatch — general arrangement rev D (raked nose leg, wheel aft of prop)", fontsize=12)
+fig.suptitle("Nuthatch — general arrangement rev E (pod-and-boom fuselage, raked nose leg)", fontsize=12)
 fig.tight_layout()
 os.makedirs("drawings", exist_ok=True)
 fig.savefig("drawings/general-arrangement.png", dpi=140)

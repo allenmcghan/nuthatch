@@ -104,6 +104,14 @@ Weight comes out about even with a wood box. Steel wins on the things being
 added: nose bow, rollover hoop, harness anchors, gear mounts, engine mount. Those
 all want welded joints rather than wood with gussets.
 
+**Addendum (rev E):** the steel argument only ever applied to the
+concentrated-load hardware, all of which lives forward of sta 96. The welded
+truss now ends there — a **cockpit cage** — and the tail rides a **single
+straight 6061-T6 5.00 × .065 boom** (Kolb architecture, +26% ultimate margin
+at Vne, ~80 fishmouth joints and the aft jig deleted). The cockpit fairing is
+non-structural: stringers and fabric over the cage, shaped freely. Worked in
+[trades/fuselage-architecture.md](trades/fuselage-architecture.md).
+
 ## 6. Wing: constant chord, cantilever, 130 ft²
 
 **Constant chord** because 31 identical ribs need one template and one jig.

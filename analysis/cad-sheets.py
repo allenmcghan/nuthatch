@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dimensioned CAD sheet set from the rev D mesh.
+"""Dimensioned CAD sheet set from the rev E mesh (pod-and-boom fuselage).
 Outputs drawings/sheets/GA-001.png, LG-001.png, CP-001.png and
 drawings/nuthatch-sheets.pdf. Dimensions in inches, datum = prop plane.
 """
@@ -48,6 +48,8 @@ ax = axs[1][0]; draw_proj(ax, 0, 2)
 dim_v(ax, 226, 0, 87, "HEIGHT 87"); dim_v(ax, -14, 0, 40, "THRUSTLINE 40.0")
 dim_h(ax, 15, 70.5, -10, "WHEELBASE 55.5")
 ax.axvline(63, color=DIM, lw=0.5, ls="--"); ax.text(63, 92, "CG 30% MAC STA 63.0", fontsize=7, color=DIM, ha="center")
+ax.annotate("TAIL BOOM 6061-T6 5.00 x .065\nSTA 96-182 · CABLES INSIDE", (135, 27), (108, 8), fontsize=7.5, color=INK,
+            arrowprops=dict(arrowstyle="->", color=INK, lw=0.8))
 ax.set_title("SIDE VIEW"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
 ax = axs[1][1]; draw_proj(ax, 1, 2)
 dim_h(ax, -28, 28, -10, "TRACK 56.0"); dim_v(ax, -200, 0, 30, "PROP TIP CLR 10.0")
@@ -61,7 +63,7 @@ order = np.argsort([np.mean((-V[t, 0]*s+V[t, 1]*c)*c2-V[t, 2]*s2) for t in F])
 for k in order: ax.fill(Vx[F[k]], Vy2[F[k]], facecolor="#e8edf1", edgecolor=EDGE, lw=0.08)
 ax.set_aspect("equal"); ax.axis("off"); ax.set_title("ISOMETRIC")
 fig.suptitle("GENERAL ARRANGEMENT — Vne 62 MPH FLEET · 103 KIT 253 LB / EAB KIT 276 LB", fontsize=13)
-title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "D")
+title_block(fig, "GA-001", "GENERAL ARRANGEMENT", "E")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/GA-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
@@ -103,7 +105,7 @@ ax.text(0, 50, "DESIGN: 8 FPS SINK @ 525 LB · N=3.0 · 788 LB LIMIT / 1181 ULT 
         bbox=dict(fc="#f2f5f7", ec=EDGE))
 ax.set_title("FRONT — TRACK AND STANCE"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
 fig.suptitle("LANDING GEAR — GRASS / EASY ENTRY / DAMPED  (trades/landing-gear.md)", fontsize=13)
-title_block(fig, "LG-001", "MAIN + NOSE GEAR", "B")
+title_block(fig, "LG-001", "MAIN + NOSE GEAR", "C")
 fig.tight_layout(rect=[0, 0.03, 1, 0.96])
 fig.savefig("drawings/sheets/LG-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 
@@ -128,7 +130,7 @@ ax.text(70, 74, "6'0\" / 170 LB PILOT SHOWN · PEDALS ADJUSTABLE 3 POS (105-200 
         ha="center", fontsize=9, color=INK, family="monospace",
         bbox=dict(fc="#f2f5f7", ec=EDGE))
 ax.set_title("COCKPIT & ENTRY — SIDE"); ax.set_aspect("equal"); ax.grid(lw=0.25, alpha=0.4)
-title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "A")
+title_block(fig, "CP-001", "COCKPIT / ENTRY / PILOT RANGE", "B")
 fig.tight_layout(rect=[0, 0.03, 1, 0.97])
 fig.savefig("drawings/sheets/CP-001.png", dpi=150); pdf.savefig(fig); plt.close(fig)
 

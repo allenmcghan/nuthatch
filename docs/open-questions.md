@@ -48,6 +48,11 @@ dimension-for-dimension (CH701, Highlander) rather than derive it.
   branch** (−1.9 g gust at Vc exists and no negative case does), and size
   fixed-mass fittings at the light-weight load factor
 - Spar cap taper schedule, web thickness, stiffener spacing
+- Boom-root and tail-post fittings — the architecture is decided
+  ([trades/fuselage-architecture.md](trades/fuselage-architecture.md): cage to
+  sta 96, 6061-T6 5.00 × .065 boom to 182), but the two fittings get **copied
+  dimension-for-dimension from a Kolb installation**, and the tube size needs
+  a stock-length purchase check before structure is drawn around it
 - Wing carry-through and cabane geometry, which sets the wing LE station that
   trims CG to 30% MAC
 - Gear geometry — **resolved** ([trades/landing-gear.md](trades/landing-gear.md)):
