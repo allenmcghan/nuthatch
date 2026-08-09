@@ -864,9 +864,17 @@ Worked in [trades/fly-by-wire.md](trades/fly-by-wire.md) with
 `analysis/fly-by-wire.py`. The question was whether full FBW is worth trying,
 or servos supplementing the pilot with manual reversion by cutting power.
 
-**Prior art points the wrong way.** Full-FBW ultralights do fly under
-Part 103 — the Pivotal BlackFly/Helix and Jetson ONE classes — but they are
-multirotor eVTOLs that **cannot be flown by a human without computers**.
+**Prior art points the wrong way, and the weight loophole runs backwards.**
+Full-FBW ultralights do fly under Part 103 — Pivotal BlackFly (313 lb empty),
+Helix (348), Jetson ONE, LIFT HEXA — but they are multirotor/tailsitter eVTOLs
+that **cannot be flown by a human without computers**. **No fixed-wing
+ultralight, LSA, homebuilt or certified light aircraft anywhere has full FBW
+without mechanical reversion** — the closest precedent is NASA's 1972 F-8C,
+with an ejection seat. They are legal at 313–348 lb because §103.1(e)(1)
+**excludes the ballistic chute and flotation** — ~90+ lb of invisible
+hardware. **Servos, computers, wiring and their batteries are not excluded**:
+the loophole that makes FBW ultralights legal cannot be used to carry the
+FBW.
 There is no mechanical system to revert to because none could stabilise
 them. FBW appears on ultralights exactly where the airframe is uncontrollable
 without it and essentially nowhere else. This aircraft is the opposite case:
@@ -874,11 +882,16 @@ its safety is *passive* — Sky Pup stall/spin proofing, no aileron spin mode,
 self-righting dihedral, a stall-limited wing. Active protection pays best on
 airframes that are passively unsafe.
 
-**Weight closes it.** Single-string 3-axis ≈ 12.5 lb, dual-redundant ≈ 25 lb.
-The 103 kit has 0.8 lb — out by an order of magnitude. The EAB fits
-single-string (518.2 of 525 at max pilot) and **cannot fit redundant**
-(530.7). The only architecture that fits is the only one that must not be
-used for a primary control.
+**Weight closes it.** On the lightest hardware that exists (Garmin GSA 28,
+1.4 lb, $975): single-string 3-axis ≈ 9.2 lb, dual-redundant ≈ 17.4, triple —
+what the real FBW ultralights use — ≈ 25.6. The 103 kit has 0.8 lb, out by an
+order of magnitude. On the EAB single-string fits with +10.1 lb, dual is at
+the edge (+1.9), triple is out (−6.3). **The architecture with room to spare
+is single-string — precisely the one that must not carry a primary control.**
+Power is a second gate: servos draw ~2 A each moving, and many Part 103
+engines have a tiny alternator or none, so a control-critical battery needs
+full-duration sizing and then a second pack. Every FBW ultralight is an
+*electric* aircraft for exactly this reason.
 
 **Hardover, and the twist grip made it worse.** Elevator hardover is
 overpowerable — 34 lb of stick at Vne, and a slip clutch limiting authority
@@ -889,32 +902,71 @@ A rudder hardover demands 19 in-lb on approach and 61 at Vne. §18 simplified
 the cockpit by removing the strongest muscle the pilot had for fighting a
 runaway.
 
-**Manual reversion is the right architecture and dies on friction.** A slip
-clutch must sit above normal aerodynamic load and below pilot override — on
-the twist grip a 9-to-19 in-lb window. Set mid-band, power-off back-drive
-gives ~14 in-lb of dead friction against a 9 in-lb comfortable budget:
-**manual reversion would be heavier to fly than the unassisted aircraft.**
-The same breakout-friction property the gap-seal work turned on. An
-electromagnetic de-clutch escapes it, at the price of a new failure mode —
-a clutch that fails to release is a jammed control.
+**Manual reversion is right; the friction objection became an architecture
+rule.** A permanently-coupled slip clutch must sit between normal load and
+pilot override — on the twist grip a 9-to-19 in-lb window — so power-off
+back-drive leaves ~14 in-lb of dead friction against a 9 in-lb budget. But
+the de-clutch escape is **not hypothetical**: the **Garmin GSA 28 uses a
+solenoid engagement clutch** that decouples the motor when unpowered, for
+"virtually no control system friction with the autopilot turned off", shear
+pin deleted. So **engagement-clutch servos mandatory, slip-clutch servos
+(Dynon/Trio/TruTrak) disqualified.** The ratio still bites — gear friction is
+fixed in in-lb while this aircraft's control forces are unusually small, the
+worst ratio of any airframe these products target — and EPS practice warns
+that friction compensation runs on the *powered* motor, so a power cut hands
+back raw friction plus rotor inertia.
+
+**The Baron, which is the argument that should stick.** A Beech E55 (2019)
+suffered pitch-trim runaway with a correctly designed manual override: the
+clutch fastener had been overtightened to **45 lb breakaway against a
+13 ± 2 lb spec**, and NTSB found the pilot could not physically override it.
+The pilot died — and so did a person on the ground inside their own home.
+**A slip clutch is not a feature you install, it is one you maintain forever
+with a calibrated measurement** — and a Part 103 aircraft has no annual, no
+A&P and no mandatory inspection of it, ever. §103.9 (no operation "in a
+manner that creates a hazard to other persons or property") is exactly the
+rule that fact pattern reaches. Certification arithmetic agrees: Part 23
+assumes a 3-second recognition delay (1 on low approach) and operating rules
+want twice the altitude loss — at 50 mph that is 220 ft of travel before the
+pilot reacts, against 500–800 ft pattern altitude. **A servo with meaningful
+authority has no legal operating altitude band in a Part 103 mission.**
 
 **The one exception, and it is already in the plan.** §9 made the spoilerons
 single-acting, spring-return-to-closed, because *"a stuck-open spoiler is the
 one control failure with no good answer."* That physics does not care whether
 the tension came from a cable or a servo — kill power and the surface closes
 itself — and a spoileron hardover is the mildest available here, overpowered
-by the rudder. **The §21 spoileron servo provision is not a first step toward
-FBW; it is the only surface whose existing fail-safe already covers a servo.**
+by the rudder (and spoilers do not suffer aileron reversal near the stall).
+**The §21 spoileron servo provision is not a first step toward FBW; it is the
+only surface whose existing fail-safe already covers a servo.** **Caveat from
+the sourced pass:** every surveyed autopilot assumes roughly linear aileron
+response, and spoilerons are strongly nonlinear with §9's ~30% deadband —
+expect PIO or limit-cycle behaviour on the first tuning attempt. Still the
+right option; not the easy one.
 
 **There was never a force problem**: elevator 2.6 lb, rudder ~9 in-lb steady,
 both solved by the 0.4 lb spring trim and the horn balance already specified.
 
 **What to do instead, in order:** (1) **AoA annunciation, not protection** —
-the Junco tablet is already in the EAB plan and a probe is ounces; it
-delivers most of stall protection's benefit with no actuator, no authority
-question and no failure mode, the best safety-per-pound on the aircraft;
-(2) the spoileron servo already planned; (3) electric *trim* if wanted, since
-trim runaway is slow and overpowerable, which is why GA accepts electric trim
-on aircraft that would never accept electric primary control; (4) nothing in
-pitch or yaw. The EAB may experiment at altitude as the declared development
+it delivers most of stall protection's benefit with no actuator, no authority
+question and nothing that can fail inside the control circuit. Two honest
+caveats: **no controlled study quantifies accident-rate reduction from AoA
+indicators** (the GAJSC position is a reasoned recommendation, not a measured
+outcome), and a complete system is *"not quite two pounds"* — **which the 103
+kit cannot afford**, so this is an EAB item (the Junco already supplies the
+display and plumbing) and the 103 keeps its stall margin the hard way;
+(2) the spoileron servo already planned; (3) electric *trim* if wanted — Ray
+Allen T2/T3 actuators weigh **2.5 oz**, *lighter than the 0.4 lb spring*, and
+the jackscrew locks rather than flops when power is cut. Trim runaway is
+tolerated where surface runaway is not because of four properties that must
+all hold — slow, low authority, stops instantly on power cut, residual force
+holdable by muscle — and **property four is what failed in the Baron**. The
+vendor's "cannot run away" claim is contradicted by builder reports of stuck
+switches, chafed wires and welded relays: budget a 1 A breaker, a guarded
+switch and a limiting controller; (4) nothing in pitch or yaw. On open-source
+autopilots: ArduPilot's own Code of Conduct forbids developers from assisting
+manned-aircraft projects — no legal bar for a Part 103 builder, but no bug
+triage or peer review either, and there is **no published flight-test report
+and no accident report** for a manned ultralight on Pixhawk/ArduPilot, which
+is a data void rather than a safety record. The EAB may experiment at altitude as the declared development
 platform — it can never make such a system a control the pilot depends on.

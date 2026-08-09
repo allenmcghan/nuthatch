@@ -21,9 +21,11 @@ HORN, WRIST_GEAR = 0.55, 2.4           # 45% horn balance, twist gearing
 def hm(S, c, mph, defl): return CH_D*defl*q(mph)*S*c*12.0
 
 print("=== 1. WEIGHT: DOES IT EVEN FIT ===")
-print("  aviation-grade autopilot servo ~2.0-3.0 lb installed (GSA 28 / Trio class)")
-rows = [("single-string 3-axis", 3*2.5, 1.5, 1.5, 2.0),
-        ("dual-redundant (what a PRIMARY control needs)", 6*2.5, 3.0, 3.0, 4.0)]
+print("  real servo weights: Garmin GSA 28 = 1.4 lb ($975 exp), Dynon SV32 = 2.17 lb.")
+print("  Using the LIGHTEST available (GSA 28) - the most favourable case for the idea.")
+rows = [("single-string 3-axis", 3*1.4, 1.0, 1.0, 3.0),
+        ("dual-redundant (a PRIMARY control minimum)", 6*1.4, 2.0, 2.0, 5.0),
+        ("triple-redundant (what real FBW ULs use)", 9*1.4, 3.0, 3.0, 7.0)]
 print("  %-46s %7s %7s %7s %7s %8s" % ("architecture", "servos", "ctrl", "wiring", "batt", "TOTAL"))
 tot = {}
 for n, s, c, w, b in rows:
@@ -42,11 +44,37 @@ for n, t in tot.items():
     print(f"    {n:46s} all-up {allup:6.1f} -> {'FITS' if allup <= GROSS else 'OVER'}"
           f" ({GROSS-allup:+.1f} lb)")
 print("""
-  Verdict: the 103 aircraft cannot carry ANY of this - it is over by more
-  than an order of magnitude on a 0.8 lb margin. The EAB fits a SINGLE-STRING
-  system and cannot fit a redundant one at max pilot. That is the whole
-  problem in one line: the only architecture that fits is the only
-  architecture you must not use for a primary control.""")
+  Verdict: the 103 aircraft cannot carry ANY of it - over by an order of
+  magnitude on a 0.8 lb margin. On the EAB, single-string fits easily and
+  dual-redundant is right at the edge at max pilot; triple - what the real
+  FBW ultralights actually use - is out. And the fit that matters is the
+  wrong one: single-string is the architecture you must not use for a
+  primary control, and it is the one with room to spare.
+
+  The Part 103 weight-exclusion trap, which runs the WRONG WAY here:
+  BlackFly is 313 lb empty and Helix 348, yet both operate under Part 103 -
+  because 103.1(e)(1) excludes 'floats and safety devices intended for
+  deployment in a potentially catastrophic situation'. Their ballistic
+  chute and flotation are ~90+ lb of legally invisible hardware.
+  Servos, flight computers, wiring and their batteries are NOT excluded.
+  The loophole that makes FBW ultralights legal cannot be used to carry
+  the FBW.""")
+
+print("=== 1b. ELECTRICAL POWER - THE GATING ITEM NOBODY PLANS FOR ===")
+SERVO_A, VOLTS = 2.03, 12.0           # Dynon SV42 moving at 100% torque
+n_srv, hours = 3, 2.0
+watts = n_srv*SERVO_A*VOLTS + 5.0
+print(f"  {n_srv} servos moving under load ~{SERVO_A} A each + controller = ~{watts:.0f} W")
+print(f"  over {hours:.0f} h = {watts*hours:.0f} Wh; at 150 Wh/kg usable that is "
+      f"~{watts*hours/150*2.2:.1f} lb of cells before BMS, case, or a second one")
+print("""  Many Part 103 engines (Hirth, Polini, Vittorazi class) have a very small
+  alternator or none - often under 100 W, sometimes only enough for ignition.
+  If the servos are load-bearing for control, the battery becomes FLIGHT
+  CRITICAL: engine-out must not mean control-out, so it needs its own pack
+  sized for full duration, and then a second pack because one is a single
+  point of failure. This is why every FBW ultralight is an ELECTRIC aircraft
+  - they already own a large, redundant, monitored battery system.
+  VERIFY the chosen engine's actual charging surplus before anything else.""")
 
 print("=== 2. HARDOVER: CAN THE PILOT WIN? ===")
 print("  %-34s %8s %10s %12s" % ("surface / case", "defl", "HM in-lb", "pilot must"))
@@ -93,9 +121,31 @@ print(f"""  'Cut power and fly it manually' is the right instinct, and it is whe
   makes a teflon chafe strip mandatory. A geared servo is the largest
   possible source of exactly that.
 
-  The escape is a true de-clutch (electromagnetic, fully disengaging on
-  power loss) - which works, costs weight, and introduces its own single
-  point of failure: a clutch that fails to release leaves a jammed control.""")
+  CORRECTION, from the sourced pass: the 'true de-clutch' escape is not
+  hypothetical. The Garmin GSA 28 uses a SOLENOID ENGAGEMENT CLUTCH that
+  decouples the motor from the control when unpowered - Garmin's stated
+  purpose is 'virtually no control system friction with the autopilot turned
+  off', and they deleted the shear pin entirely. 1.4 lb, $975 experimental.
+  Dynon / Trio / TruTrak instead use a PERMANENTLY COUPLED slip clutch.
+
+  So the architecture rule is sharp: an engagement-clutch servo is mandatory
+  here and slip-clutch servos are DISQUALIFIED - because the friction penalty
+  is roughly fixed in in-lb while this aircraft's control forces are unusually
+  small, so the RATIO is the worst of any airframe these products target.
+  A builder calls Dynon friction 'low enough in percentage compared to the
+  control forces' on an RV-12 - an aircraft with several times the stick force
+  of this one.""")
+
+print("=== 3b. WHAT A 3-SECOND RECOGNITION DELAY COSTS AT 50 MPH ===")
+for delay, phase in [(3.0, "cruise/climb/descent (Part 23 practice)"),
+                     (1.0, "low approach (Part 23 practice)")]:
+    print(f"  {delay:.0f} s at 50 mph = {50*1.4667*delay:.0f} ft of travel   [{phase}]")
+print("""  Operating rules (121.579 / 135.93) require autopilot use no lower than
+  TWICE the AFM altitude loss for a malfunction. Ultralight pattern work
+  happens at 500-800 ft AGL. A hardover plus a 3 s delay plus a 2x factor
+  plausibly consumes more altitude than this aircraft ever has beneath it:
+  by the certification world's own arithmetic, a servo with meaningful
+  authority has NO legal operating altitude band in a Part 103 mission.""")
 
 print("=== 4. THE ONE SURFACE WHERE A SERVO IS ALREADY FAIL-SAFE ===")
 print("""  Design-log SS9: the spoilerons are single-acting, tension-only, SPRING
