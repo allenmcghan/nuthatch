@@ -562,6 +562,7 @@ before.** For the gasoline aircraft the question is closed.
 | Inflated ram-air wing | Dynamic pressure at 37 mph is 0.024 psi. An inflated 6 in beam carries about 2 in-lb; the tail boom alone needs 37,800. The Goodyear Inflatoplane used about 25 psi with a blower running continuously in flight. |
 | Heavy duty aluminum foil as sandwich skin | 0.8–1 mil in O temper at 90–120 MPa, against 0.020 in 6061-T6 at 310. Roughly two hundredths of the strength. |
 | Solid foam core wing | 39 ft³ of enclosed volume, so 39 lb of foam in 1 lb/ft³ EPS before any skin. Rutan gets away with it on smaller, thinner wings. |
+| V-tail | NACA equal-projected-area rule: needs the same 45 ft² as the cruciform surfaces it replaces, so no weight saved — the only honest win is two boom junctions instead of four, worthless at a 55 kt cap. Costs a ruddervator mixer, routine saturation when the −19.3° flare meets crosswind rudder on the same two surfaces, and instantaneous adverse roll that fights the rudder-then-dihedral steering this two-axis aircraft turns with. See [trades/v-tail.md](trades/v-tail.md). |
 
 ## 19. Fabrication method: digital tooling, not digital parts
 

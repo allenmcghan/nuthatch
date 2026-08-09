@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate the Nuthatch 3D mesh, rev C: low grass stance, trailing-arm gear,
-MTB coil-over shocks, 29-in spoked bicycle main wheels, prop blades.
+"""Generate the Nuthatch 3D mesh, rev D: raked nose leg with 20-in bike wheel
+just aft of the prop, trailing-arm mains, MTB coil-overs, 29-in bicycle mains.
 Outputs: model/nuthatch.stl (binary, inches), drawings/general-arrangement.png,
 and a JSON mesh (with material groups) for the interactive viewer / renderer.
 Axes: X aft from prop plane (station, in), Y right, Z up. Ground at z=0.
@@ -122,12 +122,13 @@ for a0 in (np.radians(80), np.radians(260)):
     add_loft(bs)
 strut([0, 0, 40], [5, 0, 40], 2.2)   # spinner/hub
 endgroup()
-# ---- gear: nose leg+wheel, trailing arms, shocks, bike mains
+# ---- gear: raked nose leg (rev D, wheel just aft of prop), trailing arms, bike mains
 group("tire_n")
-wheel(32, 0, r=4.5, w=2.5)
+bike_wheel(15, 0, R=10, rt=1.2, spokes=12)
 endgroup()
 group("gear")
-strut([32, 0, 26], [32, 0, 4.5], 1.2)
+strut([30, 0, 17], [15, 0, 10], 1.0)      # raked member, ~63 deg
+strut([14, 0, 30], [15.5, 0, 10.5], 0.9)  # closes the crush-bay triangle
 for sgn in (1, -1):
     strut([58, sgn*10, 17], [70.5, sgn*28, 14.5], 1.1)   # trailing arm
     strut([70.5, sgn*28, 14.5], [64, sgn*14, 30], 0.7)   # MTB coil-over
@@ -145,7 +146,7 @@ print(f"mesh: {len(V)} vertices, {len(F)} triangles, groups: {[g[0] for g in GRO
 
 os.makedirs("model", exist_ok=True)
 with open("model/nuthatch.stl", "wb") as f:
-    f.write(b"Nuthatch rev C, inches".ljust(80, b"\0"))
+    f.write(b"Nuthatch rev D, inches".ljust(80, b"\0"))
     f.write(struct.pack("<I", len(F)))
     for tri in F:
         p = V[tri]
@@ -182,7 +183,7 @@ for k in order:
     p = F[k]
     ax.fill(Vx[p], Vy2[p], facecolor="#e3e8ee", edgecolor="#8494a6", lw=0.1)
 ax.set_aspect("equal"); ax.set_title("Isometric", fontsize=11); ax.axis("off")
-fig.suptitle("Nuthatch — general arrangement rev C (trailing-arm gear, 29 in bicycle mains)", fontsize=12)
+fig.suptitle("Nuthatch — general arrangement rev D (raked nose leg, wheel aft of prop)", fontsize=12)
 fig.tight_layout()
 os.makedirs("drawings", exist_ok=True)
 fig.savefig("drawings/general-arrangement.png", dpi=140)

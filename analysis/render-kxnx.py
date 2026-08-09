@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synthetic renderings: Nuthatch rev C lifting off runway 35 at Music City
+"""Synthetic renderings: Nuthatch rev D lifting off runway 35 at Music City
 Executive Airport (KXNX), Gallatin TN — 6,300 x 100 ft asphalt, elev 583 ft.
 Sun-shaded painter render of the actual mesh with cast shadow. These are
 renderings of the design geometry, not photographs.
@@ -118,7 +118,7 @@ def render(fname, cam, look, pitch_deg, alt_ft, sunaz=250, sunel=18, fov=8.5,
         r = 2.5/zh[0]*(1/np.tan(np.radians(fov)))
         ax.add_patch(Ellipse(ph[0], r*0.5, r*2, angle=8, fc=(0.9,0.9,0.9,0.14),
                              ec=(0.85,0.85,0.85,0.3), lw=1, zorder=6))
-    fig.text(0.012,0.02,"NUTHATCH rev C — synthetic rendering of the design mesh · "
+    fig.text(0.012,0.02,"NUTHATCH rev D — synthetic rendering of the design mesh · "
              "runway 35, Music City Executive (KXNX), Gallatin TN · not a photograph",
              fontsize=8, color="white", alpha=0.85, family="monospace")
     os.makedirs("drawings/renders", exist_ok=True)

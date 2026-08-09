@@ -42,11 +42,11 @@ the student-proof margin): 522 ft-lb to absorb.
 | Parameter | Value | Check |
 |---|---|---|
 | Mains | sta 70.5, **15% MAC aft of CG** | target band 12–16% ✓ |
-| Nose | sta 32 | static nose load **19%** (15–20%) ✓ |
-| Wheelbase | 38.5 in | |
+| Nose | sta 15 (rev D raked leg, §8) | static nose load **13.5%** (castoring band 8–15%) ✓ |
+| Wheelbase | 55.5 in | |
 | Track | **56 in** | wide for grass + crosswind |
 | Tip-back angle | **15.5°** | ≥15 ✓ — rotation works without fighting the gear |
-| Overturn angle | 56° | <60 ✓ |
+| Overturn angle | 51° | <60 ✓ (improved from 56° by the longer wheelbase) |
 | Tail-strike attitude | **13.4°** | see below |
 
 **Tail strike, stated honestly:** normal touchdown is 8–12°, fine. A full-stall
@@ -59,8 +59,10 @@ boom instead would cost tail arm.
 
 - **Mains: 13×5.00-6 on 6 in rims at 8–10 psi.** The bicycle discs (§11) bolt
   to these hubs as before.
-- **Nose: 4.10/3.50-6**, castoring with steering stops, rubber-disc or bungee
-  springing — the nose leg meets the ruts first, so it gets its own compliance.
+- **Nose: 20×2.4 BMX/junior-MTB wheel (rev D, §8)**, castoring ±60° with
+  steering stops and a **castor trail + friction damper** — the nose leg meets
+  the ruts first, so it gets its own compliance, and a light castoring bike
+  wheel *will* shimmy without the damper.
 - **EAB kit option: 16×6.5 low-pressure tires on the same rims** (+3–4 lb).
   A kit item like the windshield — never on the 103 aircraft, where the 0.8 lb
   margin cannot afford it. Soft-field technique (aft stick, nosewheel light)
@@ -206,7 +208,50 @@ the soft/wet-field wheel. Design the trailing-arm axle with **interchangeable
 inserts (bike through-axle or 5/8 in aircraft axle)** so the choice stays
 per-field, as §7 already established.
 
-## 8. What this does not settle
+## 8. Rev D: raked nose leg — the wheel just behind the propeller
+
+The nose leg tilts forward so the wheel sits **just aft of the prop disc**:
+20×2.4 wheel (R = 10 in), axle at **sta 15, z = 10**, tire front face at sta 5
+— **3.0 in behind the prop plane** (an axle at sta 10 would put the tire face
+*inside* the prop plane; 15 is as far forward as it goes). Every geometry
+check improves or stays in band:
+
+| Check | rev C (vertical, sta 32) | rev D (raked, sta 15) |
+|---|---|---|
+| Nose-over prop-protection angle | 17.9° | **35.5° — roughly doubled** |
+| Static nose load | 19.5% (slightly heavy) | **13.5%** (8–15% castoring band ✓) |
+| Wheelbase | 38.5 in | 55.5 in |
+| Overturn angle | 56° | **51°** |
+| Flat-nose-tire prop clearance | ~4.6 in | **~7 in** |
+| Braking pitch-over margin | — | atan(48/27) = **60.6°** — huge |
+
+**Prop protection:** with the wheel at sta 15, the aircraft must pitch **35.5°**
+nose-down about the nose axle before a 60-in prop tip reaches the ground —
+about twice the rev C figure. (A tiny 6-in wheel tucked at sta 10.25 would give
+47°, but the bike wheel wins where it matters: crossing ruts, which the nose
+meets first. Diameter is what grass taxes — §7a's own rule.)
+
+**Crush structure — the second half of the request.** The leg is a
+**triangulated bay**: the main raked member runs (30, 0, 17) → (15, 0, 10) at
+~63°, so a rut-strike or nose-first impact loads it near-axially — the genuine
+structural advantage of the rake — and a second near-vertical member
+(14, 0, 30) → (15.5, 0, 10.5) closes the triangle. That triangle is
+**~15 in of progressive crush structure ahead of the rudder pedals**: in a
+nose-first accident it collapses and absorbs energy before the cockpit sees
+the load, exactly the "extend it forward at an angle" intent.
+
+**Loads and weight:** nose gear limit ≈ static 71 lb + 0.35 g braking transfer
+89 lb ≈ **160 lb** — members of ~1.0 × .049 4130 carry that with margin
+(gate-4 detail with the fittings). Weight is a wash: the added tube length is
+offset by the 20-in bike wheel replacing the 6-in pneumatic assembly —
+**weigh it on the bench**. The nosewheel now comes from the same bicycle parts
+bin as the mains (rim, tire, sealant, disc hub standards all shared).
+
+**Gate-4 verifications this adds:** castor-swing prop clearance ≥ 2.5 in at
+full ±60° steering throw, and the friction-damper detail (shimmy on a light
+castoring bike wheel is a real risk, not a formality).
+
+## 9. What this does not settle
 
 - Trailing-arm geometry and pivot bearing detail (gate-4 drawing); shock
   structural rating verification at ~1,600 lb; axle inserts for both wheel
