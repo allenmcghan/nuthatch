@@ -89,7 +89,58 @@ crumb this trade leaves behind: if flaps Path B is adopted, the stall-gate
 arithmetic would no longer be the binding constraint against floats — the
 propeller would be. It always was.
 
-## 5. What this does not settle
+## 5. Follow-up: inflatable floats and a gear-for-floats swap
+
+The refined proposal — high-pressure inflatable floats replacing the entire
+wheel gear, plus "a structure that moves the prop out of the spray" — splits
+into a half that genuinely works and a half that has no answer.
+
+**The floats half works, and better than expected.** Inflatable floats are
+proven ultralight equipment (the Full Lotus line has flown on ultralights for
+decades — segmented low-pressure bladders in fabric; modern drop-stitch
+"high-pressure" construction is the same idea, stiffer). And the accounting
+is friendly: §103.1 excludes floats from empty weight, while the *removed*
+wheel gear (~29.5 lb) comes off for real. Ledger: 253.2 − 29.5 gear
++ ~18 lb of float-attach structure (not excluded) = **241.7 lb for 103
+purposes — legal with 12.3 lb of margin**, the most empty-weight room any
+configuration in this project has ever had. Actual flying mass ≈ 302 lb with
+a Full-Lotus-class 60 lb pair.
+
+But the stall gate is merciless: gross ≈ 496 lb with pilot and fuel.
+Slats at CLmax 1.8 stall at **24.9 kt — fails**. Flaps Path B at ~1.95
+squeaks through at **23.9 kt** — the water version *requires* the
+flaps-for-slats swap, and lands right back on a 0.1 kt razor edge.
+
+**The prop half has no structure that fixes it.** The prop is bolted to the
+engine; "moving the prop" means moving the engine or raising the whole
+aircraft. The geometry that kills both:
+
+- Floats sized for this gross (180% buoyancy → ~14 ft³, an 11 ft pair) put
+  the step under the CG and the **bows ~16 in FORWARD of the prop plane**.
+  The prop disc literally overhangs the bows — every wave crest and all of
+  the bow spray root is inside the disc. A Cub survives on floats because its
+  prop sits several feet *aft* of the bows and ~30 in up; ours is the
+  forwardmost point of the aircraft.
+- Raising the fuselage on a strut tower to get the tips 30 in above the
+  waterline needs the thrustline at ~60 in — a **~30 in tower** that adds
+  ~15–20 lb (not excluded), puts the CG ~50 in above the water (poor roll
+  stability on the step, tip floats mandatory), destroys the low-entry
+  stance, and *still* leaves the disc directly over the bows where hump
+  spray fans upward.
+- Power seals it: **19 lb/hp on the hump** with the 103 engine (seaplane
+  practice wants ≤14); the EAB F-33 at ~14.8 is marginal on a calm day.
+
+**Verdict unchanged, now with the accounting done:** the floats insight is
+real and recorded — gear-for-floats plus the float exclusion makes the empty
+weight *better*, and flaps Path B makes stall barely close. What cannot be
+bought back is the nose propeller over the float bows. Getting the prop out
+of the spray means getting the engine out of the nose, and the pusher trade
+already showed where that balance divergence leads: a different airplane.
+If a water sister-ship ever happens, it reuses this project's wing, tail,
+and tooling on a new fuselage with a pylon engine — designed around water
+from line one, like every amphibian that works.
+
+## 6. What this does not settle
 
 - Nothing structural — no provision is added to the airframe for this.
 - The FAA's float-exclusion language (floats vs hull flotation) was not
