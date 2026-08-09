@@ -164,6 +164,14 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   plus a textbook plain-flap increment, versus 0.1 kt on the unverified slatted
   1.8 it replaced. Verify the flapped section at Re ~1M, then on the
   quarter-scale model, then full-scale in Phase I.
+- **Angle-of-attack annunciation — the best safety-per-pound item found so
+  far, and it needs a probe location.** [trades/fly-by-wire.md §7](trades/fly-by-wire.md)
+  concludes that telling the pilot the AoA delivers most of the benefit of
+  active stall protection with **no actuator, no authority question and no
+  failure mode**. The Junco tablet is already in the EAB plan. Resolve the
+  probe location and calibration **together with the pitot alignment item
+  above** — both are air-data sensors in a flow field nobody has mapped, and
+  the stall numbers depend on both
 - **Battery capital cost, currently carried as $500/kWh in design-log §3.** That
   single figure decides the electric argument and has never been re-verified
   against current DIY 21700 pack prices. Check it before citing §3 again.
