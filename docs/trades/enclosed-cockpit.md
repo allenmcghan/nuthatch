@@ -84,22 +84,27 @@ it comes from a shape the owner wanted for looks.
 
 ## 4. Weight — and the fleet rule survives intact
 
+*(Revised in §6 — the glazing is thin film, not Lexan, which changes these
+numbers substantially in the right direction.)*
+
 | | lb |
 |---|---|
-| Windshield, nose to wing, Lexan | +5.0 |
-| Two doors: frames, glazing, hinges, latches | +8.0 |
-| Door sills, posts, cabin closeout in the cage | +3.0 |
-| Ventilation: NACA ducts + storm window | +1.0 |
-| Cabane struts and fittings **deleted** | −5.5 |
-| Existing EAB windshield superseded | −4.0 |
-| **Enclosure kit, net (EAB)** | **+7.5** |
-| **Airframe change alone (both aircraft)** | **−5.5** |
+| Clear film, 20 mil, ~22 ft² | +3.0 |
+| Two door frames, light tube | +3.0 |
+| Bead track, fasteners, zip | +1.0 |
+| NACA ducts, closable valves, defog | +1.0 |
+| Cabin closeout and sills in the cage | +2.0 |
+| **Enclosure kit, gross** | **+10.0** *(was 17.0 with Lexan)* |
+| Existing EAB Lexan windshield superseded | −4.0 |
+| **Enclosure kit, net (EAB)** | **+6.0** |
+| **Cabane deleted — airframe change, both aircraft** | **−5.5** |
 
 | | Empty | Verdict |
 |---|---|---|
 | **103 kit, cabane deleted** | 253.2 → **247.7** | **margin 0.8 → 6.3 lb** |
-| 103 kit *with* the enclosure | 260.7 | **over the cap by 6.7 lb** |
-| EAB with the enclosure | 277.7 (all-up 507.7 of 525) | **fits** |
+| 103 with the *full* enclosure | 257.7 | over the cap by 3.7 lb |
+| **103 with windshield + vents, no doors** | **250.8** | **margin 3.2 lb — this works** |
+| EAB with the full enclosure | 270.2 (all-up ~500 of 525) | **fits** |
 
 **This splits exactly along the existing fleet architecture:**
 
@@ -110,10 +115,11 @@ it comes from a shape the owner wanted for looks.
 - **The enclosure is an EAB KIT ITEM**, exactly like the windshield and
   tablet already are. Door hard points live in the cage as permanent grams;
   the doors and glazing bolt on or stay home.
-- **Aircraft #2, the pure 103, flies open under the same wing on the same
-  cage.** Two configurations, one airframe — the common-airframe rule is
-  unchanged, and this is precisely the "deletable items on permanent hard
-  points" pattern it already specifies.
+- **Aircraft #2, the pure 103, gets a windshield and vents but no doors** —
+  the classic ultralight arrangement, and a real improvement over the "flies
+  open" that the Lexan version forced. Two configurations, one airframe: the
+  common-airframe rule is unchanged, and this is precisely the "deletable
+  items on permanent hard points" pattern it already specifies.
 
 ## 5. Shape: does it actually look and fly right?
 
@@ -125,24 +131,126 @@ than floating above it on sticks.
 
 Two notes:
 
-- **Windshield optics.** At 14–17° a flat-wrapped screen has real reflection
-  and distortion issues. Sailplanes manage it with a blown canopy; a
-  flat-wrapped Lexan screen at that rake will want checking on the mockup
-  before the frame is welded.
+- **Windshield optics.** At 14–17° any screen has real reflection and
+  distortion issues, and §6's thin film is optically worse than Lexan — but
+  it also conforms to compound curvature instead of fighting it, which a
+  flat-wrapped rigid panel cannot. Check it on the mockup before the frame
+  is welded.
 - **The aft-body closure problem from [cockpit-cage.md §4](cockpit-cage.md)
   is unchanged** — the cabin still has to neck down to a 3.5 in boom, and
   that closure is still steeper than attached flow likes. Enclosing the front
   does not fix the back.
 
-## 6. What this does not settle
+## 6. Thin-film glazing and ram-air ventilation
+
+**Owner direction: extremely thin clear plastic — isinglass-class film or
+thinner — stretched across the steel frame, with NACA ducts forcing air up
+through the cabin, closable for winter.** Script:
+`analysis/glazing-ventilation.py`. Three findings, one of them a correction.
+
+### It is much lighter, and the saving compounds
+
+| Glazing | Thickness | lb/ft² | ~22 ft² |
+|---|---|---|---|
+| Clear PVC film | 12 mil | 0.081 | 1.8 lb |
+| **Clear PVC film** | **20 mil** | **0.135** | **3.0 lb** |
+| Lexan | 0.060 in | 0.374 | 8.2 lb |
+| Lexan | 0.093 in | 0.580 | 12.8 lb |
+
+**−5.3 lb against 0.060 Lexan**, and it compounds: film needs only an edge to
+pull against, where Lexan needs a frame stiff enough not to crack it. That is
+what takes the enclosure kit from 17.0 lb gross to 10.0, and what puts a
+windshield on the Part 103 aircraft for the first time.
+
+### The ducts hold the film taut — an accident that works out
+
+A stretched membrane in an airstream drums and flutters unless tensioned. The
+ventilation fixes that for free: **ram air pressurises the cabin and tensions
+the film from the inside**, the same trick that makes an inflatable rigid. At
+55 mph, cabin at half of ram is 0.027 psi; a 20 in panel bulging 1 in runs
+**1.34 lb/in of edge tension** against vinyl's 20+ lb/in. The panels go
+drum-taut in flight and slack on the ground, which is the right way round.
+
+**Corollary, and it is a design requirement: the outlet must be smaller than
+the inlet.** Equal or larger and there is no pressurisation, and the film
+flaps. Size the spill vent deliberately.
+
+### Duct sizing — smaller than you would guess
+
+| Inlet area | CFM @ 35 mph | CFM @ 55 mph |
+|---|---|---|
+| 4 in² | 64 | 101 |
+| **8 in²** | **128** | **202** |
+| 12 in² | 193 | 303 |
+
+Against ~1,500 BTU/hr (pilot ~500 plus solar through the glazing ~1,000),
+holding the cabin within 10 °F of ambient needs **136 CFM**. So **two NACA
+ducts of about 2 × 2 in** cover it at cruise with margin.
+
+Two practical notes: **put the ducts in rigid structure, not in the film** —
+a NACA submerged inlet depends on a precise 7° ramp and sharp diverging lips
+and cannot hold that shape in a membrane. And at 55 mph a plain scoop is
+nearly as good; NACA is worth it for cleanliness and looks, not for
+measurable drag at this speed.
+
+### Winter: it removes wind chill, it does not make you warm
+
+| Ambient | Open at 55 mph | Enclosed | Gain |
+|---|---|---|---|
+| 50 °F | 40 °F | 50 °F | 10 °F |
+| 40 °F | 25 °F | 40 °F | 15 °F |
+| 30 °F | 11 °F | 30 °F | **19 °F** |
+| 20 °F | −3 °F | 20 °F | **23 °F** |
+
+That is the honest framing: thin film has essentially no R-value, so what you
+get is **still air at ambient** — dress for that. The prize is deleting
+55 mph of wind chill, worth about 20 °F, which is the difference between
+flying in December and not.
+
+Two winter requirements fall out:
+
+- **You cannot close everything.** A warm pilot inside cold film fogs it
+  instantly. Keep a **small defog trickle on the windshield at all times** —
+  which is why every closed aircraft has a defrost duct.
+- **Specify cold-crack-rated vinyl.** Ordinary clear PVC embrittles and
+  cracks around 20–30 °F; marine grades are rated to −20 °F and below. For an
+  aircraft meant to fly in winter this is a specification, not a preference.
+
+### The frangibility claim needs correcting
+
+The intent is right, and it answers the egress question rev G opened. **The
+mechanism is wrong.** Plasticised PVC film elongates **200–400% before it
+breaks**. A shoulder driven into it does not punch through — it **balloons,
+like a trampoline**, and can trap you while it stretches. Thin vinyl is
+*extensible*, not frangible: a sharp point punctures it easily, a body does
+not.
+
+**Fix: make the attachment frangible, not the film.**
+
+- **Bead-in-track or twist fasteners** round the panel edge, sized to release
+  under a shoulder push, so the whole panel departs rather than tearing.
+- **A zip along one edge**, pullable from inside — marine enclosure practice.
+- **A hook knife on the harness**: 2 oz, and standard kit on anything with a
+  canopy.
+
+Then the claim is true *and testable*: **proof-test it on the mockup** by
+pushing out of a fully assembled panel, in a harness, both sides.
+
+## 7. What this does not settle
 
 - **The dihedral re-run.** −16% of pendulum arm on the aircraft whose roll
   control is dihedral. Re-run `aero-model.py` for Clβ and the rudder-roll
   ratio before anything is drawn; expect +0.5–1°.
-- **Egress.** A fully enclosed cabin with a BRS raises a question the open
-  cockpit never had: getting out, in a hurry, possibly inverted. Door
-  jettison or a frangible panel needs deciding, and it interacts with the
-  rollover hoop that now doubles as the wing pickup.
+- **Egress — now has an answer, and it needs proving.** §6 settles the
+  mechanism (edge-release attachment plus a hook knife, *not* punching
+  through the film). What remains is the release force: high enough that the
+  panel stays put under 0.027 psi of cabin pressure, low enough that a
+  harnessed pilot can shove it off. Proof-test both sides on the mockup.
+- **Optical quality of film in the forward view.** Vinyl distorts, and it is
+  being asked to work at a 14–17° rake. A small optical-grade panel directly
+  ahead (~1 ft², ~0.4 lb) with film everywhere else is the obvious hedge if
+  the mockup shows it matters. Film is also a consumable — it yellows and
+  hardens in UV over a few seasons, which is fine at $40 a panel.
 - Whether 35° is the right recline, or 30° (easier entry, less CG shift) or
   40° (lower head, more drag saved). A mockup question, and it moves the
   seat station.

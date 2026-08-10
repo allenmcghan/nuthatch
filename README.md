@@ -71,9 +71,11 @@ Part 103 stays gasoline. Worked in
 - Welded 4130 cockpit cage + single straight 4130 tail boom, all-wood
   cantilever wing sitting directly on the cabin roof (no cabane), fabric
   over everything
-- Reclined pilot, windshield sweeping from the nose to the wing; **enclosed
-  cabin with doors both sides is an EAB kit item** — the Part 103 aircraft
-  flies open under the same wing on the same cage
+- Reclined pilot, windshield sweeping from the nose to the wing; glazing is
+  thin clear film stretched on the steel frame, not rigid panel
+- Ram-air NACA ducts, closable for winter — the cabin deletes ~20 °F of wind
+  chill rather than making heat. **Doors both sides are an EAB kit item**;
+  the Part 103 aircraft carries the windshield and vents without them
 - Constant chord, 3-piece removable wing, two bolts per cap per joint
 - Douglas fir truss ribs, plywood D-tube leading edge, Oratex covered
 - Aluminum tube spar caps with a wrapped sheet shear web

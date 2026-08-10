@@ -1077,3 +1077,43 @@ undercuts the sling seat's cooling rationale (§21 addendum 2). Plus a new
 question the open cockpit never had: **egress from an enclosed cabin under a
 BRS**, possibly inverted, through doors that share structure with the
 rollover hoop.
+
+**§25 addendum — thin-film glazing and ram-air ventilation** (owner
+direction; worked in [trades/enclosed-cockpit.md §6](trades/enclosed-cockpit.md)
+with `analysis/glazing-ventilation.py`). Glazing is **isinglass-class clear
+PVC film, ~20 mil, stretched on the steel frame** rather than Lexan: **3.0 lb
+against 8.2**, and the saving compounds because film needs only an edge to
+pull against where Lexan needs a frame stiff enough not to crack it. The
+enclosure kit drops from 17.0 lb gross to **10.0**, which changes a verdict —
+**the Part 103 aircraft can now carry a windshield and vents (no doors) at
+250.8 lb, 3.2 lb of margin**, instead of flying open.
+
+**The vents and the film help each other, which was not planned.** A
+stretched membrane drums in an airstream unless tensioned; ram air
+pressurises the cabin and tensions it from the inside, the inflatable trick.
+At 55 mph a 20 in panel bulging 1 in carries **1.34 lb/in** against vinyl's
+20+. Design requirement that falls out: **the outlet must be smaller than the
+inlet**, or there is no pressurisation and the film flaps.
+
+**Duct sizing is small:** two NACA inlets of ~2 × 2 in (8 in² total) give
+**202 CFM at 55 mph**, against the 136 CFM needed to hold the cabin within
+10 °F of ambient at ~1,500 BTU/hr. Put them in **rigid structure, not the
+film** — a submerged inlet needs a precise 7° ramp it cannot hold in a
+membrane.
+
+**Winter, honestly:** film has no R-value, so the cabin gives **still air at
+ambient**, not warmth. What it deletes is 55 mph of wind chill — **19 °F at
+30 °F ambient, 23 °F at 20 °F**. Two requirements: **a defog trickle that
+never fully closes** (a warm pilot inside cold film fogs it instantly), and
+**cold-crack-rated vinyl** — ordinary clear PVC embrittles at 20–30 °F where
+marine grades go to −20 °F.
+
+**The frangibility claim is corrected.** The intent — push straight through
+in an accident — answers the egress question rev G opened, but the mechanism
+does not work: plasticised PVC elongates **200–400% before breaking**, so a
+shoulder **balloons it like a trampoline** and can be trapped by it. Thin
+vinyl is *extensible*, not frangible. **Make the attachment frangible
+instead**: bead-in-track or twist fasteners sized to release under a shoulder
+push, a zip pullable from inside, and a 2 oz hook knife on the harness. Then
+the claim is testable — **proof-test egress on the mockup, both sides, in a
+harness.**
