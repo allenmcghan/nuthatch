@@ -1170,3 +1170,36 @@ low and forward** where nicks are likeliest. Explicitly **do not** switch to
 scrim-reinforced mesh vinyl: it would stop tears and equally stop the egress
 plan — the sling seat uses that material precisely because it must not tear.
 Film is a consumable; a nicked panel is replaced, not flown.
+
+**§25 addendum 4 — glazing split: thin Lexan windshield, film doors only.**
+Owner refinement, and the right division. **Windshield + upper sides in
+0.040 Lexan (3.0 lb), the two doors in 20 mil film (1.4 lb) — 4.3 lb total**,
+against 3.0 all-film and 8.2 all-0.060-Lexan. The **+1.4 lb over all-film**
+buys two things: the forward view goes through optical-grade rigid panel,
+which **deletes the distortion problem a 14–17° raked film screen would have
+had**; and the windshield — the one panel actually exposed to stones off the
+nosewheel — **cannot propagate a tear at all**, because polycarbonate crazes
+locally rather than running like a tensioned membrane.
+
+**That also shrinks addendum 3's tear-arrest requirement.** Film is now only
+the doors, which sit high on the sides at sta 40–78, out of the spray, and
+are already individually bounded panels. So "subdivide the glazing at every
+cage member" **relaxes to: keep each door a single bounded panel**, which it
+already is. Scrim-reinforced mesh is still explicitly out — it would defeat
+egress.
+
+**Three Lexan-specific requirements that film did not have:** **thermal
+float** — polycarbonate expands ~6× steel, so a 40 in screen moves 0.15 in
+through a 120 °F swing and needs oversized holes or a floating channel,
+**never a hard clamp**; **oil-canning** — 0.040 is thin for a 12 ft² wrapped
+panel and may want an intermediate frame member or 0.060 (+1.5 lb), a mockup
+check before the frame is welded; and **solvent crazing** — keep it off the
+fuel path and specify the cleaning method.
+
+**Fleet consequence:** the split costs the 103 about 1.9 lb, taking its
+windshield-and-vents configuration from 3.2 lb of margin to 1.3. Clean
+answer: **glazing is a kit item either way.** The EAB takes the Lexan screen,
+being the aircraft flown fast, far and in weather; **Avery's 103 can keep a
+film screen and hold 3.2 lb** — same cage, same frame, same bead track,
+different sheet. The doors stay film in both, so **the egress plan is
+identical: the doors are the escape path in either build.**

@@ -10,25 +10,41 @@ import math
 RHO = 0.002377
 def q(mph): return 0.5*RHO*(mph*1.4667)**2
 
-# ---------------- 1. weight ----------------
-AREA = 22.0                            # ft^2 glazed: windshield ~8, doors ~10, upper sides ~4
-print("=== 1. FILM vs LEXAN ===")
-print("  %-34s %8s %9s %9s" % ("glazing", "thick in", "lb/ft^2", "total lb"))
-opts = [("clear PVC film ('isinglass') 12 mil", 0.012, 0.047),
-        ("clear PVC film 20 mil", 0.020, 0.047),
-        ("clear PVC film 30 mil", 0.030, 0.047),
-        ("Lexan/polycarbonate 0.060", 0.060, 0.0433),
-        ("Lexan 0.093 (typical windshield)", 0.093, 0.0433)]
-for n, t, rho in opts:
+# ---------------- 1. weight, split by material ----------------
+A_RIGID, A_FILM = 12.0, 10.0           # windshield + upper sides / two doors
+RHO_PC, RHO_PVC = 0.0433, 0.047
+print("=== 1. GLAZING, SPLIT: LEXAN WINDSHIELD + FILM DOORS ===")
+print("  %-38s %8s %9s %9s" % ("panel", "thick in", "lb/ft^2", "lb"))
+for n, t, rho, a in [("windshield+upper, Lexan 0.040", 0.040, RHO_PC, A_RIGID),
+                     ("windshield+upper, Lexan 0.060", 0.060, RHO_PC, A_RIGID),
+                     ("windshield+upper, Lexan 0.093", 0.093, RHO_PC, A_RIGID),
+                     ("two doors, PVC film 20 mil", 0.020, RHO_PVC, A_FILM)]:
     psf = t*rho*144.0
-    print("  %-34s %8.3f %9.3f %9.1f" % (n, t, psf, psf*AREA))
-FILM_T = 0.020
-w_film = FILM_T*0.047*144.0*AREA
-w_lex = 0.060*0.0433*144.0*AREA
-print(f"\n  20 mil film {w_film:.1f} lb vs 0.060 Lexan {w_lex:.1f} lb -> {w_film-w_lex:+.1f} lb")
-print("""  And the saving compounds: film needs only an edge to pull against, while
-  Lexan needs a rigid frame stiff enough not to crack it. The door frames get
-  lighter too.""")
+    print("  %-38s %8.3f %9.3f %9.1f" % (n, t, psf, psf*a))
+w_rigid = 0.040*RHO_PC*144.0*A_RIGID
+w_doors = 0.020*RHO_PVC*144.0*A_FILM
+w_film = w_rigid + w_doors             # total glazing, used by the ledger below
+w_lex = 0.060*RHO_PC*144.0*22.0
+print(f"\n  SELECTED: 0.040 Lexan {w_rigid:.1f} + 20 mil film doors {w_doors:.1f} = {w_film:.1f} lb")
+print(f"  all-film would be {0.020*RHO_PVC*144.0*22.0:.1f}; all-Lexan 0.060 would be {w_lex:.1f}")
+print(f"  So the split costs {w_film - 0.020*RHO_PVC*144.0*22.0:+.1f} lb against all-film and buys:""")
+print("""   - the forward view through OPTICAL-GRADE RIGID PANEL, which retires the
+     distortion worry a 14-17 deg raked film windshield would have had;
+   - a windshield that cannot propagate a tear at all - polycarbonate crazes
+     and cracks locally, it does not RUN like a tensioned membrane.
+
+  THREE THINGS THIN LEXAN BRINGS THAT FILM DID NOT:""")
+CTE_PC, CTE_ST, SPAN, DT = 3.8e-5, 6.3e-6, 40.0, 120.0
+grow = SPAN*(CTE_PC - CTE_ST)*DT
+print(f"   - THERMAL FLOAT. Polycarbonate expands ~6x steel. Over a {SPAN:.0f} in")
+print(f"     windshield and a {DT:.0f} F swing (winter dawn to sitting in summer sun)")
+print(f"     it moves {grow:.2f} in relative to the frame. Oversized holes (+1/8 to")
+print(f"     3/16) or a floating rubber channel - NEVER clamped hard, or it cracks.")
+print("""   - OIL-CANNING. 0.040 is thin for a 12 ft^2 wrapped panel; it may need an
+     intermediate frame member, or stepping to 0.060 (+1.5 lb). Check on the
+     mockup before the frame is welded.
+   - SOLVENT CRAZING. Polycarbonate is attacked by many cleaners and fuels.
+     Specify the cleaning method in the manual; keep it out of the fuel path.""")
 
 # ---------------- 2. does it stay taut? ----------------
 print("=== 2. DOES IT STAY TAUT - AND THE DUCTS HELP ===")
@@ -130,13 +146,17 @@ print(f"""
   frame edge, a UV-hardened spot in year three: any of them can run.
   At Vne, q = {q(62)/144:.4f} psi and a lifted flap edge peels at more than {TEAR_LBF:.0f} lbf.
 
-  MITIGATION - and it is free, because it is just panel layout:
-   - THE BEAD TRACK IS THE RIPSTOP. A tear can only run to the edge of the
-     panel it started in, then it is arrested at the frame. So SMALLER PANELS
-     BOUND THE DAMAGE: divide the glazing at every existing cage member
-     rather than spanning two big sheets across the whole side.
-   - Put the SMALLEST panels where nicks are likeliest - low and forward,
-     in the gear and prop-wash spray zone - and keep the large ones high.
+  BUT THE SPLIT IN SECTION 1 ALREADY SOLVES MOST OF IT, which is the useful
+  part: film is now ONLY the two doors.
+   - The windshield - the panel actually exposed to stones off the nosewheel
+     and to prop wash - is rigid Lexan, which crazes locally and CANNOT run.
+     The tensioned-membrane hazard leaves the forward, low, dirty zone
+     entirely.
+   - The doors sit high on the sides at sta 40-78, out of the spray, and are
+     ALREADY individually bounded panels. The bead track around each one is
+     the ripstop; a tear runs to that frame and stops.
+   - So the earlier 'subdivide the glazing at every cage member' requirement
+     RELAXES to: keep each door a single bounded panel, which it already is.
    - Do NOT reach for scrim-reinforced (mesh) vinyl to fix this. It would
      stop tears, and it would also stop the egress plan; the sling seat uses
      that material precisely because it must NOT tear.
@@ -159,26 +179,36 @@ w_cut = 2*1.5/16 + 0.1
 print(f"\n  weight: two cutters ~{2*1.5:.0f} oz + brackets = {w_cut:.1f} lb,")
 print(f"  and it DELETES the zip and the release-force tuning from the kit.")
 
-# ---------------- 6. the ledger, redone with film ----------------
-print("=== 6. LEDGER, REDONE WITH FILM ===")
-kit = [("clear film, 20 mil, ~22 ft^2", w_film),
+# ---------------- 6. the ledger, with the split glazing ----------------
+print("=== 6. LEDGER, WITH LEXAN WINDSHIELD + FILM DOORS ===")
+kit = [("windshield + upper sides, 0.040 Lexan", w_rigid),
+       ("two doors, 20 mil film", w_doors),
        ("two door frames, light tube", 3.0),
+       ("windshield frame / floating channel", 1.0),
        ("bead track and fasteners (positive, no release)", 0.8),
        ("two mounted cutters + brackets", 0.3),
        ("NACA ducts + closable valves + defog", 1.0),
        ("cabin closeout and sills in the cage", 2.0)]
 tot = sum(v for _, v in kit)
 for n, v in kit: print(f"    +{v:4.1f}  {n}")
-print(f"    ----\n    enclosure kit gross {tot:.1f} lb (was 17.0 with Lexan)")
-E103, CAP, EAB = 247.7, 254.0, 270.2   # after the rev G cabane deletion
-print(f"\n  EAB kit: {tot:.1f} - 4.0 (Lexan windshield superseded) = {tot-4:.1f} lb net")
-print(f"  103 with the FULL enclosure: {E103:.1f} + {tot:.1f} = {E103+tot:.1f} -> "
-      f"{'over by %.1f' % (E103+tot-CAP) if E103+tot > CAP else 'FITS'}")
-strip = w_film*8/22 + 1.0 + 1.0        # windshield film only, light frame, ducts
-print(f"  103 with WINDSHIELD + VENTS ONLY (no doors): {E103:.1f} + {strip:.1f} = "
-      f"{E103+strip:.1f} -> margin {CAP-E103-strip:.1f} lb  <- this one works")
-print("""
-  So film opens a door the Lexan version did not: the Part 103 aircraft can
-  now have a windshield and ventilation, and simply go without doors. That is
-  the classic ultralight arrangement and it is a real improvement over
-  'flies open' for Avery's aircraft.""")
+print(f"    ----\n    enclosure kit gross {tot:.1f} lb  (17.0 if it were all 0.060 Lexan)")
+
+E103, CAP = 247.7, 254.0               # after the rev G cabane deletion
+print(f"\n  EAB kit: {tot:.1f} - 4.0 (old Lexan windshield line superseded) = {tot-4:.1f} lb net")
+print(f"  103 with the FULL enclosure: {E103:.1f} + {tot:.1f} = {E103+tot:.1f} -> over by {E103+tot-CAP:.1f}")
+strip_lex = w_rigid + 1.0 + 1.0        # Lexan windshield + its frame + ducts, no doors
+strip_flm = 0.020*RHO_PVC*144.0*A_RIGID + 0.5 + 1.0
+print(f"  103, WINDSHIELD + VENTS ONLY (no doors):")
+print(f"    with the EAB's 0.040 Lexan windshield: +{strip_lex:.1f} -> {E103+strip_lex:.1f}, "
+      f"margin {CAP-E103-strip_lex:.1f} lb")
+print(f"    with a FILM windshield instead:        +{strip_flm:.1f} -> {E103+strip_flm:.1f}, "
+      f"margin {CAP-E103-strip_flm:.1f} lb")
+print(f"""
+  So the split costs the 103 about {strip_lex-strip_flm:.1f} lb of its margin, and there is a
+  clean fleet answer: GLAZING IS A KIT ITEM EITHER WAY. The EAB gets the
+  Lexan windshield, because it is the aircraft that will be flown fast, far
+  and in weather, and the optical quality is worth {strip_lex-strip_flm:.1f} lb there. Avery's
+  103 can keep a FILM windshield and hold {CAP-E103-strip_flm:.1f} lb of margin - same cage,
+  same frame, same bead track, different sheet in it.
+  Both aircraft still carry the doors as film if fitted, and the egress plan
+  is unchanged because THE DOORS ARE THE ESCAPE PATH in either build.""")

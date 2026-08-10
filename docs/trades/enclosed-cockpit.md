@@ -89,23 +89,34 @@ numbers substantially in the right direction.)*
 
 | | lb |
 |---|---|
-| Clear film, 20 mil, ~22 ft² | +3.0 |
+| Windshield + upper sides, 0.040 Lexan | +3.0 |
+| Two doors, 20 mil film | +1.4 |
 | Two door frames, light tube | +3.0 |
+| Windshield frame / floating channel | +1.0 |
 | Bead track and fasteners (positive, no release) | +0.8 |
 | Two mounted cutters + brackets | +0.3 |
 | NACA ducts, closable valves, defog | +1.0 |
 | Cabin closeout and sills in the cage | +2.0 |
-| **Enclosure kit, gross** | **+10.0** *(was 17.0 with Lexan)* |
-| Existing EAB Lexan windshield superseded | −4.0 |
-| **Enclosure kit, net (EAB)** | **+6.0** |
+| **Enclosure kit, gross** | **+12.4** *(17.0 if it were all 0.060 Lexan)* |
+| Old EAB Lexan windshield line superseded | −4.0 |
+| **Enclosure kit, net (EAB)** | **+8.4** |
 | **Cabane deleted — airframe change, both aircraft** | **−5.5** |
 
 | | Empty | Verdict |
 |---|---|---|
 | **103 kit, cabane deleted** | 253.2 → **247.7** | **margin 0.8 → 6.3 lb** |
-| 103 with the *full* enclosure | 257.7 | over the cap by 3.7 lb |
-| **103 with windshield + vents, no doors** | **250.8** | **margin 3.2 lb — this works** |
-| EAB with the full enclosure | 270.2 (all-up ~500 of 525) | **fits** |
+| 103 with the *full* enclosure | 260.1 | over the cap by 6.1 lb |
+| 103, windshield + vents, **Lexan** screen | 252.7 | margin 1.3 lb — tight |
+| **103, windshield + vents, film screen** | **250.8** | **margin 3.2 lb** |
+| EAB with the full enclosure | ~272 (all-up ~502 of 525) | **fits** |
+
+**The split costs the 103 about 1.9 lb of margin, and there is a clean fleet
+answer: glazing is a kit item either way.** The EAB takes the Lexan
+windshield — it is the aircraft that will be flown fast, far and in weather,
+and optical quality is worth 1.9 lb there. Avery's 103 can keep a **film**
+windshield and hold 3.2 lb of margin: same cage, same frame, same bead track,
+a different sheet in it. **The doors stay film in both builds, so the egress
+plan is identical — the doors are the escape path either way.**
 
 **This splits exactly along the existing fleet architecture:**
 
@@ -132,11 +143,10 @@ than floating above it on sticks.
 
 Two notes:
 
-- **Windshield optics.** At 14–17° any screen has real reflection and
-  distortion issues, and §6's thin film is optically worse than Lexan — but
-  it also conforms to compound curvature instead of fighting it, which a
-  flat-wrapped rigid panel cannot. Check it on the mockup before the frame
-  is welded.
+- **Windshield optics — resolved.** §6 puts **thin Lexan in the forward
+  view** and keeps film to the doors, so the rake no longer costs optical
+  quality. What remains for the mockup is whether 0.040 oil-cans over a
+  12 ft² wrapped panel, and the thermal float detail at its edges.
 - **The aft-body closure problem from [cockpit-cage.md §4](cockpit-cage.md)
   is unchanged** — the cabin still has to neck down to a 3.5 in boom, and
   that closure is still steeper than attached flow likes. Enclosing the front
@@ -149,19 +159,39 @@ thinner — stretched across the steel frame, with NACA ducts forcing air up
 through the cabin, closable for winter.** Script:
 `analysis/glazing-ventilation.py`. Three findings, one of them a correction.
 
-### It is much lighter, and the saving compounds
+### The split: thin Lexan windshield, film doors
 
-| Glazing | Thickness | lb/ft² | ~22 ft² |
+**Owner refinement: the two doors are the only film — the windshield is thin
+Lexan.** That is the right division, and it retires the optics worry outright.
+
+| Panel | Material | lb/ft² | Weight |
 |---|---|---|---|
-| Clear PVC film | 12 mil | 0.081 | 1.8 lb |
-| **Clear PVC film** | **20 mil** | **0.135** | **3.0 lb** |
-| Lexan | 0.060 in | 0.374 | 8.2 lb |
-| Lexan | 0.093 in | 0.580 | 12.8 lb |
+| Windshield + upper sides (12 ft²) | **0.040 Lexan** | 0.249 | **3.0 lb** |
+| Windshield + upper sides | 0.060 Lexan | 0.374 | 4.5 lb |
+| **Two doors (10 ft²)** | **20 mil PVC film** | **0.135** | **1.4 lb** |
+| **Selected total** | | | **4.3 lb** |
 
-**−5.3 lb against 0.060 Lexan**, and it compounds: film needs only an edge to
-pull against, where Lexan needs a frame stiff enough not to crack it. That is
-what takes the enclosure kit from 17.0 lb gross to 10.0, and what puts a
-windshield on the Part 103 aircraft for the first time.
+All-film would be 3.0 lb and all-0.060-Lexan 8.2, so **the split costs
++1.4 lb against all-film** and buys two things:
+
+- **The forward view goes through optical-grade rigid panel**, which deletes
+  the distortion problem a 14–17° raked *film* windshield would have had.
+- **The windshield cannot propagate a tear at all.** Polycarbonate crazes and
+  cracks locally; it does not *run* like a tensioned membrane — and the
+  windshield is exactly the panel exposed to stones off the nosewheel.
+
+**Three things thin Lexan brings that film did not:**
+
+- **Thermal float.** Polycarbonate expands ~6× steel. Over a 40 in windshield
+  through a 120 °F swing (winter dawn to sitting in summer sun) it moves
+  **0.15 in relative to the frame**. Oversized holes (+1/8 to 3/16 in) or a
+  floating rubber channel — **never clamped hard**, or it cracks.
+- **Oil-canning.** 0.040 is thin for a 12 ft² wrapped panel; it may want an
+  intermediate frame member, or stepping to 0.060 (+1.5 lb). **Check on the
+  mockup before the frame is welded.**
+- **Solvent crazing.** Polycarbonate is attacked by many cleaners and by
+  fuel. Specify the cleaning method in the manual and keep it off the fuel
+  path.
 
 ### The ducts hold the film taut — an accident that works out
 
@@ -269,19 +299,22 @@ it. A stone off the nosewheel, an abrasion at a frame edge, a UV-hardened
 spot in year three: any of them can run. At Vne, q = 0.068 psi and a lifted
 flap edge peels at well over 10 lbf.
 
-**Mitigation, and it is free because it is only panel layout:**
+**The Lexan/film split above already solves most of this**, which is the
+useful part — film is now *only* the two doors:
 
-- **The bead track is the ripstop.** A tear can only run to the edge of the
-  panel it started in, then it is arrested at the frame. **Smaller panels
-  bound the damage** — divide the glazing at every existing cage member
-  rather than spanning two big sheets down each side.
-- **Put the smallest panels where nicks are likeliest** — low and forward, in
-  the gear and prop-wash spray zone — and keep the large ones high.
-- **Do not reach for scrim-reinforced mesh vinyl to fix this.** It would stop
-  tears, and it would equally stop the egress plan. The sling seat uses that
-  material precisely *because* it must not tear.
-- **Inspect edges at every condition check.** Film is a consumable; a nicked
-  panel gets replaced, not flown.
+- **The windshield — the panel actually exposed to stones off the nosewheel
+  and to prop wash — is rigid.** The tensioned-membrane hazard leaves the
+  forward, low, dirty zone entirely.
+- **The doors sit high on the sides at sta 40–78, out of the spray, and are
+  already individually bounded panels.** The bead track around each one is
+  the ripstop: a tear runs to that frame and stops.
+- So the earlier "subdivide the glazing at every cage member" requirement
+  **relaxes to: keep each door a single bounded panel**, which it already is.
+- **Do not reach for scrim-reinforced mesh vinyl.** It would stop tears, and
+  it would equally stop the egress plan. The sling seat uses that material
+  precisely *because* it must not tear.
+- **Inspect door edges at every condition check.** Film is a consumable; a
+  nicked panel gets replaced, not flown.
 
 **Requirements, so this is a plan and not a hope:**
 
