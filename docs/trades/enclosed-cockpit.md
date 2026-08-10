@@ -235,23 +235,53 @@ defensible, and probably better than the alternative:
 - So: **attach the film positively, with no release mechanism to fail or
   drift, and cut out.**
 
-**Timing.** A 38 × 24 in door panel: three sides releases it entirely (86 in,
-~5.7 s at a hook blade's ~15 in/s along a track); two sides folds it back
-(62 in, ~4.1 s). Plus 2–3 s to reach and deploy — **call it 7–10 seconds.**
-Fine for a ditching or a post-crash exit. **Marginal for fire, which is the
-case that sets the requirement.**
+**Timing — corrected downward.** The first estimate here cut the whole panel
+out and came to 7–10 s. That was wrong. For a thin film **tear propagation is
+far cheaper than tear initiation** — the principle behind every "tear here"
+notch. Once a cut exists, 20 mil flexible PVC propagates at roughly **10 lbf**
+of steady pull, well inside a one-handed grab. So the real method is **one
+diagonal cut from a corner, grab the triangular flap, and tear**:
 
-**The detail that decides the design: a seatbelt cutter has a shielded hook
+| Method | Cut | + reach | Total |
+|---|---|---|---|
+| Cut the full perimeter *(first estimate)* | 5.7 s | 2–3 s | ~8 s |
+| **One diagonal cut, then tear** | **2 s** | 2–3 s | **~4–5 s** |
+
+**That moves the fire case from marginal to acceptable**, which was the only
+case ever in question.
+
+**The detail that decides the tooling: a seatbelt cutter has a shielded hook
 blade and cannot puncture.** Facing a taut membrane with no edge, it does
-nothing. So the airframe has to provide the start:
+nothing. So:
 
-- **A small pre-slit at the top corner of each panel**, under a tab, sized
-  for the hook to enter — or a pull-tab that opens one.
-- **Cut along the edge track, not across the middle.** Running the hook down
-  the bead groove releases the whole panel in one pass; carving a
-  person-sized hole in the middle is slower and needs a pointed blade.
-- **Carry both tools**: the hook for webbing and long runs, a small pointed
-  blade as the backup that can start a cut anywhere.
+- **A pointed film cutter is the primary tool** — it starts a cut anywhere,
+  and it is what makes the diagonal-and-tear plan work.
+- A small **pre-slit at each panel's top corner** under a tab is cheap
+  insurance if the only tool to hand is the hook.
+- **The hook cutter earns its place on webbing**, where a point is the wrong
+  shape and a shielded blade will not cut the pilot.
+
+### The same property is a flight hazard
+
+**A membrane that tears at 10 lbf once nicked will also tear in flight once
+nicked** — and §6 deliberately tensions it with cabin pressure, which primes
+it. A stone off the nosewheel, an abrasion at a frame edge, a UV-hardened
+spot in year three: any of them can run. At Vne, q = 0.068 psi and a lifted
+flap edge peels at well over 10 lbf.
+
+**Mitigation, and it is free because it is only panel layout:**
+
+- **The bead track is the ripstop.** A tear can only run to the edge of the
+  panel it started in, then it is arrested at the frame. **Smaller panels
+  bound the damage** — divide the glazing at every existing cage member
+  rather than spanning two big sheets down each side.
+- **Put the smallest panels where nicks are likeliest** — low and forward, in
+  the gear and prop-wash spray zone — and keep the large ones high.
+- **Do not reach for scrim-reinforced mesh vinyl to fix this.** It would stop
+  tears, and it would equally stop the egress plan. The sling seat uses that
+  material precisely *because* it must not tear.
+- **Inspect edges at every condition check.** Film is a consumable; a nicked
+  panel gets replaced, not flown.
 
 **Requirements, so this is a plan and not a hope:**
 

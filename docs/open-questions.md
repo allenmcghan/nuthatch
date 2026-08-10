@@ -93,8 +93,14 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   is left is physical: the **pre-slit and tab** at each panel's top corner
   (a shielded hook blade cannot puncture a taut membrane), bracket positions
   reachable **by feel and in gloves**, and a **timed proof test** from a
-  fully assembled panel, in a harness, both sides. 7–10 s is fine for
-  ditching, marginal for fire — fire sets the standard
+  fully assembled panel, in a harness, both sides. **~4–5 s** by the
+  diagonal-cut-and-tear method, which clears the fire case
+- **Glazing panel layout — a tear-arrest requirement, not a styling choice.**
+  Film that tears at ~10 lbf for egress tears at ~10 lbf from a stone chip
+  too, and cabin pressure keeps it primed. **The bead track is the ripstop:**
+  divide the glazing at every cage member so a tear is arrested at the panel
+  edge, and put the smallest panels low and forward in the spray zone. Do
+  **not** substitute scrim-reinforced mesh — it would defeat the egress plan
 - **Recline angle and seat station — mockup items.** 35° is the working
   number (head top z 49.5, hip sta 51); 30° eases entry and CG, 40° saves
   more drag. Also check head clearance (5.5 in on paper) with a helmet and

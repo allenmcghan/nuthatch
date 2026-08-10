@@ -1145,3 +1145,28 @@ test** from a fully assembled panel, in a harness, both sides. It does not
 cover unconscious or pinned — nothing in this weight class does; the BRS
 covers in-flight and the cage covers impact. ~0.3 lb, and it deletes the zip
 and the release-force tuning.
+
+**§25 addendum 3 — egress timing corrected, and the hazard it exposes.**
+The 7–10 s figure in addendum 2 was wrong: it assumed cutting the whole panel
+out. For a thin film **tear propagation is far cheaper than initiation** —
+20 mil flexible PVC runs at roughly **10 lbf** of steady pull once a cut
+exists — so the real method is **one diagonal cut from a corner, grab the
+flap, tear**: about **2 s of work, 4–5 s including reach**. That moves the
+fire case from marginal to acceptable, which was the only case in question.
+It also settles the tooling: **the pointed film cutter is the primary tool**
+(a shielded hook blade cannot puncture a taut membrane and does nothing
+without an edge), and the hook cutter earns its place on **webbing**.
+
+**The same property is a flight hazard, and this is the new finding.** A
+membrane that tears at 10 lbf once nicked will tear *in flight* once nicked,
+and the addendum-1 decision to tension it with cabin pressure primes it. A
+stone off the nosewheel, an abrasion at a frame edge, a UV-hardened spot in
+year three — any of them can run; at Vne a lifted flap edge peels at well
+over 10 lbf. **Mitigation is free, because it is only panel layout: the bead
+track is the ripstop.** A tear runs to the edge of its own panel and is
+arrested at the frame, so **divide the glazing at every existing cage member**
+rather than spanning two big sheets per side, and put the **smallest panels
+low and forward** where nicks are likeliest. Explicitly **do not** switch to
+scrim-reinforced mesh vinyl: it would stop tears and equally stop the egress
+plan — the sling seat uses that material precisely because it must not tear.
+Film is a consumable; a nicked panel is replaced, not flown.

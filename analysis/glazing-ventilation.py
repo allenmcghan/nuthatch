@@ -108,28 +108,41 @@ print("""  Decision: a seatbelt cutter and a film cutter carried in the cab, rat
      drift, and cut your way out.""")
 
 PANEL_L, PANEL_H = 38.0, 24.0          # door panel, sta 40-78 x z 27-51
-per = 2*(PANEL_L + PANEL_H)
-CUT_RATE = 15.0                        # in/s, hook blade drawn along a track
-print(f"\n  door panel {PANEL_L:.0f} x {PANEL_H:.0f} in, perimeter {per:.0f} in")
-for lbl, n in (("three sides, panel gone", 2*PANEL_H + PANEL_L),
-               ("two sides, fold it back", PANEL_H + PANEL_L)):
-    print(f"    {lbl:28s} {n:5.0f} in -> {n/CUT_RATE:4.1f} s of cutting")
-print(f"    plus reach and deploy                      ~2-3 s")
-print(f"  Call it 7-10 s total. Fine for a ditching or a post-crash exit;")
-print(f"  MARGINAL FOR FIRE, which is the case that sets the requirement.")
+TEAR_LBF = 10.0                        # ~ASTM D1004 propagation, 20 mil flexible PVC
+print(f"""
+  TIMING - CORRECTED DOWNWARD. My first estimate cut the whole panel out and
+  came to 7-10 s. That was wrong: for a thin film, tear PROPAGATION is far
+  cheaper than tear INITIATION, which is the whole principle behind a
+  'tear here' notch. Once a cut exists, 20 mil flexible PVC propagates at
+  roughly {TEAR_LBF:.0f} lbf of steady pull - well inside a one-handed grab.
+  So: ONE DIAGONAL CUT from a corner, grab the triangular flap, and tear.""")
+for lbl, cut_s in (("cut the full perimeter (my first estimate)", 5.7),
+                   ("one diagonal cut, then tear", 2.0)):
+    print(f"    {lbl:44s} {cut_s:4.1f} s + 2-3 s reach = {cut_s+2.5:4.1f} s")
+print("""  Revised: 4-5 s. That moves the fire case from MARGINAL to ACCEPTABLE,
+  which is the only case that was ever in question.""")
 
-print("""
-  THE DETAIL THAT DECIDES IT: a seatbelt cutter has a SHIELDED HOOK BLADE.
-  It cannot puncture. Hand one to a pilot facing a taut membrane with no
-  edge and it does nothing - it needs a slit or an edge to hook into.
-  So the design must PROVIDE THE START:
-   - a small pre-slit at the top corner of each panel under a tab, sized for
-     the hook to enter; or a pull-tab that opens one, and
-   - CUT ALONG THE EDGE TRACK, not across the middle. Running the hook down
-     the bead groove releases the whole panel in one pass; carving a
-     person-sized hole in the middle is slower and needs a pointed blade.
-  Carry BOTH tools anyway: hook for webbing and long runs, a small pointed
-  blade as the backup that can start a cut anywhere.""")
+print(f"""
+  THE SAME PROPERTY IS A FLIGHT HAZARD, and this is the part worth adding.
+  A membrane that tears at {TEAR_LBF:.0f} lbf once nicked is a membrane that will tear
+  IN FLIGHT once nicked - and section 2 deliberately tensions it with cabin
+  pressure, which primes it. A stone off the nosewheel, an abrasion at a
+  frame edge, a UV-hardened spot in year three: any of them can run.
+  At Vne, q = {q(62)/144:.4f} psi and a lifted flap edge peels at more than {TEAR_LBF:.0f} lbf.
+
+  MITIGATION - and it is free, because it is just panel layout:
+   - THE BEAD TRACK IS THE RIPSTOP. A tear can only run to the edge of the
+     panel it started in, then it is arrested at the frame. So SMALLER PANELS
+     BOUND THE DAMAGE: divide the glazing at every existing cage member
+     rather than spanning two big sheets across the whole side.
+   - Put the SMALLEST panels where nicks are likeliest - low and forward,
+     in the gear and prop-wash spray zone - and keep the large ones high.
+   - Do NOT reach for scrim-reinforced (mesh) vinyl to fix this. It would
+     stop tears, and it would also stop the egress plan; the sling seat uses
+     that material precisely because it must NOT tear.
+   - Inspect edges at every condition check. Film is a consumable; a nicked
+     panel gets replaced, not flown.
+""")
 
 print("""  Requirements, so this is a plan and not a hope:
    - TWO cutters, one each side, so a jammed or blocked side does not matter.
