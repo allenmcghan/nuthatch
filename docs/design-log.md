@@ -1203,3 +1203,42 @@ being the aircraft flown fast, far and in weather; **Avery's 103 can keep a
 film screen and hold 3.2 lb** — same cage, same frame, same bead track,
 different sheet. The doors stay film in both, so **the egress plan is
 identical: the doors are the escape path in either build.**
+
+### Addendum 5 — the glazing becomes geometry, and a shaded render of it
+
+Everything above was carried as prose and a weight line. It is now in the
+mesh: `analysis/geometry-mesh.py` **cuts the glazing out of the fabric pod**
+and carries it as its own surfaces, so the split is geometry rather than a
+note. The pod skin is lofted on a fine grid and masked by station and by
+`phi`, the angle around the section from the top centreline:
+
+| Surface | Station | phi from top | Material |
+|---|---|---|---|
+| `glass` — windshield + upper sides | 14 → 48 (wing LE) | ≤ 45° | 0.040 Lexan |
+| `film` — the two doors | 40 → 78 | 48° → 116° | 20 mil PVC |
+| `fuse` — fabric | everything else to sta 96 | — | Oratex |
+| `boom` — the tail boom | 96 → 184 | — | painted 4130 |
+
+The 3° strip between the two masks is the door header, left as fabric.
+
+**One thing the mesh was missing turned up while cutting the hole**: there was
+**no member along the glazing boundary** for the windshield to attach to. The
+cage ran longerons and hoops but nothing followed the `phi` = 45° line. Added
+as `wsframe` — light tube from sta 14 to 48 both sides plus a bow across the
+front. That is the **"windshield frame / floating channel"** line already
+carried in the enclosure ledger at 1.0 lb, so **no weight change** — the
+ledger was ahead of the geometry, not the other way round.
+
+**`analysis/render-hero.py`** shades that mesh: Lambert + Blinn-Phong,
+sky-dome ambient, **Fresnel-weighted transparency** so the glazing goes white
+at grazing angles and clear head-on (which is what makes the cage and the
+seated pilot visible through it), smoothed vertex normals, projected soft
+shadow, and a filmic highlight roll-off. Rib scalloping at the true 11 in
+pitch and the paint scheme are **shading only — there are no ribs and no paint
+in the mesh.** The pilot figure is built in the render script, not in
+`geometry-mesh.py`: he is a prop and does not belong in the STL or on the
+drawings.
+
+Outputs `drawings/renders/hero-{ramp,cockpit,air}.png`. **They are renderings
+of the design geometry. They are not photographs, and this aircraft has not
+been built** — every image carries that on its face.

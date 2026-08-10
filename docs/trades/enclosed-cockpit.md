@@ -332,6 +332,33 @@ weight class does — the BRS covers the in-flight case and the cage covers
 impact. Weight is ~0.3 lb for two cutters and brackets, and it *deletes* the
 zip and the release-force tuning from the kit.
 
+### The split is now geometry, and it found a missing member
+
+`analysis/geometry-mesh.py` cuts the glazing **out** of the fabric pod and
+carries it as its own lofted surfaces, masked by station and by `phi` (the
+angle around the section from the top centreline):
+
+| Surface | Station | phi | Material |
+|---|---|---|---|
+| `glass` | 14 → 48 (wing LE) | ≤ 45° | 0.040 Lexan |
+| `film` | 40 → 78 | 48°–116° | 20 mil PVC |
+| `fuse` | the rest, to sta 96 | — | Oratex |
+| `boom` | 96 → 184 | — | painted 4130 |
+
+The 3° strip between the masks is the door header, left as fabric.
+
+**Cutting the hole exposed a missing member.** The cage carried longerons and
+hoops but **nothing followed the glazing boundary**, so the windshield had
+nothing to attach to. Added as `wsframe`: light tube along `phi` = 45° from
+sta 14 to 48 both sides, plus a bow across the front. This is the *"windshield
+frame / floating channel"* line already in the §4 ledger at 1.0 lb — **no
+weight change**, the ledger was simply ahead of the geometry. It is also the
+member the **never-hard-clamp** rule above attaches to.
+
+Shaded renderings of that mesh are in `drawings/renders/hero-*.png`
+(`analysis/render-hero.py`). They are renderings of the design geometry, not
+photographs.
+
 ## 7. What this does not settle
 
 - **The dihedral re-run.** −16% of pendulum arm on the aircraft whose roll
@@ -341,8 +368,9 @@ zip and the release-force tuning from the kit.
   attachment, cut out with mounted cutters. What remains is physical — the
   pre-slit detail and tab, the bracket positions that are reachable by feel
   and in gloves, and a **timed proof test** from a fully assembled panel,
-  both sides. The fire case is the one that sets the standard, and 7–10 s is
-  marginal against it.
+  both sides. The fire case sets the standard; the diagonal-cut-and-tear
+  method puts the estimate at 4–5 s, and only a timed test says whether that
+  survives contact with a harness, gloves and adrenaline.
 - **Optical quality of film in the forward view.** Vinyl distorts, and it is
   being asked to work at a 14–17° rake. A small optical-grade panel directly
   ahead (~1 ft², ~0.4 lb) with film everywhere else is the obvious hedge if

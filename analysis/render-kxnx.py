@@ -23,9 +23,11 @@ MAT = {  # base RGB per group (fabric cream, steel graphite, black rubber...)
  "prop":(0.25,0.22,0.20),"tire_n":(0.13,0.13,0.14),"gear":(0.30,0.33,0.36),
  "cage":(0.34,0.37,0.40),
  "wheel_m":(0.15,0.15,0.17),"struts":(0.30,0.33,0.36),
- "doors":(0.55,0.62,0.68)}
+ "doors":(0.55,0.62,0.68),
+ "boom":(0.76,0.77,0.78),"glass":(0.62,0.70,0.76),"film":(0.66,0.71,0.74),
+ "wsframe":(0.38,0.40,0.42)}
 fcol = np.zeros((len(F),3))
-for name,a,b in GROUPS: fcol[a:b] = MAT[name]
+for name,a,b in GROUPS: fcol[a:b] = MAT.get(name,(0.6,0.6,0.6))
 # accent: rudder + wingtips in a warm orange
 fcol[[i for n,a,b in GROUPS if n=="tail" for i in range(a,b)
       if V0[F[i]].mean(axis=0)[2] > 5.2]] = (0.79,0.44,0.12)

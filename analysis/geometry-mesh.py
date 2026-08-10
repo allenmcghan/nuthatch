@@ -107,17 +107,47 @@ endgroup()
 # ---- fuselage: fabric pod faired over the welded 4130 cage to sta 96, then a
 # single straight 3.50-in steel boom at z=27 (trades/cockpit-cage.md).
 # Max section at sta ~56 (pilot shoulders), smooth run-out into the boom.
-group("fuse")
 # (station, z-centre, half-height, half-width). Upper line sweeps from the
 # spinner up to the wing underside (z=55) at the LE and runs aft under the
 # wing root; belly held at ~16. Enclosed cabin, doors in the sides.
 fu = [(2,40,3.5,3.5),(12,33,11,6),(24,33,15,9),(36,34.5,18.5,10.8),
       (48,35.5,19.5,11.5),(60,36,19,11.5),(72,36,18,10.5),
       (84,33,12,7),(96,27.5,3.5,3.2),(184,27,1.75,1.75)]
-th = np.linspace(0, 2*np.pi, 17)
-add_loft([np.stack([np.full_like(th, x), w*np.sin(th), z+h*np.cos(th)], axis=1)
-          for x, z, h, w in fu])
-endgroup()
+# The glazing is CUT OUT of the fabric and carried as its own surfaces, so the
+# split in trades/enclosed-cockpit.md is geometry and not just a note:
+#   glass  = 0.040 Lexan windshield, wrapping the top from sta 14 to the wing
+#            leading edge at 48 (phi = angle from the top centreline)
+#   film   = the two 20 mil doors, sta 40-78 in the sides
+# The 3 deg strip between the two masks is the door header, left as fabric.
+fx = np.array([r[0] for r in fu], float)
+xs = np.unique(np.concatenate([np.arange(2, 97, 2.0), [14., 40., 48., 78., 96.],
+                               np.arange(96, 185, 8.0), [184.]]))
+zc = np.interp(xs, fx, [r[1] for r in fu])
+hh = np.interp(xs, fx, [r[2] for r in fu])
+ww = np.interp(xs, fx, [r[3] for r in fu])
+NT = 33
+th = np.linspace(0, 2*np.pi, NT)
+phi = np.degrees(np.where(th <= np.pi, th, 2*np.pi - th))   # 0 = top, 180 = keel
+base = len(V)
+for x, z, h, w in zip(xs, zc, hh, ww):
+    V.extend(np.stack([np.full(NT, x), w*np.sin(th), z + h*np.cos(th)], axis=1).tolist())
+
+def skin(pred):
+    for i in range(len(xs)-1):
+        xm = 0.5*(xs[i] + xs[i+1])
+        for j in range(NT-1):
+            pm = 0.5*(phi[j] + phi[j+1])
+            if not pred(xm, pm): continue
+            a, b = base+i*NT+j, base+i*NT+j+1
+            c, d = base+(i+1)*NT+j, base+(i+1)*NT+j+1
+            F.append((a, c, b)); F.append((b, c, d))
+
+WS = lambda x, p: 14 <= x <= 48 and p <= 45          # windshield + upper sides
+DR = lambda x, p: 40 <= x <= 78 and 48 <= p <= 116   # the two doors
+group("fuse"); skin(lambda x, p: x <= 96 and not WS(x, p) and not DR(x, p)); endgroup()
+group("boom"); skin(lambda x, p: x >= 96); endgroup()
+group("glass"); skin(WS); endgroup()
+group("film");  skin(DR); endgroup()
 # ---- propeller: two blades + spinner at sta 2, thrustline 40
 group("prop")
 for a0 in (np.radians(80), np.radians(260)):
@@ -174,6 +204,22 @@ strut([RS, -8, WING_PU], [RS, 8, WING_PU], 0.5)         # REAR SPAR carry-throug
 strut([FS, -9.5, 40], [FS, 9.5, 40], 0.45)              # hoop shoulder cross
 strut([AFT, -6, 24], [AFT, 6, 24], 0.45)                # aft frame, boom pickup
 strut([AFT, -6, 30], [AFT, 6, 30], 0.45)
+endgroup()
+
+# ---- windshield frame: light tube following the glazing boundary at phi = 45
+# deg from sta 14 back to the wing leading edge, plus a bow across the front.
+# This is the "windshield frame / floating channel" line in the enclosure ledger
+# - the Lexan is never hard-clamped, it floats in this channel.
+group("wsframe")
+_wsx = np.arange(14.0, 48.1, 4.0)
+_wsz = np.interp(_wsx, fx, [r[1] for r in fu]) + \
+       np.interp(_wsx, fx, [r[2] for r in fu])*np.cos(np.radians(45))
+_wsy = np.interp(_wsx, fx, [r[3] for r in fu])*np.sin(np.radians(45))
+for s3 in (1, -1):
+    for k in range(len(_wsx)-1):
+        strut([_wsx[k], s3*_wsy[k], _wsz[k]],
+              [_wsx[k+1], s3*_wsy[k+1], _wsz[k+1]], 0.30)
+strut([_wsx[0], -_wsy[0], _wsz[0]], [_wsx[0], _wsy[0], _wsz[0]], 0.30)
 endgroup()
 
 # ---- door frames (EAB enclosure kit; the cage hard points are permanent)

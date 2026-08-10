@@ -19,6 +19,11 @@ live here. So do the mistakes.
 **Named after the only bird that climbs down a tree headfirst.** Small, plain, and
 does it backwards from everything else in the class.
 
+![Nuthatch rev G](drawings/renders/hero-cockpit.png)
+
+*A rendering of the design mesh, not a photograph — this aircraft has not been
+built. Generated from `model/nuthatch.stl` by `analysis/render-hero.py`.*
+
 **Status:** design phase. Nothing is drawn yet. See
 [docs/open-questions.md](docs/open-questions.md) for what is still undefined.
 
