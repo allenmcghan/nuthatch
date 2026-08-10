@@ -1117,3 +1117,31 @@ instead**: bead-in-track or twist fasteners sized to release under a shoulder
 push, a zip pullable from inside, and a 2 oz hook knife on the harness. Then
 the claim is testable — **proof-test egress on the mockup, both sides, in a
 harness.**
+
+**§25 addendum 2 — egress decided: cutters, not a release panel** (owner
+decision). A **seatbelt cutter and a film cutter carried in the cab**, with
+the film **positively attached** and no release mechanism at all. Better than
+the edge-release the trade first proposed, for two reasons: "push through it"
+never worked (PVC elongates 200–400% and balloons like a trampoline), and the
+release-force window was narrow — a panel must hold ~25 lb of cabin pressure
+plus gusts yet let go under a shoulder, and fasteners that satisfy both drift
+wrong as UV ages them, while a door departing in flight on a two-axis
+aircraft is its own emergency.
+
+**The detail that decides the design: a seatbelt cutter has a shielded hook
+blade and cannot puncture.** Against a taut membrane with no edge it does
+nothing. So the airframe must supply the start — **a small pre-slit at each
+panel's top corner under a tab**, and the cut runs **along the bead track,
+not across the middle** (one pass releases the panel; carving a hole in the
+middle is slower and needs a point). Carry both tools: hook for webbing and
+long runs, a small pointed blade as the backup that can start anywhere.
+
+**Timing:** 86 in of cut releases a door in ~5.7 s at ~15 in/s, plus 2–3 s to
+reach and deploy — **7–10 s total.** Fine for ditching or a post-crash exit,
+**marginal for fire**, which is the case that sets the standard. Requirements:
+**two cutters, one per side; mounted not stowed, findable by feel, retained;
+reachable in gloves** (this aircraft flies in winter); and a **timed proof
+test** from a fully assembled panel, in a harness, both sides. It does not
+cover unconscious or pinned — nothing in this weight class does; the BRS
+covers in-flight and the cage covers impact. ~0.3 lb, and it deletes the zip
+and the release-force tuning.

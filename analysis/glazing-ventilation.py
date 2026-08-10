@@ -2,8 +2,8 @@
 """Thin-film glazing and ram-air ventilation for the rev G cabin.
 (1) what film weighs against Lexan; (2) whether it stays taut at speed -
 and the ducts turn out to help; (3) ram-air flow and the cooling it buys;
-(4) what the enclosure actually buys in winter, in degrees; (5) the
-frangibility claim, which needs correcting.
+(4) what the enclosure actually buys in winter, in degrees; (5) egress by cutter,
+and the cut path it forces.
 """
 import math
 
@@ -91,29 +91,67 @@ print("""
   around 20-30 F, marine grades are rated to -20 F or below. This is a
   specification, not a preference, for an aircraft meant to fly in winter.""")
 
-# ---------------- 5. frangibility, corrected ----------------
-print("=== 5. THE FRANGIBILITY CLAIM NEEDS CORRECTING ===")
-print("""  The intent is right and it answers the egress question rev G opened.
-  The mechanism is wrong: plasticised PVC film elongates 200-400% before it
-  breaks. Pushing a shoulder into it does not punch through - it BALLOONS,
-  like a trampoline, and can trap you while it stretches. Thin vinyl is
-  extensible, not frangible. A sharp point punctures it easily; a body does
-  not.
+# ---------------- 5. egress: cutters, and the cut path ----------------
+print("=== 5. EGRESS BY CUTTER (owner decision) ===")
+print("""  Decision: a seatbelt cutter and a film cutter carried in the cab, rather
+  than an edge-release panel. That is defensible, and probably better:
 
-  FIX: make the ATTACHMENT frangible, not the film.
-   - Bead-in-track or twist fasteners round the panel edge, sized to release
-     under a shoulder push, so the whole panel goes rather than tearing.
-   - Marine practice: a zip along one edge that can be pulled from inside.
-   - A hook knife on the harness, which costs 2 oz and is standard kit on
-     anything with a canopy.
-  Then the claim is true and testable: PROOF-TEST IT on the mockup by
-  pushing out of a fully assembled panel, in a harness, both sides.""")
+   - Plasticised PVC elongates 200-400% before it breaks, so 'push through it'
+     was never going to work - a shoulder BALLOONS it like a trampoline. A
+     blade is the honest way through thin vinyl.
+   - The release-force window I proposed is uncomfortably narrow anyway. The
+     panel must hold ~0.027 psi of cabin pressure (about 25 lb spread over a
+     door) plus gusts, yet let go under a shoulder. Fasteners that satisfy
+     both drift toward the wrong end as UV ages them, and a door departing in
+     flight on a two-axis aircraft is its own emergency.
+   - So: attach the film POSITIVELY, with no release mechanism to fail or
+     drift, and cut your way out.""")
+
+PANEL_L, PANEL_H = 38.0, 24.0          # door panel, sta 40-78 x z 27-51
+per = 2*(PANEL_L + PANEL_H)
+CUT_RATE = 15.0                        # in/s, hook blade drawn along a track
+print(f"\n  door panel {PANEL_L:.0f} x {PANEL_H:.0f} in, perimeter {per:.0f} in")
+for lbl, n in (("three sides, panel gone", 2*PANEL_H + PANEL_L),
+               ("two sides, fold it back", PANEL_H + PANEL_L)):
+    print(f"    {lbl:28s} {n:5.0f} in -> {n/CUT_RATE:4.1f} s of cutting")
+print(f"    plus reach and deploy                      ~2-3 s")
+print(f"  Call it 7-10 s total. Fine for a ditching or a post-crash exit;")
+print(f"  MARGINAL FOR FIRE, which is the case that sets the requirement.")
+
+print("""
+  THE DETAIL THAT DECIDES IT: a seatbelt cutter has a SHIELDED HOOK BLADE.
+  It cannot puncture. Hand one to a pilot facing a taut membrane with no
+  edge and it does nothing - it needs a slit or an edge to hook into.
+  So the design must PROVIDE THE START:
+   - a small pre-slit at the top corner of each panel under a tab, sized for
+     the hook to enter; or a pull-tab that opens one, and
+   - CUT ALONG THE EDGE TRACK, not across the middle. Running the hook down
+     the bead groove releases the whole panel in one pass; carving a
+     person-sized hole in the middle is slower and needs a pointed blade.
+  Carry BOTH tools anyway: hook for webbing and long runs, a small pointed
+  blade as the backup that can start a cut anywhere.""")
+
+print("""  Requirements, so this is a plan and not a hope:
+   - TWO cutters, one each side, so a jammed or blocked side does not matter.
+   - MOUNTED, not stowed: fixed brackets within reach of a harnessed pilot,
+     findable BY FEEL, and retained - a dropped cutter in a rolled cabin is
+     gone.
+   - Reachable IN GLOVES. This aircraft is meant to fly in winter, and gloves
+     are exactly when fumbling for a small tool fails.
+   - PROOF TEST, replacing the shove test: timed egress from a fully
+     assembled panel, in a harness, both sides, wearing gloves.
+  What it does NOT cover, honestly: unconscious or pinned. Nothing in this
+  weight class does - the BRS covers in-flight and the cage covers impact.""")
+w_cut = 2*1.5/16 + 0.1
+print(f"\n  weight: two cutters ~{2*1.5:.0f} oz + brackets = {w_cut:.1f} lb,")
+print(f"  and it DELETES the zip and the release-force tuning from the kit.")
 
 # ---------------- 6. the ledger, redone with film ----------------
 print("=== 6. LEDGER, REDONE WITH FILM ===")
 kit = [("clear film, 20 mil, ~22 ft^2", w_film),
        ("two door frames, light tube", 3.0),
-       ("bead track, fasteners, zip", 1.0),
+       ("bead track and fasteners (positive, no release)", 0.8),
+       ("two mounted cutters + brackets", 0.3),
        ("NACA ducts + closable valves + defog", 1.0),
        ("cabin closeout and sills in the cage", 2.0)]
 tot = sum(v for _, v in kit)

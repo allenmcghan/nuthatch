@@ -88,10 +88,13 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   dihedral** — the high-wing pendulum arm drops 16% and this aircraft's roll
   control *is* dihedral, so expect +0.5–1°; and confirm the wing LE station
   still trims CG to 30% MAC with the seat moved forward 6 in for the recline
-- **Egress from an enclosed cabin — a question the open cockpit never had.**
-  Doors share structure with the rollover hoop that now also carries the wing.
-  Decide jettison vs frangible panel, and check it against the BRS, before
-  the cage is welded
+- **Egress — mechanism decided, execution unproven.** Positive film
+  attachment plus **two mounted cutters** (design-log §25 addendum 2). What
+  is left is physical: the **pre-slit and tab** at each panel's top corner
+  (a shielded hook blade cannot puncture a taut membrane), bracket positions
+  reachable **by feel and in gloves**, and a **timed proof test** from a
+  fully assembled panel, in a harness, both sides. 7–10 s is fine for
+  ditching, marginal for fire — fire sets the standard
 - **Recline angle and seat station — mockup items.** 35° is the working
   number (head top z 49.5, hip sta 51); 30° eases entry and CG, 40° saves
   more drag. Also check head clearance (5.5 in on paper) with a helmet and

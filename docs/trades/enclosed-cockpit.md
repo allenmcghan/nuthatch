@@ -91,7 +91,8 @@ numbers substantially in the right direction.)*
 |---|---|
 | Clear film, 20 mil, ~22 ft² | +3.0 |
 | Two door frames, light tube | +3.0 |
-| Bead track, fasteners, zip | +1.0 |
+| Bead track and fasteners (positive, no release) | +0.8 |
+| Two mounted cutters + brackets | +0.3 |
 | NACA ducts, closable valves, defog | +1.0 |
 | Cabin closeout and sills in the cage | +2.0 |
 | **Enclosure kit, gross** | **+10.0** *(was 17.0 with Lexan)* |
@@ -216,36 +217,69 @@ Two winter requirements fall out:
   cracks around 20–30 °F; marine grades are rated to −20 °F and below. For an
   aircraft meant to fly in winter this is a specification, not a preference.
 
-### The frangibility claim needs correcting
+### Egress: cutters, and the cut path they force
 
-The intent is right, and it answers the egress question rev G opened. **The
-mechanism is wrong.** Plasticised PVC film elongates **200–400% before it
-breaks**. A shoulder driven into it does not punch through — it **balloons,
-like a trampoline**, and can trap you while it stretches. Thin vinyl is
-*extensible*, not frangible: a sharp point punctures it easily, a body does
-not.
+**Owner decision: a seatbelt cutter and a film cutter carried in the cab**,
+rather than the edge-release panel this trade first proposed. That is
+defensible, and probably better than the alternative:
 
-**Fix: make the attachment frangible, not the film.**
+- **"Push through it" was never going to work.** Plasticised PVC elongates
+  **200–400% before it breaks** — a shoulder driven into it *balloons* it like
+  a trampoline and can be trapped by it. Thin vinyl is *extensible*, not
+  frangible. A blade is the honest way through it.
+- **The release-force window was uncomfortably narrow.** A panel must hold
+  ~0.027 psi of cabin pressure (about 25 lb spread over a door) plus gusts,
+  yet let go under a shoulder. Fasteners that satisfy both **drift toward the
+  wrong end as UV ages them**, and a door departing in flight on a two-axis
+  aircraft is its own emergency.
+- So: **attach the film positively, with no release mechanism to fail or
+  drift, and cut out.**
 
-- **Bead-in-track or twist fasteners** round the panel edge, sized to release
-  under a shoulder push, so the whole panel departs rather than tearing.
-- **A zip along one edge**, pullable from inside — marine enclosure practice.
-- **A hook knife on the harness**: 2 oz, and standard kit on anything with a
-  canopy.
+**Timing.** A 38 × 24 in door panel: three sides releases it entirely (86 in,
+~5.7 s at a hook blade's ~15 in/s along a track); two sides folds it back
+(62 in, ~4.1 s). Plus 2–3 s to reach and deploy — **call it 7–10 seconds.**
+Fine for a ditching or a post-crash exit. **Marginal for fire, which is the
+case that sets the requirement.**
 
-Then the claim is true *and testable*: **proof-test it on the mockup** by
-pushing out of a fully assembled panel, in a harness, both sides.
+**The detail that decides the design: a seatbelt cutter has a shielded hook
+blade and cannot puncture.** Facing a taut membrane with no edge, it does
+nothing. So the airframe has to provide the start:
+
+- **A small pre-slit at the top corner of each panel**, under a tab, sized
+  for the hook to enter — or a pull-tab that opens one.
+- **Cut along the edge track, not across the middle.** Running the hook down
+  the bead groove releases the whole panel in one pass; carving a
+  person-sized hole in the middle is slower and needs a pointed blade.
+- **Carry both tools**: the hook for webbing and long runs, a small pointed
+  blade as the backup that can start a cut anywhere.
+
+**Requirements, so this is a plan and not a hope:**
+
+- **Two cutters, one each side**, so a jammed or blocked side does not matter.
+- **Mounted, not stowed** — fixed brackets within reach of a harnessed pilot,
+  findable **by feel**, and retained. A dropped cutter in a rolled cabin is
+  gone.
+- **Reachable in gloves.** This aircraft is meant to fly in winter, and
+  gloves are exactly when fumbling for a small tool fails.
+- **Proof test, replacing the shove test:** timed egress from a fully
+  assembled panel, in a harness, both sides, wearing gloves.
+
+**What it does not cover, honestly:** unconscious or pinned. Nothing in this
+weight class does — the BRS covers the in-flight case and the cage covers
+impact. Weight is ~0.3 lb for two cutters and brackets, and it *deletes* the
+zip and the release-force tuning from the kit.
 
 ## 7. What this does not settle
 
 - **The dihedral re-run.** −16% of pendulum arm on the aircraft whose roll
   control is dihedral. Re-run `aero-model.py` for Clβ and the rudder-roll
   ratio before anything is drawn; expect +0.5–1°.
-- **Egress — now has an answer, and it needs proving.** §6 settles the
-  mechanism (edge-release attachment plus a hook knife, *not* punching
-  through the film). What remains is the release force: high enough that the
-  panel stays put under 0.027 psi of cabin pressure, low enough that a
-  harnessed pilot can shove it off. Proof-test both sides on the mockup.
+- **Egress — mechanism decided, execution unproven.** §6 settles it: positive
+  attachment, cut out with mounted cutters. What remains is physical — the
+  pre-slit detail and tab, the bracket positions that are reachable by feel
+  and in gloves, and a **timed proof test** from a fully assembled panel,
+  both sides. The fire case is the one that sets the standard, and 7–10 s is
+  marginal against it.
 - **Optical quality of film in the forward view.** Vinyl distorts, and it is
   being asked to work at a 14–17° rake. A small optical-grade panel directly
   ahead (~1 ft², ~0.4 lb) with film everywhere else is the obvious hedge if
