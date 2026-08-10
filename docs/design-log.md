@@ -1242,3 +1242,129 @@ drawings.
 Outputs `drawings/renders/hero-{ramp,cockpit,air}.png`. **They are renderings
 of the design geometry. They are not photographs, and this aircraft has not
 been built** — every image carries that on its face.
+
+## 26. Rev H: the whole front is windshield, and the first number for visibility
+
+**Owner direction: "the sight lines and visibility are terrible in these
+renderings. The entire front should be a windshield. The engine cowling is the
+only thing that's not transparent."**
+
+That is a correct reading of rev G, and the repo deserved a worse verdict than
+it got: **there was no visibility number anywhere in it.** Twenty-five sections
+of trades, and the enclosure was justified on drag, weight, wind chill and
+egress — never on what the pilot can see. Fixed here, and the analysis is what
+decides the shape. Script: `analysis/visibility.py`.
+
+### What changed in the geometry
+
+`phi` is the angle around the fuselage section from the top centreline.
+
+| Surface | Station | phi | rev G | rev H |
+|---|---|---|---|---|
+| cowl | 2 → 22 | all | fabric, and *glazed* above 14 | **opaque, its own group** |
+| windshield | 22 → 48 | ≤ **136°** | glazed only to 45° | **glazed to the lower longeron** |
+| side lights | 48 → 78 | 20°–46° | fabric | **glazed** |
+| doors | 40 → 78 | 48°–116° | film | film, unchanged |
+
+The 136° lower edge is not arbitrary: **the cage's own lower longeron already
+sits at phi ≈ 135°**, so the glazing runs down to a member that exists. Nothing
+was added to carry its bottom edge.
+
+### Ray-cast from the pilot's eye
+
+Möller–Trumbore against the real mesh, from the eye at sta 58 / z 45.5, over
+the whole sphere. Every triangle is tagged by its group, so a ray comes back
+glazed, blocked, or clear. Same mesh and same eye for both revisions — only
+the masks differ.
+
+| Sector | rev G sees out | rev H | change |
+|---|---|---|---|
+| whole sphere | 40.6% | **61.8%** | **+21.2%** |
+| forward hemisphere | 45.6% | 68.2% | +22.5% |
+| abeam, both sides | 52.0% | 74.9% | +22.9% |
+| the approach window | 48.9% | 74.7% | +25.8% |
+| **ahead and down, ±30°** | **4.2%** | **42.3%** | **+38.1%** |
+
+That last row is the one that matters. **Rev G could see 4% of the sector a
+pilot actually uses to land.**
+
+How far down the view reaches, by azimuth (fan test — a 3/8 in tube is not a
+wall, so it takes half a ±6° fan going dark to count as blocked):
+
+| Azimuth | rev G | rev H |
+|---|---|---|
+| straight ahead | −8° | **blocked at the horizon** |
+| 10° off the nose | −3° | −5° |
+| 20° off | blocked | **−21°** |
+| 30° off | −13° | **−47°** |
+| 45° and outboard | −41° | −41° |
+
+### Two findings, and one of them is not good news
+
+**1. Straight ahead, rev H is worse on paper — and that is a correction, not a
+regression.** Rev G's windshield started at sta 14, so it drew glass across
+sta 14–22. **That is where the engine is.** Rev G was crediting the pilot with
+a view straight through the powerplant. The cowl now runs 2 → 22 and takes the
+fiction away. The straight-ahead view was never there; the model stopped
+claiming it.
+
+**2. The cowl is the limit, and glass cannot fix it.** The cowl crown is at
+z 47.3 and the eye at 45.5 — **the crown sits 1.8 in above the eye, so the
+pilot must look 2.9° UP to clear the nose.** The thrustline is at z = 40
+because the propeller has to clear the ground; the engine sits around the
+thrustline; the cowl has to cover the engine. There is an **engine** in the
+way, not a fairing.
+
+**And the cowl may not even be tall enough.** A crown at 47.3 gives the engine
+7.3 in above the crank centreline. **A Hirth F-33's cylinder standing upright
+is taller than that.** So either the engine gets clocked or tilted to fit under
+this line, or the cowl grows — and if it grows the forward view gets *worse*.
+**This is now the open item that decides the forward view, and it is a
+powerplant question, not a glazing one.** Nothing is settled until an engine is
+on the bench and measured.
+
+What rev H genuinely buys is everything *either side* of the cowl: the aiming
+point, the runway edge and the flare picture arrive over the **side** of the
+nose, through continuous glazing from the centreline round to the door. Same
+technique a Cub pilot uses, without the S-turn, because nothing is opaque
+between the two.
+
+### The wraparound is not developable — this is what it costs
+
+Flat sheet cold-forms into **single** curvature only, and the pod's forward
+sections are doubly curved. So the screen cannot be one piece: it is a **centre
+panel and two side panels per side**, meeting on frame rails at phi 45° and
+95°, with bows at the cowl joint (22) and the wing leading edge (48). Same
+reason a Champ or a Cub has a split screen.
+
+**Measured off the mesh**, not assumed:
+
+| Line | rev G | rev H |
+|---|---|---|
+| glass, 0.040 Lexan | 12.0 ft², 3.0 lb | 12.8 ft², **3.2 lb** |
+| film doors, 20 mil | 10.0 ft², 1.4 lb | 11.1 ft², **1.5 lb** |
+| glazing frame | 1.0 lb (assumed) | **2.6 lb** (303 in of 3/8 × .028 measured) |
+| **enclosure kit gross** | **12.4 lb** | **14.4 lb** |
+
+**The frame, not the glass, is the whole delta.** Open item: it has had no
+materials pass — aluminium extrusion, a smaller tube, or deleting the phi = 95
+rail if 0.060 sheet proves stiff enough are all live.
+
+### What it costs the Part 103 aircraft
+
+| 103, windshield + vents, no doors | Weight | Margin |
+|---|---|---|
+| rev G, film screen | 250.8 | +3.2 |
+| rev G, 0.040 Lexan | 252.7 | +1.3 |
+| rev H, film screen | 253.1 | **+0.9** |
+| rev H, 0.040 Lexan | 254.5 | **−0.5** |
+
+**The 103 can no longer afford the Lexan nose.** The fleet answer §24 reached
+for optical reasons is now load-bearing: **glazing is a kit item.** The EAB
+gets Lexan; **Avery's 103 gets film in the same frame and the same bead track**
+and holds +0.9 lb. If the 103 wants Lexan, 1.5 lb has to come off that airframe
+first.
+
+`drawings/visibility.png` plots the field of view. `drawings/renders/hero-eye.png`
+renders it — from the eye, on short final, with the cowl the only thing in the
+way.

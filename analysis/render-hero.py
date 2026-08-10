@@ -94,6 +94,8 @@ MAT = {
  "wing":   ((0.930, 0.908, 0.842), 1.0, 0.11, 15),   # Oratex, cream
  "tail":   ((0.930, 0.908, 0.842), 1.0, 0.11, 15),
  "fuse":   ((0.900, 0.878, 0.818), 1.0, 0.13, 17),
+ "cowl":   ((0.835, 0.812, 0.760), 1.0, 0.30, 30),   # the only opaque panel
+                                                     # forward of the pilot
  "boom":   ((0.735, 0.748, 0.756), 1.0, 0.36, 36),   # painted 4130 boom
  "glass":  ((0.520, 0.628, 0.700), 0.20, 1.00, 95),  # 0.040 Lexan windshield
  "film":   ((0.600, 0.660, 0.690), 0.26, 0.72, 44),  # 20 mil PVC door film
@@ -140,7 +142,7 @@ _w = np.interp(cx, FU[:, 0], FU[:, 3])
 phi_f = np.degrees(np.arctan2(np.abs(cy)/np.maximum(_w, 1e-6),
                               (cz-_z)/np.maximum(_h, 1e-6)))
 band = base[fa:fb].copy()
-band[(phi_f > 121) & (phi_f < 133) & (cx > 16) & (cx < 92)] = ORANGE
+band[(phi_f > 121) & (phi_f < 133) & (cx > 48) & (cx < 92)] = ORANGE
 base[fa:fb] = band
 
 # --- fabric cues (shading only) ---------------------------------------------
@@ -150,7 +152,7 @@ for g in ("wing", "tail"):                       # rib scallop at 11 in pitch
     s = CEN[a:b, 1] if g == "wing" else CEN[a:b, 1] + CEN[a:b, 2]
     tex[a:b] = 1.0 + 0.030*np.cos(2*np.pi*s/11.0) - 0.028*np.exp(
         -((np.abs(((s/11.0) % 1.0) - 0.5) - 0.5)/0.06)**2)
-for g in ("fuse", "boom"):                       # panel joints and stitch lines
+for g in ("fuse", "boom", "cowl"):               # panel joints and stitch lines
     a, b = GIDX[g]
     tex[a:b] = 1.0 + 0.020*np.cos(2*np.pi*CEN[a:b, 0]/12.0) \
                    + 0.014*np.cos(2*np.pi*CEN[a:b, 2]/9.0)
@@ -420,8 +422,8 @@ def render(fname, cam, look, fov, sunaz, sunel, W=2400, H=1350, expo=1.0,
     print("wrote", fname)
 
 
-CAP = ("NUTHATCH rev G  ·  rendering of the design mesh (model/nuthatch.stl)  ·  "
-       "0.040 Lexan windshield, 20 mil film doors, welded 4130 cage, 3.50 in boom"
+CAP = ("NUTHATCH rev H  ·  rendering of the design mesh (model/nuthatch.stl)  ·  "
+       "0.040 Lexan windshield, 20 mil film doors, full-glass nose, welded 4130 cage"
        "  ·  NOT A PHOTOGRAPH — this aircraft has not been built")
 
 # 1. Hero: low three-quarter front-left, morning sun from behind the right wing.
@@ -449,3 +451,14 @@ render("drawings/renders/hero-air.png",
        sunaz=150, sunel=44, bank=13.0, pitch=-2.0, alt=2400, spin=True,
        scene="air", sky_top=(0.09, 0.25, 0.58), sky_hz=(0.70, 0.79, 0.88),
        gnear=(0.26, 0.32, 0.19), caption=CAP)
+
+# 4. From the pilot's eye, looking out over the nose on short final. The cowl is
+#    the dark mass low and centre; everything around it is glazed. This is the
+#    picture `analysis/visibility.py` puts numbers to.
+render("drawings/renders/hero-eye.png",
+       cam=(58.0, 0.0, 45.5), look=(-400, 26, 8), fov=34.0,
+       sunaz=340, sunel=30, prop_ang=15, spin=True, scene="ramp", expo=1.0,
+       sky_top=(0.15, 0.32, 0.62), sky_hz=(0.77, 0.83, 0.88),
+       gnear=(0.24, 0.31, 0.14),
+       caption="NUTHATCH rev H  ·  pilot eye, sta 58 / z 45.5, looking at the "
+               "aiming point  ·  rendering of the design mesh, NOT A PHOTOGRAPH")

@@ -1,33 +1,55 @@
 #!/usr/bin/env python3
-"""Thin-film glazing and ram-air ventilation for the rev G cabin.
+"""Glazing and ram-air ventilation for the rev H cabin.
 (1) what film weighs against Lexan; (2) whether it stays taut at speed -
 and the ducts turn out to help; (3) ram-air flow and the cooling it buys;
 (4) what the enclosure actually buys in winter, in degrees; (5) egress by cutter,
 and the cut path it forces.
 """
-import math
+import json, os, sys, math
+
+# Areas are MEASURED off the mesh rather than assumed, so this ledger cannot
+# drift away from the geometry the way the rev G numbers did.
+SP = sys.argv[1] if len(sys.argv) > 1 else "."
+try:
+    _m = json.load(open(os.path.join(SP, "nuthatch-mesh.json")))
+    import numpy as _np
+    _V = _np.array(_m["v"], float); _F = _np.array(_m["f"], int)
+    _G = {g[0]: (g[1], g[2]) for g in _m["groups"]}
+    def _area(g):
+        a, b = _G[g]; p = _V[_F[a:b]]
+        return 0.5*_np.linalg.norm(_np.cross(p[:, 1]-p[:, 0], p[:, 2]-p[:, 0]),
+                                   axis=1).sum()/144.0
+    A_MESH = (_area("glass"), _area("film"))
+    # glazing frame: lateral tube area back out to a length, then 3/8 x .028
+    a, b = _G["wsframe"]; p = _V[_F[a:b]]
+    _L = 0.5*_np.linalg.norm(_np.cross(p[:, 1]-p[:, 0], p[:, 2]-p[:, 0]),
+                             axis=1).sum()/(2*math.pi*0.28)
+    W_FRAME = _L*math.pi*(0.375-0.028)*0.028*0.283
+except Exception:                      # mesh not to hand: rev H values as run
+    A_MESH, W_FRAME = (12.8, 11.1), 2.61
 
 RHO = 0.002377
 def q(mph): return 0.5*RHO*(mph*1.4667)**2
 
 # ---------------- 1. weight, split by material ----------------
-A_RIGID, A_FILM = 12.0, 10.0           # windshield + upper sides / two doors
+A_RIGID, A_FILM = A_MESH               # glass / film, straight off the mesh
+A_TOT = A_RIGID + A_FILM
 RHO_PC, RHO_PVC = 0.0433, 0.047
 print("=== 1. GLAZING, SPLIT: LEXAN WINDSHIELD + FILM DOORS ===")
 print("  %-38s %8s %9s %9s" % ("panel", "thick in", "lb/ft^2", "lb"))
-for n, t, rho, a in [("windshield+upper, Lexan 0.040", 0.040, RHO_PC, A_RIGID),
-                     ("windshield+upper, Lexan 0.060", 0.060, RHO_PC, A_RIGID),
-                     ("windshield+upper, Lexan 0.093", 0.093, RHO_PC, A_RIGID),
+for n, t, rho, a in [("full-glass nose, Lexan 0.040", 0.040, RHO_PC, A_RIGID),
+                     ("full-glass nose, Lexan 0.060", 0.060, RHO_PC, A_RIGID),
+                     ("full-glass nose, Lexan 0.093", 0.093, RHO_PC, A_RIGID),
                      ("two doors, PVC film 20 mil", 0.020, RHO_PVC, A_FILM)]:
     psf = t*rho*144.0
     print("  %-38s %8.3f %9.3f %9.1f" % (n, t, psf, psf*a))
 w_rigid = 0.040*RHO_PC*144.0*A_RIGID
 w_doors = 0.020*RHO_PVC*144.0*A_FILM
 w_film = w_rigid + w_doors             # total glazing, used by the ledger below
-w_lex = 0.060*RHO_PC*144.0*22.0
+w_lex = 0.060*RHO_PC*144.0*A_TOT
 print(f"\n  SELECTED: 0.040 Lexan {w_rigid:.1f} + 20 mil film doors {w_doors:.1f} = {w_film:.1f} lb")
-print(f"  all-film would be {0.020*RHO_PVC*144.0*22.0:.1f}; all-Lexan 0.060 would be {w_lex:.1f}")
-print(f"  So the split costs {w_film - 0.020*RHO_PVC*144.0*22.0:+.1f} lb against all-film and buys:""")
+print(f"  all-film would be {0.020*RHO_PVC*144.0*A_TOT:.1f}; all-Lexan 0.060 would be {w_lex:.1f}")
+print(f"  So the split costs {w_film - 0.020*RHO_PVC*144.0*A_TOT:+.1f} lb against all-film and buys:""")
 print("""   - the forward view through OPTICAL-GRADE RIGID PANEL, which retires the
      distortion worry a 14-17 deg raked film windshield would have had;
    - a windshield that cannot propagate a tear at all - polycarbonate crazes
@@ -180,35 +202,48 @@ print(f"\n  weight: two cutters ~{2*1.5:.0f} oz + brackets = {w_cut:.1f} lb,")
 print(f"  and it DELETES the zip and the release-force tuning from the kit.")
 
 # ---------------- 6. the ledger, with the split glazing ----------------
-print("=== 6. LEDGER, WITH LEXAN WINDSHIELD + FILM DOORS ===")
-kit = [("windshield + upper sides, 0.040 Lexan", w_rigid),
+print("=== 6. LEDGER, REV H: FULL-GLASS NOSE + FILM DOORS ===")
+kit = [("full-glass nose + side lights, 0.040 Lexan", w_rigid),
        ("two doors, 20 mil film", w_doors),
        ("two door frames, light tube", 3.0),
-       ("windshield frame / floating channel", 1.0),
+       ("glazing frame: rails, bows, floating channel", W_FRAME),
        ("bead track and fasteners (positive, no release)", 0.8),
        ("two mounted cutters + brackets", 0.3),
        ("NACA ducts + closable valves + defog", 1.0),
        ("cabin closeout and sills in the cage", 2.0)]
 tot = sum(v for _, v in kit)
 for n, v in kit: print(f"    +{v:4.1f}  {n}")
-print(f"    ----\n    enclosure kit gross {tot:.1f} lb  (17.0 if it were all 0.060 Lexan)")
+print(f"    ----\n    enclosure kit gross {tot:.1f} lb   (rev G was 12.4)")
+print(f"""
+  The glazing FRAME is now {W_FRAME:.1f} lb against the 1.0 lb the rev G ledger
+  carried, and it is the single biggest line in the rev H delta - bigger than
+  the extra glass. That is the price of a wraparound: flat sheet only cold-forms
+  into single curvature, so the screen has to be a centre panel and two side
+  panels per side, and every joint needs a rail. Open item: this is drawn as
+  3/8 x .028 4130 and has had no materials pass. Aluminium extrusion, a smaller
+  tube, or deleting the phi=95 rail if 0.060 sheet turns out stiff enough are
+  all live - it is the obvious place to go looking for a pound.""")
 
 E103, CAP = 247.7, 254.0               # after the rev G cabane deletion
 print(f"\n  EAB kit: {tot:.1f} - 4.0 (old Lexan windshield line superseded) = {tot-4:.1f} lb net")
 print(f"  103 with the FULL enclosure: {E103:.1f} + {tot:.1f} = {E103+tot:.1f} -> over by {E103+tot-CAP:.1f}")
-strip_lex = w_rigid + 1.0 + 1.0        # Lexan windshield + its frame + ducts, no doors
-strip_flm = 0.020*RHO_PVC*144.0*A_RIGID + 0.5 + 1.0
+strip_lex = w_rigid + W_FRAME + 1.0    # glass + its frame + ducts, no doors
+strip_flm = 0.020*RHO_PVC*144.0*A_RIGID + W_FRAME + 1.0
 print(f"  103, WINDSHIELD + VENTS ONLY (no doors):")
 print(f"    with the EAB's 0.040 Lexan windshield: +{strip_lex:.1f} -> {E103+strip_lex:.1f}, "
       f"margin {CAP-E103-strip_lex:.1f} lb")
 print(f"    with a FILM windshield instead:        +{strip_flm:.1f} -> {E103+strip_flm:.1f}, "
       f"margin {CAP-E103-strip_flm:.1f} lb")
 print(f"""
-  So the split costs the 103 about {strip_lex-strip_flm:.1f} lb of its margin, and there is a
-  clean fleet answer: GLAZING IS A KIT ITEM EITHER WAY. The EAB gets the
-  Lexan windshield, because it is the aircraft that will be flown fast, far
-  and in weather, and the optical quality is worth {strip_lex-strip_flm:.1f} lb there. Avery's
-  103 can keep a FILM windshield and hold {CAP-E103-strip_flm:.1f} lb of margin - same cage,
-  same frame, same bead track, different sheet in it.
+  READ THAT HONESTLY. Rev G left the 103 with 3.2 lb of margin on a film
+  screen and 1.3 on Lexan. Rev H glazes the whole nose, and the 103 now
+  {'CANNOT AFFORD' if CAP-E103-strip_lex < 0 else 'barely affords'} the Lexan screen at all: {CAP-E103-strip_lex:+.1f} lb.
+  The fleet answer §24 already reached still holds, and now it is load-bearing
+  rather than a preference: GLAZING IS A KIT ITEM. The EAB gets Lexan, because
+  it is the aircraft flown fast, far and in weather. Avery's 103 gets FILM in
+  the same frame and the same bead track and holds {CAP-E103-strip_flm:+.1f} lb.
+  If the 103 wants the Lexan nose, {strip_lex-strip_flm:.1f} lb has to come off that airframe
+  somewhere else first - the frame materials pass above is the first place
+  to look.
   Both aircraft still carry the doors as film if fitted, and the egress plan
   is unchanged because THE DOORS ARE THE ESCAPE PATH in either build.""")

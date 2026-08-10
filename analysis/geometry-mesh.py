@@ -113,14 +113,20 @@ endgroup()
 fu = [(2,40,3.5,3.5),(12,33,11,6),(24,33,15,9),(36,34.5,18.5,10.8),
       (48,35.5,19.5,11.5),(60,36,19,11.5),(72,36,18,10.5),
       (84,33,12,7),(96,27.5,3.5,3.2),(184,27,1.75,1.75)]
-# The glazing is CUT OUT of the fabric and carried as its own surfaces, so the
-# split in trades/enclosed-cockpit.md is geometry and not just a note:
-#   glass  = 0.040 Lexan windshield, wrapping the top from sta 14 to the wing
-#            leading edge at 48 (phi = angle from the top centreline)
-#   film   = the two 20 mil doors, sta 40-78 in the sides
-# The 3 deg strip between the two masks is the door header, left as fabric.
+# Rev H glazing. Owner direction: THE ENTIRE FRONT IS WINDSHIELD - the engine
+# cowling is the only thing forward of the pilot that is not transparent.
+# phi is the angle around the section from the top centreline, 0 = top,
+# 180 = keel:
+#   cowl   = opaque, sta 2-22, the engine and nothing else
+#   glass  = 0.040 Lexan. Wraps the WHOLE section from the cowl joint at 22 back
+#            to the wing LE at 48, phi 0 to 136 - the lower edge lands on the
+#            cage's own lower longeron, which is already at phi ~135. Plus the
+#            upper side lights, sta 48-78, between the door header and the wing
+#   film   = the two 20 mil doors, sta 40-78, phi 48-116 (unchanged)
+#   fuse   = what is left: the keel strip below phi 136, and the roof aft of 48
+#            where the wing sits on top of it and there is nothing to see
 fx = np.array([r[0] for r in fu], float)
-xs = np.unique(np.concatenate([np.arange(2, 97, 2.0), [14., 40., 48., 78., 96.],
+xs = np.unique(np.concatenate([np.arange(2, 97, 2.0), [22., 40., 48., 78., 96.],
                                np.arange(96, 185, 8.0), [184.]]))
 zc = np.interp(xs, fx, [r[1] for r in fu])
 hh = np.interp(xs, fx, [r[2] for r in fu])
@@ -142,11 +148,18 @@ def skin(pred):
             c, d = base+(i+1)*NT+j, base+(i+1)*NT+j+1
             F.append((a, c, b)); F.append((b, c, d))
 
-WS = lambda x, p: 14 <= x <= 48 and p <= 45          # windshield + upper sides
-DR = lambda x, p: 40 <= x <= 78 and 48 <= p <= 116   # the two doors
-group("fuse"); skin(lambda x, p: x <= 96 and not WS(x, p) and not DR(x, p)); endgroup()
-group("boom"); skin(lambda x, p: x >= 96); endgroup()
-group("glass"); skin(WS); endgroup()
+PHI_LO = 136.0            # glazing lower edge = the cage lower longeron line
+CW = lambda x, p: x <= 22                                    # engine cowl
+DR = lambda x, p: 40 <= x <= 78 and 48 <= p <= 116           # the two doors
+WS = lambda x, p: 22 < x <= 48 and p <= PHI_LO and not DR(x, p)   # windshield
+SW = lambda x, p: 48 < x <= 78 and 20 <= p <= 46             # upper side lights
+GL = lambda x, p: WS(x, p) or SW(x, p)
+group("fuse")
+skin(lambda x, p: x <= 96 and not CW(x, p) and not GL(x, p) and not DR(x, p))
+endgroup()
+group("cowl");  skin(CW); endgroup()
+group("boom");  skin(lambda x, p: x >= 96); endgroup()
+group("glass"); skin(GL); endgroup()
 group("film");  skin(DR); endgroup()
 # ---- propeller: two blades + spinner at sta 2, thrustline 40
 group("prop")
@@ -206,20 +219,36 @@ strut([AFT, -6, 24], [AFT, 6, 24], 0.45)                # aft frame, boom pickup
 strut([AFT, -6, 30], [AFT, 6, 30], 0.45)
 endgroup()
 
-# ---- windshield frame: light tube following the glazing boundary at phi = 45
-# deg from sta 14 back to the wing leading edge, plus a bow across the front.
-# This is the "windshield frame / floating channel" line in the enclosure ledger
-# - the Lexan is never hard-clamped, it floats in this channel.
+# ---- glazing frame. Two jobs, and the second one is what sets it.
+#   1. The "windshield frame / floating channel" of the enclosure ledger: the
+#      Lexan is never hard-clamped, it floats in this channel (thermal growth).
+#   2. THE WRAPAROUND IS NOT DEVELOPABLE. Flat sheet cold-forms into a singly
+#      curved surface only, and the pod's forward sections are doubly curved.
+#      So the screen is not one piece: it is a centre panel and two side panels
+#      per side, each narrow enough to pull into single curvature, meeting on
+#      frame rails. Same reason a Champ or a Cub has a split screen.
+# Rails at phi 45 and 95, bows at the cowl joint (22) and the wing LE (48).
+def sect_pt(x, phi_deg, side=1):
+    z = np.interp(x, fx, [r[1] for r in fu]); h = np.interp(x, fx, [r[2] for r in fu])
+    w = np.interp(x, fx, [r[3] for r in fu]); t = np.radians(phi_deg)
+    return [x, side*w*np.sin(t), z + h*np.cos(t)]
+
+def rail(phi_deg, x0, x1, r=0.28, n=9):
+    for s3 in (1, -1):
+        pts = [sect_pt(x, phi_deg, s3) for x in np.linspace(x0, x1, n)]
+        for k in range(n-1): strut(pts[k], pts[k+1], r)
+
+def bow(x, p0, p1, r=0.28, n=13):
+    for s3 in (1, -1):
+        pts = [sect_pt(x, p, s3) for p in np.linspace(p0, p1, n)]
+        for k in range(n-1): strut(pts[k], pts[k+1], r)
+
 group("wsframe")
-_wsx = np.arange(14.0, 48.1, 4.0)
-_wsz = np.interp(_wsx, fx, [r[1] for r in fu]) + \
-       np.interp(_wsx, fx, [r[2] for r in fu])*np.cos(np.radians(45))
-_wsy = np.interp(_wsx, fx, [r[3] for r in fu])*np.sin(np.radians(45))
-for s3 in (1, -1):
-    for k in range(len(_wsx)-1):
-        strut([_wsx[k], s3*_wsy[k], _wsz[k]],
-              [_wsx[k+1], s3*_wsy[k+1], _wsz[k+1]], 0.30)
-strut([_wsx[0], -_wsy[0], _wsz[0]], [_wsx[0], _wsy[0], _wsz[0]], 0.30)
+for p in (45.0, 95.0):        # panel joints down the screen
+    rail(p, 22.0, 48.0)
+bow(22.0, 0.0, PHI_LO)        # cowl joint ring
+bow(48.0, 0.0, PHI_LO)        # aft edge, at the wing leading edge
+rail(20.0, 48.0, 78.0)        # upper edge of the side lights
 endgroup()
 
 # ---- door frames (EAB enclosure kit; the cage hard points are permanent)

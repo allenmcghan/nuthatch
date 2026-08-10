@@ -19,7 +19,7 @@ live here. So do the mistakes.
 **Named after the only bird that climbs down a tree headfirst.** Small, plain, and
 does it backwards from everything else in the class.
 
-![Nuthatch rev G](drawings/renders/hero-cockpit.png)
+![Nuthatch rev H](drawings/renders/hero-cockpit.png)
 
 *A rendering of the design mesh, not a photograph — this aircraft has not been
 built. Generated from `model/nuthatch.stl` by `analysis/render-hero.py`.*
@@ -76,9 +76,10 @@ Part 103 stays gasoline. Worked in
 - Welded 4130 cockpit cage + single straight 4130 tail boom, all-wood
   cantilever wing sitting directly on the cabin roof (no cabane), fabric
   over everything
-- Reclined pilot, windshield sweeping from the nose to the wing; the
-  windshield is thin (0.040) Lexan and the two doors are thin clear film
-  stretched on the steel frame. A mounted film cutter is the egress tool
+- Reclined pilot; **the entire nose is glazed** — from the cowl joint back to
+  the wing leading edge and down to the cage's lower longeron, in thin (0.040)
+  Lexan. The engine cowl is the only opaque panel forward of the pilot. The two
+  doors are thin clear film; a mounted film cutter is the egress tool
 - Ram-air NACA ducts, closable for winter — the cabin deletes ~20 °F of wind
   chill rather than making heat. **Doors both sides are an EAB kit item**;
   the Part 103 aircraft carries the windshield and vents without them
@@ -105,6 +106,13 @@ reach twice the ground area.
 
 **Crash structure.** Steel tube nose bow forward of the pedals and a rollover
 hoop behind your head, so there is a survivable volume rather than fabric.
+
+**Visibility, measured.** 61.8% of the whole sphere gets out, and 42% of the
+±30° ahead-and-down sector a pilot lands on — against 40.6% and 4% for the
+half-glazed version this replaced. Ray-cast from the pilot's eye against the
+same mesh the drawings come from, in
+[analysis/visibility.py](analysis/visibility.py). The straight-ahead view is
+limited by the **engine**, not the glazing, and that is written down too.
 
 **No ground loop.** Tricycle gear with a steerable nose.
 

@@ -281,3 +281,30 @@ somewhere those hours can be flown without fighting airspace, and first flight
 of a modified one-off does not belong in a backyard. (The pure-103 sister ship
 has no formal Phase I, but its shakedown flying wants the same big field.)
 Needs deciding before the EAB airworthiness application, not before drawing.
+
+## Cowl height, and the forward view (rev H, §26)
+
+The over-the-nose view is set by the engine, not the glazing. The cowl crown is
+at z 47.3, **1.8 in above the pilot's eye**, so there is no depression angle
+over the top of the nose at all — the pilot looks 2.9° *up* to clear it.
+
+That crown allows the engine 7.3 in above the crank centreline, and **an
+upright Hirth F-33 cylinder is taller than that.** So one of these has to give:
+
+- the engine gets **clocked or tilted** to fit under the line;
+- the **cowl grows**, and the forward view gets worse than the numbers in §26;
+- the **thrustline drops**, which the propeller ground clearance in
+  `trades/landing-gear.md` does not currently allow;
+- the **eye rises**, which costs wing height and gives back the rev G drag win.
+
+**Blocked on a physical measurement: an engine on the bench, with a tape on
+it.** Nothing else settles this, and it decides the shape of the nose.
+
+## Glazing frame materials (rev H, §26)
+
+The wraparound screen is not developable, so it is three panels per side on
+frame rails — 303 in of tube, **2.6 lb** as drawn in 3/8 × .028 4130 against
+the 1.0 lb the ledger carried. That 1.6 lb is what pushes the Part 103 aircraft
+off a Lexan nose. Untried: aluminium extrusion, a smaller tube, or deleting the
+phi = 95° rail if 0.060 sheet proves stiff enough to span unsupported.
+
