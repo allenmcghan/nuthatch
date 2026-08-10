@@ -276,7 +276,7 @@ print("""
   Read that honestly: the full-glass nose is affordable on the EAB and it is
   NOT free on the 103. The 103 keeps the same cage, the same frame and the same
   bead track - it just gets film in it instead of Lexan, which is the answer
-  §24 already reached for a different reason. If the 103 wants the Lexan
+  §25 already reached for a different reason. If the 103 wants the Lexan
   screen, the weight has to come from somewhere else on that airframe.""")
 
 # --- chart ------------------------------------------------------------------

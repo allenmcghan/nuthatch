@@ -1,11 +1,84 @@
 # Open Questions
 
-Nothing in this project is drawn yet. These are the items that block drawing,
-in the order they need resolving.
+These are the items that block drawing, in the order they need resolving.
+
+**Entering final design, four things block geometry and everything else waits
+on them:**
+
+| # | What | Why it blocks | Where |
+|---|---|---|---|
+| 1 | **The frame is in six disconnected pieces** | you cannot draw a structure whose members do not meet | [below](#the-frame-is-in-six-disconnected-pieces), design-log §27 |
+| 2 | **Cage member sizing + a rollover load basis** | no member has been sized against a load case, and no rollover standard has been chosen | [below](#verify-before-committing) |
+| 3 | **Cowl height** | sets the over-the-nose view, and needs an engine on a bench with a tape on it | [below](#cowl-height-which-sets-the-forward-view), design-log §26 |
+| 4 | **Airfoil section and its real CLmax** | stall speed, flap geometry, spar depth and rib templates all hang off it | [below](#blocking-everything) |
+
+Everything else on this page is real but downstream of those four.
 
 ## Blocking everything
 
-**The two weight statements disagree.** The workbook Weight sheet omits the slats
+### The frame is in six disconnected pieces
+
+`analysis/frame.py` turned the cage from thirty hard-coded `strut()` calls into
+a node/member graph, and the graph answers a question the tube mesh could not:
+**do these tubes actually meet?** Overlapping cylinders look welded. They are
+not. `python3 analysis/frame.py` prints the list; this is what it finds.
+
+Only the **14-node cage box** — nose bow, longerons, main hoop, diagonals, aft
+frame — is one connected structure. Everything else floats:
+
+| Island | What it is | What it needs |
+|---|---|---|
+| `RF_L RF_R RP_L RP_R` | the **rear frame**: rear spar carry-through, seat back, harness anchor | `RF` sits **2.70 in** off the lower longeron. Either drop `RF` onto the longeron line, or add a member from `RF` to it. **A harness anchor that is not welded to the cage is not a harness anchor.** |
+| `BM_C TP_C` | the **tail boom** | `BM_C` floats **3.00 in** between the two aft-frame crosses. The boom picks up on the aft frame through a fitting that is not modelled. Either model the fitting or move the crosses to meet the tube. |
+| `NGU_C NGF_C NAX_C` | the **nose leg** | `NGU_C` is meant to land on the nose bow, but the nose bow is a **U, not a hoop** — there is a crown at `NT_L`–`NT_R` and no lower cross member. Nothing exists at `(30, 0, 17)` to weld to. And `NGF_C` still floats at station 14 (below). |
+| `MGF_R MAX_R MGS_R` ×2 | the **main gear** | the trailing-arm pivot `MGF` is 2.4 in outboard and 3.5 in below the lower longeron at that station. Same question: fitting, or move it onto the tube. |
+
+Two more near misses inside the cage box itself, which are the serious ones:
+
+- **The main hoop feet do not land on the longerons.** `MH` is **3.44 in** from
+  the lower longeron at 47% along it. That frame carries **88% of wing lift —
+  1,519 lb per side fitting** — and is the rollover structure. Its feet have to
+  tie into the longerons or into a fitting that does.
+- **`NGF_C` attaches to nothing.** Station 14, sixteen inches forward of where
+  the cage starts. It came in with the rev D raked nose leg as *"closes the
+  crush-bay triangle"* and was never tied to a node. Either it lands on the
+  nose bow, or it lands on the engine mount, or the member goes away.
+
+**Nothing has been moved to fix this.** The coordinates are exactly what rev G
+carried; all that changed is that they can now be checked. Fixing it is a
+design decision — how much of it wants a welded joint and how much wants a
+bolted fitting — and `analysis/frame.py` will re-check whatever comes back.
+
+Related: the frame's own tube schedule comes to **48.4 lb** (27.5 cage, 13.2
+boom, 7.7 gear) with **no gussets, no fittings and no weld metal**. The build
+log CSV carries 31 + 5 + 4 = 40 lb for a cage that predates the pod-and-boom
+architecture. Those two do not reconcile yet, and that is already on the list
+as **workbook reconciliation**.
+
+### Cowl height, which sets the forward view
+
+The over-the-nose view is set by the engine, not the glazing. The cowl crown is
+at z 47.3, **1.8 in above the pilot's eye**, so there is no depression angle
+over the top of the nose at all — the pilot looks 2.9° *up* to clear it.
+
+That crown allows the engine 7.3 in above the crank centreline, and **an
+upright Hirth F-33 cylinder is taller than that.** So one of these has to give:
+
+- the engine gets **clocked or tilted** to fit under the line;
+- the **cowl grows**, and the forward view gets worse than the numbers in §26;
+- the **thrustline drops**, which the propeller ground clearance in
+  `trades/landing-gear.md` does not currently allow;
+- the **eye rises**, which costs wing height and gives back the rev G drag win.
+
+**Blocked on a physical measurement: an engine on the bench, with a tape on
+it.** Nothing else settles this, and it decides the shape of the nose.
+
+**The two weight statements disagree — PARKED, by owner decision.** The frame
+and structure are being redrawn by hand, so reconciling a workbook against
+superseded geometry buys nothing until that lands. Recorded, not being chased.
+Re-open it when the redrawn frame has a weight.
+
+The workbook Weight sheet omits the slats
 (6 lb) and the cabane (6 lb) that `build-log/measured-weights.csv` carries:
 honest EAB empty is ~308 lb, and the 103 strip is ~262 — **8 lb over the limit,
 not 4 under**. Reconcile the workbook before quoting it. Full scrub and a
@@ -157,6 +230,14 @@ done. (Replaced the slat-geometry item: flaps-for-slats adopted, design-log
   wing-joint design now, expensive to retrofit after the joints are drawn
 - Every fitting, detailed
 
+**Glazing frame materials.**
+
+The wraparound screen is not developable, so it is three panels per side on
+frame rails — 303 in of tube, **2.6 lb** as drawn in 3/8 × .028 4130 against
+the 1.0 lb the ledger carried. That 1.6 lb is what pushes the Part 103 aircraft
+off a Lexan nose. Untried: aluminium extrusion, a smaller tube, or deleting the
+phi = 95° rail if 0.060 sheet proves stiff enough to span unsupported.
+
 ## Verify before committing
 
 - **The Part 103 engine's actual power rating — and more importantly its prop
@@ -281,69 +362,3 @@ somewhere those hours can be flown without fighting airspace, and first flight
 of a modified one-off does not belong in a backyard. (The pure-103 sister ship
 has no formal Phase I, but its shakedown flying wants the same big field.)
 Needs deciding before the EAB airworthiness application, not before drawing.
-
-## Cowl height, and the forward view (rev H, §26)
-
-The over-the-nose view is set by the engine, not the glazing. The cowl crown is
-at z 47.3, **1.8 in above the pilot's eye**, so there is no depression angle
-over the top of the nose at all — the pilot looks 2.9° *up* to clear it.
-
-That crown allows the engine 7.3 in above the crank centreline, and **an
-upright Hirth F-33 cylinder is taller than that.** So one of these has to give:
-
-- the engine gets **clocked or tilted** to fit under the line;
-- the **cowl grows**, and the forward view gets worse than the numbers in §26;
-- the **thrustline drops**, which the propeller ground clearance in
-  `trades/landing-gear.md` does not currently allow;
-- the **eye rises**, which costs wing height and gives back the rev G drag win.
-
-**Blocked on a physical measurement: an engine on the bench, with a tape on
-it.** Nothing else settles this, and it decides the shape of the nose.
-
-## Glazing frame materials (rev H, §26)
-
-The wraparound screen is not developable, so it is three panels per side on
-frame rails — 303 in of tube, **2.6 lb** as drawn in 3/8 × .028 4130 against
-the 1.0 lb the ledger carried. That 1.6 lb is what pushes the Part 103 aircraft
-off a Lexan nose. Untried: aluminium extrusion, a smaller tube, or deleting the
-phi = 95° rail if 0.060 sheet proves stiff enough to span unsupported.
-
-## The frame is in six disconnected pieces (rev H, §27)
-
-`analysis/frame.py` turned the cage from thirty hard-coded `strut()` calls into
-a node/member graph, and the graph answers a question the tube mesh could not:
-**do these tubes actually meet?** Overlapping cylinders look welded. They are
-not. `python3 analysis/frame.py` prints the list; this is what it finds.
-
-Only the **14-node cage box** — nose bow, longerons, main hoop, diagonals, aft
-frame — is one connected structure. Everything else floats:
-
-| Island | What it is | What it needs |
-|---|---|---|
-| `RF_L RF_R RP_L RP_R` | the **rear frame**: rear spar carry-through, seat back, harness anchor | `RF` sits **2.70 in** off the lower longeron. Either drop `RF` onto the longeron line, or add a member from `RF` to it. **A harness anchor that is not welded to the cage is not a harness anchor.** |
-| `BM_C TP_C` | the **tail boom** | `BM_C` floats **3.00 in** between the two aft-frame crosses. The boom picks up on the aft frame through a fitting that is not modelled. Either model the fitting or move the crosses to meet the tube. |
-| `NGU_C NGF_C NAX_C` | the **nose leg** | `NGU_C` is meant to land on the nose bow, but the nose bow is a **U, not a hoop** — there is a crown at `NT_L`–`NT_R` and no lower cross member. Nothing exists at `(30, 0, 17)` to weld to. And `NGF_C` still floats at station 14 (below). |
-| `MGF_R MAX_R MGS_R` ×2 | the **main gear** | the trailing-arm pivot `MGF` is 2.4 in outboard and 3.5 in below the lower longeron at that station. Same question: fitting, or move it onto the tube. |
-
-Two more near misses inside the cage box itself, which are the serious ones:
-
-- **The main hoop feet do not land on the longerons.** `MH` is **3.44 in** from
-  the lower longeron at 47% along it. That frame carries **88% of wing lift —
-  1,519 lb per side fitting** — and is the rollover structure. Its feet have to
-  tie into the longerons or into a fitting that does.
-- **`NGF_C` attaches to nothing.** Station 14, sixteen inches forward of where
-  the cage starts. It came in with the rev D raked nose leg as *"closes the
-  crush-bay triangle"* and was never tied to a node. Either it lands on the
-  nose bow, or it lands on the engine mount, or the member goes away.
-
-**Nothing has been moved to fix this.** The coordinates are exactly what rev G
-carried; all that changed is that they can now be checked. Fixing it is a
-design decision — how much of it wants a welded joint and how much wants a
-bolted fitting — and `analysis/frame.py` will re-check whatever comes back.
-
-Related: the frame's own tube schedule comes to **48.4 lb** (27.5 cage, 13.2
-boom, 7.7 gear) with **no gussets, no fittings and no weld metal**. The build
-log CSV carries 31 + 5 + 4 = 40 lb for a cage that predates the pod-and-boom
-architecture. Those two do not reconcile yet, and that is already on the list
-as **workbook reconciliation**.
-

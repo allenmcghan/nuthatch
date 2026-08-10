@@ -24,8 +24,11 @@ does it backwards from everything else in the class.
 *A rendering of the design mesh, not a photograph — this aircraft has not been
 built. Generated from `model/nuthatch.stl` by `analysis/render-hero.py`.*
 
-**Status:** design phase. Nothing is drawn yet. See
-[docs/open-questions.md](docs/open-questions.md) for what is still undefined.
+**Status: entering final design.** The configuration is settled and reasoned;
+the structure is not drawn. There is a 3D model, a drawing set, CAD exports of
+the steel frame and a measured visibility analysis — and **no member has been
+sized against a load case.** [docs/open-questions.md](docs/open-questions.md)
+opens with the four items that gate everything else.
 
 ---
 
@@ -45,23 +48,29 @@ Two configurations, one set of drawings. See [docs/specs.md](docs/specs.md).
 
 | | EAB build | Part 103 build |
 |---|---|---|
-| Empty weight | 296 lb* | 250 lb* |
+| Empty weight | 296 lb\* | 250 lb\* |
 | Gross | 580 lb | 450 lb |
 | Span / area | 31 ft / 130 ft² | same |
 | Stall, flaps 40° | 28.4 mph | 22.9 kt |
 | Takeoff roll | 140 ft | ~160 ft |
 | Climb | 1,010 fpm | ~500 fpm |
-| Glide ratio | 10.7 | 10.7 |
+| Glide ratio | 12.4† | 12.4† |
 | Cruise | 55–60 mph | 55 kt limited |
 | Range | ~150 mi | fuel limited |
 | Engine | Hirth F-33, 28 hp | direct-drive, ~16 hp |
 | Brakes | yes | yes |
 
-\* The weight workbook omits rows (slats — since retired for flaps — and
-cabane) that the build-log CSV carries; honest totals are ~308 / ~262 lb until
-reconciled — see
-[docs/trades/weight-scrub-103.md](docs/trades/weight-scrub-103.md), which also
-works a single-build path to ~253 lb.
+\* **Empty weight: two statements, deliberately not reconciled.** The workbook
+omits rows (slats — since retired for flaps — and cabane) that the build-log
+CSV carries; honest totals are ~308 / ~262 lb. The scrubbed single-build path
+reaches 253.2, and the rev G cabane deletion takes the 103 kit to **247.7**.
+Reconciliation is parked until the frame is redrawn — see
+[docs/specs.md](docs/specs.md).
+
+† **Glide 12.4, not the 10.7 this repo quoted for a long time.** Rev G lowered
+the wing onto the cabin roof and deleted the cabane: f 4.84 → 3.68 ft², L/D
+10.8 → 12.4. The §22 drag cleanup would take it to 13.6, but that is proposed,
+not adopted. Nothing here is measured.
 
 **Powerplant roadmap: gasoline first, hybrid second, electric third.** Electric,
 when it comes, is an EAB-only path — a Part 103 all-electric build has 8 lb of
@@ -100,8 +109,8 @@ Part 103 stays gasoline. Worked in
 
 ## What makes it different
 
-**Glide.** 10.7:1 against roughly 7 or 8 for the aluminum-and-Dacron aircraft in
-this class. That is a safety number as much as an efficiency one: engine-out you
+**Glide.** 12.4:1 predicted against roughly 7 or 8 for the aluminum-and-Dacron
+aircraft in this class. That is a safety number as much as an efficiency one: engine-out you
 reach twice the ground area.
 
 **Crash structure.** Steel tube nose bow forward of the pedals and a rollover
@@ -126,15 +135,22 @@ pilot. See [Junco](https://github.com/allenmcghan/junco).
 ## Repository layout
 
 ```
-docs/          design log, specs, load cases, open questions
-docs/trades/   worked configuration trades, with the numbers
-analysis/      spar sizing, performance, V-n diagram, the frame as a node table
-cad/           DXF + cut list, generated from analysis/frame.py
-drawings/      wing, fuselage, tail, gear, fittings
-model/         quarter-scale RC validation aircraft
-build-log/     measured weights against estimates, failures
-flight-test/   Phase I plan and logged data
+docs/specs.md        the current specification, one page, with sources
+docs/design-log.md   every decision and the number behind it
+docs/open-questions.md   what blocks drawing, most-blocking first
+docs/trades/         21 worked configuration trades — index in its README
+analysis/            the models: frame, aero, visibility, weights, CAD export,
+                     geometry and renderers. Everything regenerates from here
+cad/                 DXF, AutoCAD script, tube schedule — from analysis/frame.py
+drawings/sheets/     GA-001, LG-001, CP-001, ST-001 + the collected PDF
+drawings/renders/    shaded renderings and the visibility chart
+model/               nuthatch.stl (rev H) and the quarter-scale validation plan
+build-log/           measured weights against estimates, failures
+flight-test/         Phase I plan and logged data
 ```
+
+Detail drawings (`drawings/wing`, `fuselage`, `tail`, `gear`, `fittings`) are
+empty placeholders — that is the work of the final design phase.
 
 ## CAD
 

@@ -1,5 +1,17 @@
 # Fuselage Architecture: Steel Cockpit Cage + One Straight Boom
 
+> **Superseded in part, and worth reading anyway.** This trade selected a
+> **6061-T6 aluminium** boom. **Rev F reversed that** — the boom is 4130 steel,
+> 3.50 × .049 ([cockpit-cage.md](cockpit-cage.md), design-log §24). A thin-wall
+> boom turns out to be buckling-limited rather than strength-limited, so steel's
+> stiffness nearly cancels its density, and the aluminium-to-steel transition
+> joint disappears with the choice.
+>
+> **The architecture stands. The material does not.** Everything below about
+> pod-and-boom versus a full-length welded truss — ~80 fishmouth joints deleted,
+> 35–45 build hours, an aft fuselage that cannot be built out of square — is
+> still the design of record.
+
 **The question:** can the fuselage be designed to actually be easy to
 construct — a single straight boom to the tail and a simple, aerodynamic
 cockpit — instead of what the drawings have been showing?

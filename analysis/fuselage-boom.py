@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
-"""Fuselage architecture: size a single straight tail boom against the tail
+"""*** SUPERSEDED IN PART. Read this before using any number below. ***
+
+This script chose a 6061-T6 aluminium boom. REV F REVERSED THAT: the boom is
+4130 steel, 3.50 x .049. See analysis/cage-design.py and design-log §24 - a
+thin-wall boom is buckling-limited rather than strength-limited, so steel's
+stiffness very nearly cancels its density, and the aluminium-to-steel
+transition joint disappears with the choice.
+
+The ARCHITECTURE this script established - pod and boom rather than a
+full-length welded truss - stands. The TAIL LOADS and the sizing method stand.
+Only the material and the tube selection at the end are dead.
+
+Fuselage architecture: size a single straight tail boom against the tail
 loads, and compare it to the full-length welded truss the digital-fabrication
 plan assumed. Basis: tail loads at Vne 62 mph (the fleet load basis), boom
 root at the aft cage bulkhead, sta 96; tail post sta 182 (skid 184).

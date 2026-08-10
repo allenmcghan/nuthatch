@@ -3,6 +3,43 @@
 Decisions in the order they were made, with the number that decided each one and
 the alternatives that lost. Read this before the drawings.
 
+The current state of it all is on one page in [specs.md](specs.md); what still
+blocks drawing is in [open-questions.md](open-questions.md).
+
+---
+
+## Contents
+
+- [0. How the mission got defined](#0-how-the-mission-got-defined)
+- [1. Configuration: why not a gyroplane](#1-configuration-why-not-a-gyroplane)
+- [2. Configuration: why not a multirotor](#2-configuration-why-not-a-multirotor)
+- [3. Powerplant: why not electric](#3-powerplant-why-not-electric)
+- [4. Airframe: why derive from an existing design](#4-airframe-why-derive-from-an-existing-design)
+- [5. Fuselage: welded 4130, not a wood box](#5-fuselage-welded-4130-not-a-wood-box)
+- [6. Wing: constant chord, cantilever, 130 ft²](#6-wing-constant-chord-cantilever-130-ft)
+- [7. Spar: aluminum caps and a shear web](#7-spar-aluminum-caps-and-a-shear-web)
+- [8. Ribs: Douglas fir truss, not foam](#8-ribs-douglas-fir-truss-not-foam)
+- [9. Roll control: spoilerons, not ailerons](#9-roll-control-spoilerons-not-ailerons)
+- [10. Slats: mandatory, not optional](#10-slats-mandatory-not-optional)
+- [11. Brakes: bicycle hydraulic discs](#11-brakes-bicycle-hydraulic-discs)
+- [12. Structural design point: 4.7g limit](#12-structural-design-point-47g-limit)
+- [13. Wing joints: bearing, not shear](#13-wing-joints-bearing-not-shear)
+- [14. Covering: Stewart waterborne](#14-covering-stewart-waterborne)
+- [15. Engine: Hirth F-33](#15-engine-hirth-f-33)
+- [16. Propeller: 60 in, two blades, wood](#16-propeller-60-in-two-blades-wood)
+- [17. Transport: removable wings, not folding](#17-transport-removable-wings-not-folding)
+- [18. Tractor, not pusher — and why that answer is different for electric](#18-tractor-not-pusher--and-why-that-answer-is-different-for-electric)
+- [Configurations that lost, with the number](#configurations-that-lost-with-the-number)
+- [19. Fabrication method: digital tooling, not digital parts](#19-fabrication-method-digital-tooling-not-digital-parts)
+- [20. The common airframe: one structure, both configurations](#20-the-common-airframe-one-structure-both-configurations)
+- [21. Owner decisions, 2026-08-09](#21-owner-decisions-2026-08-09)
+- [22. Borrowed optimizations: what the ultralight world still has to offer](#22-borrowed-optimizations-what-the-ultralight-world-still-has-to-offer)
+- [23. Fly-by-wire and servo-augmented controls: no, except on one surface](#23-fly-by-wire-and-servo-augmented-controls-no-except-on-one-surface)
+- [24. Rev F: the cage, the all-steel airframe, and the frame that does three jobs](#24-rev-f-the-cage-the-all-steel-airframe-and-the-frame-that-does-three-jobs)
+- [25. Rev G: reclined pilot, enclosed cabin, and the wing brought down onto it](#25-rev-g-reclined-pilot-enclosed-cabin-and-the-wing-brought-down-onto-it)
+- [26. Rev H: the whole front is windshield, and the first number for visibility](#26-rev-h-the-whole-front-is-windshield-and-the-first-number-for-visibility)
+- [27. The frame becomes data, and the data fails its first check](#27-the-frame-becomes-data-and-the-data-fails-its-first-check)
+
 ---
 
 ## 0. How the mission got defined
@@ -604,6 +641,14 @@ before.** For the gasoline aircraft the question is closed.
 | Heavy duty aluminum foil as sandwich skin | 0.8–1 mil in O temper at 90–120 MPa, against 0.020 in 6061-T6 at 310. Roughly two hundredths of the strength. |
 | Solid foam core wing | 39 ft³ of enclosed volume, so 39 lb of foam in 1 lb/ft³ EPS before any skin. Rutan gets away with it on smaller, thinner wings. |
 | Amphibious conversion | The prop kills it first: 60-in disc tips at 10 in AGL sit in the bow-spray zone on any float geometry — the Aventura solves this with a pylon pusher, a fiberglass hull, and 328–390 lb empty, i.e. by not being Part 103. The stall gate leaves ~0 lb for floats at 456 lb gross (floats are excluded from *empty* weight, not from stall), and the 103 engine can't climb the hump. Water is a first requirement, not a feature. See [trades/amphibious.md](trades/amphibious.md). |
+| Fixed leading-edge slats | Justified on *roll control* for a two-axis wing, then out-analysed by their own case: −7.4% L/D, a millimetre-critical gap, and a stall-limit argument that broke under audit. Replaced by single-lever plain flaps, with vortex generators held in reserve as the escape clause. [trades/flaps.md](trades/flaps.md) |
+| 6061-T6 aluminium tail boom | Chosen at rev E, reversed at rev F. A thin-wall boom is buckling-limited rather than strength-limited, so steel's 2.9× stiffness very nearly cancels its 2.89× density — +4.4 lb raw, +2.2 net. Steel also deletes the aluminium-to-steel transition joint and has a true endurance limit where 6061-T6 has none. [trades/cockpit-cage.md](trades/cockpit-cage.md) |
+| Cabane struts, wing above the pod | Left 15 in of open air between pod top and wing underside with struts crossing at the widest station. Deleting it and landing the wing on the cabin roof took f from 4.84 to 3.68 ft², L/D 10.8 → 12.4, and gave back 5.5 lb to *both* aircraft. [trades/enclosed-cockpit.md](trades/enclosed-cockpit.md) |
+| Full fly-by-wire | No fixed-wing ultralight, LSA or certified light aircraft anywhere has FBW without mechanical reversion. The weight loophole runs backwards — §103.1(e)(1) excludes the chute, not servos. And the twist grip makes hardover worse: a wrist against 61 in-lb at Vne, with no annual and no mandatory inspection of the clutch, ever. [trades/fly-by-wire.md](trades/fly-by-wire.md) |
+| Rudder pedals | Deleted with the twist-grip rudder. Emptied the crush-bay footwell of foot traps, saved ~2 lb, retired the adjustable-pedal requirement — and, unforeseen at the time, is the only reason the reclined seat fits without moving CG. [trades/controls-mechanization.md](trades/controls-mechanization.md) |
+| Framed seat pan + Confor foam | ~1.8 lb heavier than a mesh sling between the cage rails. The sling alone is a spring, so the energy absorption is kept with a 2 in crushable pad below the 1-g sag point. [trades/seat.md](trades/seat.md) |
+| Frangible door attachment for egress | Plasticised PVC elongates 200–400% before breaking, so a shoulder balloons it rather than punching through — and a release window that must hold cabin pressure yet let go under a shoulder drifts the wrong way as UV ages it. Replaced by positive attachment and a mounted pointed film cutter: one diagonal cut, grab, tear, 4–5 s. |
+| All-Lexan and all-film glazing | All-Lexan at 0.060 is 8.2 lb; all-film distorts the forward view and, worse, propagates a tear on the one panel that takes stones off the nosewheel. The split — Lexan nose, film doors — costs +1.4 lb and buys an optically clean screen that cannot run. |
 | V-tail | NACA equal-projected-area rule: needs the same 45 ft² as the cruciform surfaces it replaces, so no weight saved — the only honest win is two boom junctions instead of four, worthless at a 55 kt cap. Costs a ruddervator mixer, routine saturation when the −19.3° flare meets crosswind rudder on the same two surfaces, and instantaneous adverse roll that fights the rudder-then-dihedral steering this two-axis aircraft turns with. See [trades/v-tail.md](trades/v-tail.md). |
 
 ## 19. Fabrication method: digital tooling, not digital parts
@@ -1359,7 +1404,7 @@ rail if 0.060 sheet proves stiff enough are all live.
 | rev H, film screen | 253.1 | **+0.9** |
 | rev H, 0.040 Lexan | 254.5 | **−0.5** |
 
-**The 103 can no longer afford the Lexan nose.** The fleet answer §24 reached
+**The 103 can no longer afford the Lexan nose.** The fleet answer §25 reached
 for optical reasons is now load-bearing: **glazing is a kit item.** The EAB
 gets Lexan; **Avery's 103 gets film in the same frame and the same bead track**
 and holds +0.9 lb. If the 103 wants Lexan, 1.5 lb has to come off that airframe

@@ -238,7 +238,7 @@ print(f"""
   READ THAT HONESTLY. Rev G left the 103 with 3.2 lb of margin on a film
   screen and 1.3 on Lexan. Rev H glazes the whole nose, and the 103 now
   {'CANNOT AFFORD' if CAP-E103-strip_lex < 0 else 'barely affords'} the Lexan screen at all: {CAP-E103-strip_lex:+.1f} lb.
-  The fleet answer §24 already reached still holds, and now it is load-bearing
+  The fleet answer §25 already reached still holds, and now it is load-bearing
   rather than a preference: GLAZING IS A KIT ITEM. The EAB gets Lexan, because
   it is the aircraft flown fast, far and in weather. Avery's 103 gets FILM in
   the same frame and the same bead track and holds {CAP-E103-strip_flm:+.1f} lb.
