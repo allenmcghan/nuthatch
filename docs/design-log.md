@@ -1279,11 +1279,11 @@ the masks differ.
 
 | Sector | rev G sees out | rev H | change |
 |---|---|---|---|
-| whole sphere | 40.6% | **61.8%** | **+21.2%** |
-| forward hemisphere | 45.6% | 68.2% | +22.5% |
-| abeam, both sides | 52.0% | 74.9% | +22.9% |
+| whole sphere | 40.0% | **61.3%** | **+21.3%** |
+| forward hemisphere | 45.3% | 67.9% | +22.6% |
+| abeam, both sides | 51.1% | 73.9% | +22.9% |
 | the approach window | 48.9% | 74.7% | +25.8% |
-| **ahead and down, ±30°** | **4.2%** | **42.3%** | **+38.1%** |
+| **ahead and down, ±30°** | **4.2%** | **41.9%** | **+37.7%** |
 
 That last row is the one that matters. **Rev G could see 4% of the sector a
 pilot actually uses to land.**
@@ -1368,3 +1368,84 @@ first.
 `drawings/visibility.png` plots the field of view. `drawings/renders/hero-eye.png`
 renders it — from the eye, on short final, with the cowl the only thing in the
 way.
+
+## 27. The frame becomes data, and the data fails its first check
+
+**Owner direction: CAD files, to start reconfiguring the steel tube layout.**
+
+The useful deliverable here is not a file. It is that the frame stops being
+thirty hard-coded `strut()` calls buried in the mesh generator and becomes
+**`analysis/frame.py`: a node table, a member table and a stock table** — which
+every other script now reads. Move a node and the STL, the drawings, the cut
+list, the weight, the renders and the visibility numbers all follow. That is
+what makes a layout reconfigurable; a DXF on its own does not.
+
+### What ships
+
+`analysis/cad-export.py` writes, into `cad/`:
+
+| File | What it is |
+|---|---|
+| `nuthatch-frame-3d.dxf` | 3D wireframe of every tube centreline, layered by structure group, with node markers, labels and datum/station reference lines. R12 ASCII on purpose — everything reads it |
+| `nuthatch-views-2d.dxf` | side / top / front on one flat sheet with a station grid and waterlines |
+| `nuthatch-frame.scr` | an AutoCAD script that draws the same wireframe with `LINE` commands, for when a DXF import argues |
+| `tube-schedule.csv` | cut list: stock, centreline length, weight, and **the tightest joint angle at each end**, because that is what sets the fishmouth |
+| `nodes.csv` | every node, mirrored, with the members landing on it |
+
+Inches, aircraft datum, ground at z = 0. And it reads back: `cad-export.py
+--from-dxf FILE` parses `LINE` entities out of an edited DXF, diffs them
+against `frame.py`, and prints a node table to paste in. Positions only — a DXF
+line cannot tell you what stock it is meant to be.
+
+**Recommended CAD: Onshape on the free plan**, whose *Frames* tool sweeps tube
+profiles down a wireframe and generates a cut list with miter angles. Its free
+tier requires public documents, which for a CERN-OHL-S project is where the CAD
+belongs anyway. FreeCAD if it has to be offline and open source; SolidWorks
+Weldments is still the best tool for this specific job if it is available.
+AutoCAD does what was asked — the DXF is native `LINE` geometry on sensible
+layers — it just will not give a cut list back, which is what the round trip is
+for. `cad/README.md` carries the workflow.
+
+### And then the check failed
+
+Because the frame is now a graph, a question can be asked that the tube mesh
+could not answer: **do these tubes actually meet?** Overlapping cylinders look
+welded. `frame.check()` tests degree, connected components, and nodes that sit
+*near* a member without being on it.
+
+**The frame is in six disconnected pieces.** Only the 14-node cage box is one
+structure. The **rear frame** — rear spar carry-through, seat back and harness
+anchor — is an island whose feet sit **2.70 in** off the lower longeron. The
+**tail boom** floats 3.00 in between the aft-frame crosses. All three **gear
+legs** are islands. The **nose bow is a U, not a hoop** — there is a crown and
+no lower cross member — so the nose leg has nothing to attach to at all. And
+inside the cage box, **the main hoop feet miss the longerons by 3.44 in** — on
+the frame that carries 88% of wing lift and is the rollover structure.
+
+None of this is new damage. It has been in the geometry since rev F and it was
+invisible because the only view of it was a picture. **A drawing cannot tell
+you whether two tubes meet; a graph can.** That is the whole argument for the
+refactor, and it paid for itself on the first run.
+
+**Nothing was moved.** The coordinates are exactly what rev G carried — fixing
+this is a design decision about which joints want to be welded and which want
+to be bolted fittings, and it is the owner's to make. `frame.py` will re-check
+whatever comes back. Listed member by member in `docs/open-questions.md`.
+
+**Also recorded honestly:** the tube schedule totals **48.4 lb** (27.5 cage,
+13.2 boom, 7.7 gear) with no gussets, no fittings and no weld metal, against
+40 lb in a build-log CSV that predates the pod-and-boom architecture. Those do
+not reconcile, and *workbook reconciliation* was already on the list.
+
+**And the visibility numbers moved, by a little.** §26 was computed before the
+frame carried real tube stock; the cage members now have their schedule
+diameters and the boom is constant-section, so the ray-cast sees slightly more
+steel. Whole sphere 61.8 → **61.3%**, ahead-and-down 42.3 → **41.9%**. The
+tables in §26 have been restated. Nothing about the argument changes, but the
+number in the repo should be the number the script prints.
+
+**One correction fell out of the refactor:** the mesh had been drawing the tail
+boom as a **taper**, 7 in deep at the pod junction down to 3.5 at the tail,
+while the design of record is a **constant-section 3.50 × .049 tube**. The loft
+now takes its radius from `frame.TUBE["boom"]`, so the picture and the schedule
+cannot disagree again.

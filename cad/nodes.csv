@@ -1,0 +1,30 @@
+node,x_sta_in,y_in,z_in,members,meets
+AL_L,96.0,-6.0,24.0,3,"aft frame lower cross, boom pickup | aft frame post | lower longeron, nose bow to aft frame"
+AL_R,96.0,6.0,24.0,3,"aft frame lower cross, boom pickup | aft frame post | lower longeron, nose bow to aft frame"
+AU_L,96.0,-6.0,30.0,4,"aft frame post | aft frame upper cross, boom pickup | aft side diagonal | upper longeron, nose bow to aft frame"
+AU_R,96.0,6.0,30.0,4,"aft frame post | aft frame upper cross, boom pickup | aft side diagonal | upper longeron, nose bow to aft frame"
+BM_C,96.0,0.0,27.0,1,tail boom
+MAX_L,70.5,-28.0,14.5,2,main coil-over | main trailing arm
+MAX_R,70.5,28.0,14.5,2,main coil-over | main trailing arm
+MGF_L,58.0,-10.0,17.0,1,main trailing arm
+MGF_R,58.0,10.0,17.0,1,main trailing arm
+MGS_L,64.0,-14.0,30.0,1,main coil-over
+MGS_R,64.0,14.0,30.0,1,main coil-over
+MH_L,61.5,-9.5,18.0,2,"aft side diagonal | main hoop, lower leg"
+MH_R,61.5,9.5,18.0,2,"aft side diagonal | main hoop, lower leg"
+MP_L,61.5,-8.0,55.0,2,"FRONT SPAR carry-through | main hoop, upper leg to the spar pickup"
+MP_R,61.5,8.0,55.0,2,"FRONT SPAR carry-through | main hoop, upper leg to the spar pickup"
+MS_L,61.5,-9.5,40.0,4,"forward side diagonal | main hoop shoulder cross | main hoop, lower leg | main hoop, upper leg to the spar pickup"
+MS_R,61.5,9.5,40.0,4,"forward side diagonal | main hoop shoulder cross | main hoop, lower leg | main hoop, upper leg to the spar pickup"
+NAX_C,15.0,0.0,10.0,2,"nose leg forward drag strut  (SEE NGF_C NOTE) | nose leg, raked"
+NB_L,30.0,-9.0,18.0,3,"forward side diagonal | lower longeron, nose bow to aft frame | nose bow post"
+NB_R,30.0,9.0,18.0,3,"forward side diagonal | lower longeron, nose bow to aft frame | nose bow post"
+NGF_C,14.0,0.0,30.0,1,nose leg forward drag strut  (SEE NGF_C NOTE)
+NGU_C,30.0,0.0,17.0,1,"nose leg, raked"
+NT_L,30.0,-8.0,38.0,3,"nose bow crown | nose bow post | upper longeron, nose bow to aft frame"
+NT_R,30.0,8.0,38.0,3,"nose bow crown | nose bow post | upper longeron, nose bow to aft frame"
+RF_L,80.5,-7.5,20.0,1,rear frame post
+RF_R,80.5,7.5,20.0,1,rear frame post
+RP_L,80.5,-8.0,55.0,2,REAR SPAR carry-through | rear frame post
+RP_R,80.5,8.0,55.0,2,REAR SPAR carry-through | rear frame post
+TP_C,184.0,0.0,27.0,1,tail boom

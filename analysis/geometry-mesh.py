@@ -8,6 +8,8 @@ and a JSON mesh (with material groups) for the interactive viewer / renderer.
 Axes: X aft from prop plane (station, in), Y right, Z up. Ground at z=0.
 """
 import numpy as np, struct, json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import frame
 
 def naca4(m, p, t, n=40):
     x = 0.5 * (1 - np.cos(np.linspace(0, np.pi, n)))
@@ -110,9 +112,10 @@ endgroup()
 # (station, z-centre, half-height, half-width). Upper line sweeps from the
 # spinner up to the wing underside (z=55) at the LE and runs aft under the
 # wing root; belly held at ~16. Enclosed cabin, doors in the sides.
+BR = frame.TUBE["boom"][0]/2.0        # the boom is a CONSTANT-section
 fu = [(2,40,3.5,3.5),(12,33,11,6),(24,33,15,9),(36,34.5,18.5,10.8),
       (48,35.5,19.5,11.5),(60,36,19,11.5),(72,36,18,10.5),
-      (84,33,12,7),(96,27.5,3.5,3.2),(184,27,1.75,1.75)]
+      (84,33,12,7),(96,27.5,BR,BR),(184,27,BR,BR)]
 # Rev H glazing. Owner direction: THE ENTIRE FRONT IS WINDSHIELD - the engine
 # cowling is the only thing forward of the pilot that is not transparent.
 # phi is the angle around the section from the top centreline, 0 = top,
@@ -178,11 +181,7 @@ group("tire_n")
 bike_wheel(15, 0, R=10, rt=1.2, spokes=12)
 endgroup()
 group("gear")
-strut([30, 0, 17], [15, 0, 10], 1.0)      # raked member, ~63 deg
-strut([14, 0, 30], [15.5, 0, 10.5], 0.9)  # closes the crush-bay triangle
-for sgn in (1, -1):
-    strut([58, sgn*10, 17], [70.5, sgn*28, 14.5], 1.1)   # trailing arm
-    strut([70.5, sgn*28, 14.5], [64, sgn*14, 30], 0.7)   # MTB coil-over
+for p1, p2, r, g in frame.struts(["gear"]): strut(p1, p2, r)
 endgroup()
 group("wheel_m")
 bike_wheel(70.5, 28); bike_wheel(70.5, -28)
@@ -191,32 +190,12 @@ group("struts")
 strut([182, 0, 26], [185, 0, 22], 0.8)          # tail skid
 endgroup()
 
-# ---- welded 4130 cockpit cage, sta 30 to 96 (trades/cockpit-cage.md).
-# Main hoop at sta 61.5 is the rollover structure AND the front-spar
-# carry-through AND sits at the CG (sta 63) - one frame, three jobs.
+# ---- welded 4130 cockpit cage. The geometry now lives in analysis/frame.py
+# as a node/member table, so it can be edited, exported to CAD and weighed
+# without touching this file. Main hoop at sta 61.5 is the rollover structure
+# AND the front-spar carry-through AND sits at the CG - one frame, three jobs.
 group("cage")
-LON_R = 0.5
-FS, RS, AFT = 61.5, 80.5, 96.0
-WING_PU = 55.0            # wing underside = cabin roof = spar pickup
-for s in (1, -1):
-    strut([30, s*9, 18], [96, s*6, 24], LON_R)          # lower longeron
-    strut([30, s*8, 38], [96, s*6, 30], LON_R)          # upper longeron
-    strut([30, s*9, 18], [30, s*8, 38], LON_R)          # nose-bow post
-    strut([30, s*9, 18], [FS, s*9.5, 38], 0.4)          # fwd side diagonal
-    strut([FS, s*9.3, 18], [AFT, s*6, 30], 0.4)         # aft side diagonal
-    # main hoop: lower longeron -> shoulder -> wing front-spar pickup at the
-    # cabin roof (z=53). No cabane: the wing sits on the cabin.
-    strut([FS, s*9.5, 18], [FS, s*9.5, 40], 0.55)
-    strut([FS, s*9.5, 40], [FS, s*8.0, WING_PU], 0.55)
-    # rear-spar frame, also the seat-back / harness anchor frame
-    strut([RS, s*7.5, 20], [RS, s*8.0, WING_PU], 0.45)
-    strut([AFT, s*6, 24], [AFT, s*6, 30], 0.45)         # aft frame post
-strut([30, -8, 38], [30, 8, 38], 0.45)                  # nose-bow crown
-strut([FS, -8, WING_PU], [FS, 8, WING_PU], 0.6)         # FRONT SPAR carry-through
-strut([RS, -8, WING_PU], [RS, 8, WING_PU], 0.5)         # REAR SPAR carry-through
-strut([FS, -9.5, 40], [FS, 9.5, 40], 0.45)              # hoop shoulder cross
-strut([AFT, -6, 24], [AFT, 6, 24], 0.45)                # aft frame, boom pickup
-strut([AFT, -6, 30], [AFT, 6, 30], 0.45)
+for p1, p2, r, g in frame.struts(["cage"]): strut(p1, p2, r)
 endgroup()
 
 # ---- glazing frame. Two jobs, and the second one is what sets it.

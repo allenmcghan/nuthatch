@@ -107,8 +107,8 @@ reach twice the ground area.
 **Crash structure.** Steel tube nose bow forward of the pedals and a rollover
 hoop behind your head, so there is a survivable volume rather than fabric.
 
-**Visibility, measured.** 61.8% of the whole sphere gets out, and 42% of the
-±30° ahead-and-down sector a pilot lands on — against 40.6% and 4% for the
+**Visibility, measured.** 61.3% of the whole sphere gets out, and 42% of the
+±30° ahead-and-down sector a pilot lands on — against 40.0% and 4% for the
 half-glazed version this replaced. Ray-cast from the pilot's eye against the
 same mesh the drawings come from, in
 [analysis/visibility.py](analysis/visibility.py). The straight-ahead view is
@@ -128,12 +128,25 @@ pilot. See [Junco](https://github.com/allenmcghan/junco).
 ```
 docs/          design log, specs, load cases, open questions
 docs/trades/   worked configuration trades, with the numbers
-analysis/      spar sizing, performance, V-n diagram
+analysis/      spar sizing, performance, V-n diagram, the frame as a node table
+cad/           DXF + cut list, generated from analysis/frame.py
 drawings/      wing, fuselage, tail, gear, fittings
 model/         quarter-scale RC validation aircraft
 build-log/     measured weights against estimates, failures
 flight-test/   Phase I plan and logged data
 ```
+
+## CAD
+
+The steel frame lives in [analysis/frame.py](analysis/frame.py) as a node and
+member table — not as drawing geometry. Everything downstream reads it, so
+moving a node updates the STL, the drawings, the cut list, the weight and the
+visibility numbers together. [cad/](cad/) holds the generated DXF, an AutoCAD
+script and the tube schedule; `cad-export.py --from-dxf` reads an edited DXF
+back. Recommended CAD and the round trip are in [cad/README.md](cad/README.md).
+
+The first thing that check found: **the frame is currently in six disconnected
+pieces** — see [docs/open-questions.md](docs/open-questions.md).
 
 ## The two files worth reading first
 

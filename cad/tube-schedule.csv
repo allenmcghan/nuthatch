@@ -1,0 +1,35 @@
+#,TUBE SIZES ARE PROVISIONAL - no member here has been sized against a load case. Not for fabrication.
+id,from,to,stock,OD_in,wall_in,material,cl_length_in,weight_lb,side,min_joint_angle_from_deg,min_joint_angle_to_deg,description
+1,NB_R,AL_R,long,1.0,0.049,4130,66.34,2.748,R,29.9,92.6,"lower longeron, nose bow to aft frame"
+2,NB_L,AL_L,long,1.0,0.049,4130,66.34,2.748,L,29.9,92.6,"lower longeron, nose bow to aft frame"
+3,NT_R,AU_R,long,1.0,0.049,4130,66.51,2.756,R,83.2,26.3,"upper longeron, nose bow to aft frame"
+4,NT_L,AU_L,long,1.0,0.049,4130,66.51,2.756,L,83.2,26.3,"upper longeron, nose bow to aft frame"
+5,NB_R,NT_R,long,1.0,0.049,4130,20.02,0.83,R,55.2,83.2,nose bow post
+6,NB_L,NT_L,long,1.0,0.049,4130,20.02,0.83,L,55.2,83.2,nose bow post
+7,NB_R,MS_R,diag,0.75,0.035,4130,38.43,0.855,R,29.9,55.1,forward side diagonal
+8,NB_L,MS_L,diag,0.75,0.035,4130,38.43,0.855,L,29.9,55.1,forward side diagonal
+9,MH_R,AU_R,diag,0.75,0.035,4130,36.69,0.816,R,70.9,26.3,aft side diagonal
+10,MH_L,AU_L,diag,0.75,0.035,4130,36.69,0.816,L,70.9,26.3,aft side diagonal
+11,MH_R,MS_R,hoop,1.125,0.058,4130,22.0,1.21,R,70.9,55.1,"main hoop, lower leg"
+12,MH_L,MS_L,hoop,1.125,0.058,4130,22.0,1.21,L,70.9,55.1,"main hoop, lower leg"
+13,MS_R,MP_R,hoop,1.125,0.058,4130,15.07,0.829,R,84.3,95.7,"main hoop, upper leg to the spar pickup"
+14,MS_L,MP_L,hoop,1.125,0.058,4130,15.07,0.829,L,84.3,95.7,"main hoop, upper leg to the spar pickup"
+15,RF_R,RP_R,frame,0.875,0.049,4130,35.0,1.26,R,180.0,89.2,rear frame post
+16,RF_L,RP_L,frame,0.875,0.049,4130,35.0,1.26,L,180.0,89.2,rear frame post
+17,AL_R,AU_R,frame,0.875,0.049,4130,6.0,0.216,R,90.0,70.9,aft frame post
+18,AL_L,AU_L,frame,0.875,0.049,4130,6.0,0.216,L,90.0,70.9,aft frame post
+19,NT_L,NT_R,frame,0.875,0.049,4130,16.0,0.576,R,88.3,88.3,nose bow crown
+20,MP_L,MP_R,spar,1.25,0.058,4130,16.0,0.983,R,95.7,95.7,FRONT SPAR carry-through
+21,RP_L,RP_R,spar,1.25,0.058,4130,16.0,0.983,R,89.2,89.2,REAR SPAR carry-through
+22,MS_L,MS_R,hoop,1.125,0.058,4130,19.0,1.045,R,84.3,84.3,main hoop shoulder cross
+23,AL_L,AL_R,frame,0.875,0.049,4130,12.0,0.432,R,90.0,90.0,"aft frame lower cross, boom pickup"
+24,AU_L,AU_R,frame,0.875,0.049,4130,12.0,0.432,R,90.0,90.0,"aft frame upper cross, boom pickup"
+25,BM_C,TP_C,boom,3.5,0.049,4130,88.0,13.23,C,180.0,180.0,tail boom
+26,NGU_C,NAX_C,gear,1.25,0.058,4130,16.55,1.017,C,180.0,67.8,"nose leg, raked"
+27,NGF_C,NAX_C,gear,1.25,0.058,4130,20.02,1.231,C,180.0,67.8,nose leg forward drag strut  (SEE NGF_C NOTE)
+28,MGF_R,MAX_R,gear,1.25,0.058,4130,22.06,1.356,R,180.0,39.6,main trailing arm
+29,MGF_L,MAX_L,gear,1.25,0.058,4130,22.06,1.356,L,180.0,39.6,main trailing arm
+30,MAX_R,MGS_R,gear,1.25,0.058,4130,21.87,1.345,R,39.6,180.0,main coil-over
+31,MAX_L,MGS_L,gear,1.25,0.058,4130,21.87,1.345,L,39.6,180.0,main coil-over
+
+,,,,,,TOTAL,915.6,48.37

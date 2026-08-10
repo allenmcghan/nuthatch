@@ -308,3 +308,42 @@ the 1.0 lb the ledger carried. That 1.6 lb is what pushes the Part 103 aircraft
 off a Lexan nose. Untried: aluminium extrusion, a smaller tube, or deleting the
 phi = 95° rail if 0.060 sheet proves stiff enough to span unsupported.
 
+## The frame is in six disconnected pieces (rev H, §27)
+
+`analysis/frame.py` turned the cage from thirty hard-coded `strut()` calls into
+a node/member graph, and the graph answers a question the tube mesh could not:
+**do these tubes actually meet?** Overlapping cylinders look welded. They are
+not. `python3 analysis/frame.py` prints the list; this is what it finds.
+
+Only the **14-node cage box** — nose bow, longerons, main hoop, diagonals, aft
+frame — is one connected structure. Everything else floats:
+
+| Island | What it is | What it needs |
+|---|---|---|
+| `RF_L RF_R RP_L RP_R` | the **rear frame**: rear spar carry-through, seat back, harness anchor | `RF` sits **2.70 in** off the lower longeron. Either drop `RF` onto the longeron line, or add a member from `RF` to it. **A harness anchor that is not welded to the cage is not a harness anchor.** |
+| `BM_C TP_C` | the **tail boom** | `BM_C` floats **3.00 in** between the two aft-frame crosses. The boom picks up on the aft frame through a fitting that is not modelled. Either model the fitting or move the crosses to meet the tube. |
+| `NGU_C NGF_C NAX_C` | the **nose leg** | `NGU_C` is meant to land on the nose bow, but the nose bow is a **U, not a hoop** — there is a crown at `NT_L`–`NT_R` and no lower cross member. Nothing exists at `(30, 0, 17)` to weld to. And `NGF_C` still floats at station 14 (below). |
+| `MGF_R MAX_R MGS_R` ×2 | the **main gear** | the trailing-arm pivot `MGF` is 2.4 in outboard and 3.5 in below the lower longeron at that station. Same question: fitting, or move it onto the tube. |
+
+Two more near misses inside the cage box itself, which are the serious ones:
+
+- **The main hoop feet do not land on the longerons.** `MH` is **3.44 in** from
+  the lower longeron at 47% along it. That frame carries **88% of wing lift —
+  1,519 lb per side fitting** — and is the rollover structure. Its feet have to
+  tie into the longerons or into a fitting that does.
+- **`NGF_C` attaches to nothing.** Station 14, sixteen inches forward of where
+  the cage starts. It came in with the rev D raked nose leg as *"closes the
+  crush-bay triangle"* and was never tied to a node. Either it lands on the
+  nose bow, or it lands on the engine mount, or the member goes away.
+
+**Nothing has been moved to fix this.** The coordinates are exactly what rev G
+carried; all that changed is that they can now be checked. Fixing it is a
+design decision — how much of it wants a welded joint and how much wants a
+bolted fitting — and `analysis/frame.py` will re-check whatever comes back.
+
+Related: the frame's own tube schedule comes to **48.4 lb** (27.5 cage, 13.2
+boom, 7.7 gear) with **no gussets, no fittings and no weld metal**. The build
+log CSV carries 31 + 5 + 4 = 40 lb for a cage that predates the pod-and-boom
+architecture. Those two do not reconcile yet, and that is already on the list
+as **workbook reconciliation**.
+
